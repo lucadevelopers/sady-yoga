@@ -62,7 +62,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(250, 248, 245, 0.92);
+            background: rgba(250, 248, 245, 0.95);
             backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
@@ -124,6 +124,22 @@
             width: 100%;
         }
 
+        /* Pulsante Hamburger Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: var(--primary-light);
+        }
+
         /* Hero Section Animation */
         header.hero {
             padding: 140px 0 90px;
@@ -147,7 +163,6 @@
             animation: fadeInDown 0.8s ease forwards;
         }
 
-        /* Stile per la Foto Profilo nell'Hero */
         .hero-profile-pic {
             width: 140px;
             height: 140px;
@@ -560,10 +575,53 @@
             }
         }
 
-        /* Responsive */
+        /* Responsive Mobile Layout & Navigation */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 76px;
+                left: 0;
+                right: 0;
+                background: var(--bg-main);
+                flex-direction: column;
+                gap: 0;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease, opacity 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .nav-links.open {
+                max-height: 360px;
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 24px;
+                font-size: 1rem;
+                border-bottom: 1px solid rgba(229, 224, 216, 0.4);
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
             .hero-title { font-size: 2.8rem; }
-            .nav-links { display: none; }
             section { padding: 60px 0; }
             .profile-container { padding: 28px; }
             .specialization-banner { flex-direction: column; }
@@ -576,7 +634,13 @@
     <nav>
         <div class="container nav-container">
             <a href="#" class="logo">Saadiya Belkhadri</a>
-            <ul class="nav-links">
+            
+            <!-- Bottone Hamburger per Mobile -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Apri Menu">
+                <i data-lucide="menu" id="menuIcon" size="28"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#profilo">Profilo</a></li>
                 <li><a href="#formazione">Formazione</a></li>
                 <li><a href="#esperienze">Esperienze</a></li>
@@ -594,7 +658,7 @@
                 <i data-lucide="map-pin" size="16"></i> Bergamo, Italia
             </div>
             
-            <!-- FOTO PROFILO: Sostituisci "tuafoto.jpg" con il nome del file della foto caricata nel repository GitHub -->
+            <!-- Foto Profilo -->
             <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic">
 
             <h1 class="hero-title">Saadiya Belkhadri</h1>
@@ -674,14 +738,14 @@
                 </div>
             </div>
 
-            <!-- Formazione Continua & Biomeccanica -->
+            <!-- Formazione Continua -->
             <div class="specialization-banner">
                 <div class="specialization-icon">
                     <i data-lucide="book-open" size="22"></i>
                 </div>
                 <div class="specialization-content">
                     <h4>Formazione Continua</h4>
-                    <p style="margin-bottom: 8px;">• Yoga<strong> Prenatal e Postnatal</strong>.</p>
+                    <p style="margin-bottom: 8px;">• Yoga <strong>Prenatal e Postnatal</strong>.</p>
                 </div>
             </div>
         </div>
@@ -840,9 +904,34 @@
         </div>
     </footer>
 
-    <!-- Script per Animazioni Scroll & Icone -->
+    <!-- Script per Animazioni Scroll & Icone & Hamburger Menu -->
     <script>
         lucide.createIcons();
+
+        // Gestione Menu Mobile Hamburger
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            
+            // Cambia l'icona tra menu (hamburger) e x (chiusura)
+            const isOpen = navLinks.classList.contains('open');
+            menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+
+        // Chiudi il menu quando si clicca su un link da mobile
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                }
+            });
+        });
 
         // Intersection Observer per animare le sezioni allo scroll
         const reveals = document.querySelectorAll('.reveal');
