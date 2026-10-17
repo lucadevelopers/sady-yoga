@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saadiya Belkhadri | Insegnante Yoga & Pilates Bergamo</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
         :root {
-            --bg-main: #FDFBF7;
+            --bg-main: #FAF8F5;
             --bg-card: #FFFFFF;
-            --primary: #4A6B5D;       /* Verde Salvia */
+            --primary: #3B5A4E;        /* Verde Salvia Profondo */
             --primary-light: #EBF1ED;
-            --accent: #C88A65;        /* Terracotta Soft */
-            --accent-light: #F7EBE3;
-            --text-main: #2C3531;
-            --text-muted: #5C6561;
-            --border: #E8E4DC;
-            --shadow: 0 10px 30px rgba(74, 107, 93, 0.08);
+            --primary-soft: #7A9A8B;
+            --accent: #C47A53;         /* Terracotta Warm */
+            --accent-light: #F8EFEA;
+            --sand: #EFECE6;
+            --text-dark: #232B28;
+            --text-muted: #586360;
+            --border: #E5E0D8;
+            --shadow: 0 12px 32px rgba(59, 90, 78, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
         }
 
         * {
@@ -34,29 +40,30 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-main);
-            color: var(--text-main);
+            color: var(--text-dark);
             line-height: 1.7;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, .font-serif {
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Container & Navigation */
         .container {
-            max-width: 1100px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
+        /* Header Navigation */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(253, 251, 247, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
         }
@@ -65,27 +72,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 76px;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 28px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-main);
-            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-size: 0.92rem;
             font-weight: 500;
             transition: color 0.3s;
         }
@@ -96,217 +104,353 @@
 
         /* Hero Section */
         header.hero {
-            padding: 150px 0 80px;
+            padding: 160px 0 90px;
+            position: relative;
+            background: radial-gradient(circle at 50% 20%, #F3F7F4 0%, var(--bg-main) 70%);
             text-align: center;
-            background: radial-gradient(circle at center, var(--primary-light) 0%, transparent 70%);
         }
 
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .hero-location {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 1rem;
-        }
-
-        .contact-pills {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .pill {
+        .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 20px;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 90, 78, 0.15);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 50px;
-            color: var(--text-main);
+            color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
             transition: all 0.3s;
         }
 
-        .pill:hover {
+        .contact-chip:hover {
             border-color: var(--primary);
             color: var(--primary);
             transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
-        /* Sections General */
+        /* Section Styling */
         section {
-            padding: 80px 0;
+            padding: 90px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--primary);
-            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Profilo Personale Card */
+        .profile-container {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .profile-quote {
+            font-size: 1.35rem;
+            color: var(--primary);
+            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .profile-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
             margin-bottom: 16px;
         }
 
-        .section-desc {
-            text-align: center;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 50px;
+        .interests-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
         }
 
-        /* Profilo / About */
-        .about-card {
-            background: var(--bg-card);
-            padding: 40px;
+        .pill-interest {
+            background: var(--sand);
+            color: var(--text-dark);
+            padding: 6px 16px;
             border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            max-width: 850px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--text-main);
-        }
-
-        .about-card p + p {
-            margin-top: 18px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         /* Grid Layouts */
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
-        /* Cards */
+        /* Feature Cards */
         .card {
             background: var(--bg-card);
-            padding: 30px;
-            border-radius: 16px;
+            padding: 36px;
+            border-radius: var(--radius-md);
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            height: 100%;
         }
 
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
+            border-color: var(--primary-soft);
         }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
+        .card-header-icon {
+            width: 52px;
+            height: 52px;
             background: var(--primary-light);
             color: var(--primary);
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
-        .card h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        /* Stili specifici */
-        .discipline-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .tag {
-            background: var(--primary-light);
-            color: var(--primary);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .tag.accent {
+        .card-header-icon.accent {
             background: var(--accent-light);
             color: var(--accent);
         }
 
-        ul.clean-list {
+        .card h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        /* List Items */
+        .info-list {
             list-style: none;
         }
 
-        ul.clean-list li {
+        .info-list li {
             position: relative;
-            padding-left: 24px;
-            margin-bottom: 12px;
-            color: var(--text-main);
+            padding-left: 28px;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            font-size: 0.98rem;
         }
 
-        ul.clean-list li::before {
-            content: "•";
+        .info-list li::before {
+            content: "✓";
             position: absolute;
-            left: 8px;
+            left: 0;
+            top: 0;
             color: var(--accent);
-            font-size: 1.4rem;
-            line-height: 1;
+            font-weight: bold;
         }
 
-        /* Continuous Education Banner */
-        .banner {
-            background: var(--primary-light);
-            border-left: 4px solid var(--primary);
-            padding: 20px;
+        /* Specialized Discipline Cards Grid */
+        .discipline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .discipline-card {
+            background: var(--bg-card);
+            padding: 22px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.25s ease;
+        }
+
+        .discipline-card:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .discipline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .discipline-card h4 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Callout Banner */
+        .specialization-banner {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #E2ECE6 100%);
+            border: 1px solid rgba(59, 90, 78, 0.2);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            margin-top: 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .specialization-icon {
+            background: var(--primary);
+            color: #FFF;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .specialization-content h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .specialization-content p {
+            color: var(--text-dark);
+            font-size: 0.98rem;
+        }
+
+        /* Languages & Collaboration Section */
+        .lang-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--sand);
+            padding: 8px 16px;
             border-radius: 8px;
-            margin-top: 24px;
-            color: var(--text-main);
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
         }
 
         /* Footer */
         footer {
             background: var(--primary);
             color: #FFFFFF;
-            padding: 50px 0;
+            padding: 60px 0 40px;
             text-align: center;
+        }
+
+        footer h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #FFFFFF;
         }
 
         footer p {
             opacity: 0.8;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 30px auto;
+            max-width: 600px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
+            .hero-title { font-size: 2.8rem; }
             .nav-links { display: none; }
-            section { padding: 50px 0; }
+            section { padding: 60px 0; }
+            .profile-container { padding: 28px; }
+            .specialization-banner { flex-direction: column; }
         }
     </style>
 </head>
@@ -315,11 +459,12 @@
     <!-- Navigazione -->
     <nav>
         <div class="container nav-container">
-            <a href="#" class="logo">SAADIYA BELKHADRI</a>
+            <a href="#" class="logo">Saadiya Belkhadri</a>
             <ul class="nav-links">
                 <li><a href="#profilo">Profilo</a></li>
                 <li><a href="#formazione">Formazione</a></li>
-                <li><a href="#esperienze">Esperienza</a></li>
+                <li><a href="#esperienze">Esperienze</a></li>
+                <li><a href="#discipline">Discipline</a></li>
                 <li><a href="#competenze">Competenze</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
@@ -329,17 +474,18 @@
     <!-- Hero Header -->
     <header class="hero">
         <div class="container">
-            <h1 class="hero-title">Saadiya Belkhadri</h1>
-            <p class="hero-subtitle">Insegnante Yoga & Pilates</p>
-            <div class="hero-location">
-                <i data-lucide="map-pin"></i> Bergamo, Italia
+            <div class="hero-badge">
+                <i data-lucide="map-pin" size="16"></i> Bergamo, Italia
             </div>
-            <div class="contact-pills" id="contatti">
-                <a href="mailto:sbelkhadri@yahoo.it" class="pill">
-                    <i data-lucide="mail"></i> sbelkhadri@yahoo.it
+            <h1 class="hero-title">Saadiya Belkhadri</h1>
+            <p class="hero-subtitle">Insegnante di Yoga & Pilates</p>
+
+            <div class="contact-bar" id="contatti">
+                <a href="mailto:sbelkhadri@yahoo.it" class="contact-chip">
+                    <i data-lucide="mail" size="18"></i> sbelkhadri@yahoo.it
                 </a>
-                <a href="tel:+393807855951" class="pill">
-                    <i data-lucide="phone"></i> +39 380 7855951
+                <a href="tel:+393807855951" class="contact-chip">
+                    <i data-lucide="phone" size="18"></i> +39 380 7855951
                 </a>
             </div>
         </div>
@@ -348,24 +494,236 @@
     <!-- Profilo Personale -->
     <section id="profilo">
         <div class="container">
-            <h2 class="section-title">Profilo Personale</h2>
-            <p class="section-desc">Armonizzare corpo, mente e spirito attraverso l'ascolto e il respiro</p>
-            <div class="about-card">
-                <p>Mi dedico con passione all'insegnamento dello yoga e del pilates, con l'intento di offrire benessere autentico attraverso l'ascolto del corpo e l'uso consapevole del respiro. Credo profondamente che lo yoga unito al pilates sia un percorso di trasformazione e di consapevolezza, capace di armonizzare corpo, mente e spirito.</p>
-                <p>Empatica e attenta, accompagno i miei praticanti in un'esperienza di equilibrio, serenità e presenza, creando uno spazio di ascolto profondo e autentico.</p>
+            <div class="section-header">
+                <span class="section-tag">Chi Sono</span>
+                <h2 class="section-title">Profilo & Filosofia</h2>
+            </div>
+
+            <div class="profile-container">
+                <div class="profile-quote">
+                    "Credo profondamente che lo yoga unito al pilates sia un percorso di trasformazione e di consapevolezza, capace di armonizzare corpo, mente e spirito."
+                </div>
+                <div class="profile-text">
+                    <p>Mi dedico con passione all'insegnamento dello yoga e del pilates, con l'intento di offrire benessere autentico attraverso l'ascolto del corpo e l'uso consapevole del respiro.</p>
+                    <p>Empatica e attenta, accompagno i miei praticanti in un'esperienza di equilibrio, serenità e presenza, creando uno spazio di ascolto profondo e autentico.</p>
+                </div>
+
+                <div class="interests-pills">
+                    <span class="pill-interest"><i data-lucide="heart" size="14"></i> Benessere Olistico</span>
+                    <span class="pill-interest"><i data-lucide="leaf" size="14"></i> Salute Naturale</span>
+                    <span class="pill-interest"><i data-lucide="smile" size="14"></i> Consapevolezza Corporea</span>
+                    <span class="pill-interest"><i data-lucide="wind" size="14"></i> Respiro Consapevole</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Formazione -->
-    <section id="formazione" style="background-color: rgba(235, 241, 237, 0.4);">
+    <section id="formazione" style="background-color: var(--sand);">
         <div class="container">
-            <h2 class="section-title">Formazione</h2>
-            <p class="section-desc">Un percorso continuo di apprendimento e specializzazione</p>
+            <div class="section-header">
+                <span class="section-tag">Qualifiche Nazionali & Internazionali</span>
+                <h2 class="section-title">Percorso di Formazione</h2>
+            </div>
+
+            <div class="grid-2">
+                <!-- Certificazioni Yoga -->
+                <div class="card">
+                    <div class="card-header-icon">
+                        <i data-lucide="award" size="26"></i>
+                    </div>
+                    <h3>Diplomi Yoga</h3>
+                    <ul class="info-list">
+                        <li><strong>Diploma di Istruttore Nazionale di Yoga - Livello 1 (250 H)</strong><br><span style="color:var(--text-muted); font-size:0.9rem;">Rilasciato da Yoga Space</span></li>
+                        <li><strong>Diploma di Istruttore Nazionale di Yoga - Livello 2 (500 HRS RYT PLUS)</strong><br><span style="color:var(--text-muted); font-size:0.9rem;">Rilasciato da Odaka Yoga</span></li>
+                        <li><strong>Diploma Aerial Yin - Yin Yoga in Amaca e Rilascio Miofasciale (40h YACEP)</strong><br><span style="color:var(--text-muted); font-size:0.9rem;">Rilasciato da AWAR3</span></li>
+                    </ul>
+                </div>
+
+                <!-- Certificazioni Pilates -->
+                <div class="card">
+                    <div class="card-header-icon accent">
+                        <i data-lucide="activity" size="26"></i>
+                    </div>
+                    <h3>Diplomi Pilates</h3>
+                    <ul class="info-list">
+                        <li><strong>Diploma Istruttore Pilates Reformer 100H</strong><br><span style="color:var(--text-muted); font-size:0.9rem;">Rilasciato da Yogaspace</span></li>
+                        <li><strong>Diploma Istruttore Pilates Matwork 50H</strong><br><span style="color:var(--text-muted); font-size:0.9rem;">Rilasciato da Yogaspace</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Formazione Continua & Biomeccanica -->
+            <div class="specialization-banner">
+                <div class="specialization-icon">
+                    <i data-lucide="book-open" size="22"></i>
+                </div>
+                <div class="specialization-content">
+                    <h4>Formazione Continua, Anatomia e Biomeccanica</h4>
+                    <p style="margin-bottom: 8px;">• Specialized in <strong>Yoga Prenatal e Postnatal</strong>.</p>
+                    <p>• La formazione affiancata a un <strong>insegnante laureato in Scienze Motorie</strong> mi ha permesso di approfondire rigorosamente la conoscenza dell'anatomia e della biomeccanica del movimento, integrandole direttamente nella pratica e nell'insegnamento per garantire massima sicurezza ed efficacia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Esperienze Professionali -->
+    <section id="esperienze">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Attività e Centri</span>
+                <h2 class="section-title">Esperienza Professionale</h2>
+            </div>
 
             <div class="grid-2">
                 <div class="card">
-                    <div class="card-icon"><i data-lucide="award"></i></div>
-                    <h3>Diplomi Yoga</h3>
-                    <ul class="clean-list">
-                        <li><strong>Istruttore Nazionale Yoga - L1 (250 H)
+                    <div class="card-header-icon">
+                        <i data-lucide="building-2" size="26"></i>
+                    </div>
+                    <h3>Centri & Palestre</h3>
+                    <ul class="info-list">
+                        <li><strong>Yoga Space Bergamo</strong> — Insegnante di Yoga e Pilates</li>
+                        <li><strong>Fitness CrossFit Begin Pedrengo</strong> — Insegnante di Yoga e Pilates</li>
+                        <li><strong>Floway Lallio</strong> — Insegnante di Yoga e Pilates</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header-icon accent">
+                        <i data-lucide="video" size="26"></i>
+                    </div>
+                    <h3>Lezioni Private & Online</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">Percorsi personalizzati individuali o per piccoli gruppi, sia in presenza che da remoto su piattaforme digitali.</p>
+                    <ul class="info-list">
+                        <li>Sessioni One-to-One dedicate</li>
+                        <li>Programmi su misura per esigenze specifiche</li>
+                        <li>Accessibilità e flessibilità online</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discipline Insegnate -->
+    <section id="discipline" style="background-color: #F4F7F5;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">I Miei Corsi</span>
+                <h2 class="section-title">Discipline Insegnate</h2>
+                <p style="color: var(--text-muted); margin-top: 10px;">Ogni lezione è costruita per favorire consapevolezza, equilibrio e fluidità, attraverso il lavoro del corpo integrato al respiro.</p>
+            </div>
+
+            <div class="discipline-grid">
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Light Yoga</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Pratah Yoga</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Hatha Yoga</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Vinyasa Yoga</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Yoga Dinamico</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Aerial Yin</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Odaka & Fascia Flow</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Pilates Posturale</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Pilates Matwork</h4>
+                </div>
+                <div class="discipline-card">
+                    <div class="discipline-dot"></div>
+                    <h4>Pilates Reformer</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competenze, Lingue e Collaborazioni -->
+    <section id="competenze">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Punti di Forza</span>
+                <h2 class="section-title">Competenze & Collaborazioni</h2>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header-icon">
+                        <i data-lucide="sparkles" size="26"></i>
+                    </div>
+                    <h3>Competenze & Qualità</h3>
+                    <ul class="info-list">
+                        <li>Empatia e capacità di ascolto profondo</li>
+                        <li>Conoscenza approfondita dell'anatomia del movimento</li>
+                        <li>Integrazione tra filosofia yogica e pratica fisica</li>
+                        <li>Attenzione individuale e gestione armoniosa del gruppo</li>
+                        <li>Approccio olistico e consapevole</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header-icon accent">
+                        <i data-lucide="globe-2" size="26"></i>
+                    </div>
+                    <h3>Competenze Linguistiche</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Disponibile a condurre lezioni anche in lingua per praticanti o centri internazionali:</p>
+                    <div>
+                        <span class="lang-badge"><i data-lucide="check-circle" size="14"></i> Francese: Ottimo</span>
+                        <span class="lang-badge"><i data-lucide="check-circle" size="14"></i> Inglese: Buono</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header-icon">
+                        <i data-lucide="users" size="26"></i>
+                    </div>
+                    <h3>Collaborazioni</h3>
+                    <p style="color: var(--text-dark); margin-bottom: 16px;"><strong>Aperta a nuove opportunità professionali.</strong></p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Disponibile a collaborazioni con:</p>
+                    <ul class="info-list" style="margin-top: 10px;">
+                        <li>Centri Yoga e Pilates</li>
+                        <li>Associazioni Sportive</li>
+                        <li>Enti del Benessere e Spa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Saadiya Belkhadri</h3>
+            <p>Insegnante di Yoga & Pilates • Bergamo</p>
+            <p style="margin-top: 8px;"><a href="mailto:sbelkhadri@yahoo.it" style="color:#FFF; text-decoration:underline;">sbelkhadri@yahoo.it</a> | +39 380 7855951</p>
+            <div class="footer-divider"></div>
+            <p style="font-size: 0.85rem; opacity: 0.7;">&copy; 2026 Saadiya Belkhadri. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- Inizializzazione Icone Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
