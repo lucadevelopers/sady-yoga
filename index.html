@@ -126,7 +126,7 @@
 
         /* Hero Section Animation */
         header.hero {
-            padding: 160px 0 90px;
+            padding: 140px 0 90px;
             position: relative;
             background: radial-gradient(circle at 50% 20%, #F3F7F4 0%, var(--bg-main) 70%);
             text-align: center;
@@ -145,6 +145,19 @@
             margin-bottom: 20px;
             border: 1px solid rgba(59, 90, 78, 0.15);
             animation: fadeInDown 0.8s ease forwards;
+        }
+
+        /* Stile per la Foto Profilo nell'Hero */
+        .hero-profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 8px 25px rgba(59, 90, 78, 0.15);
+            margin: 0 auto 20px auto;
+            display: block;
+            animation: fadeInDown 0.9s ease forwards;
         }
 
         .hero-title {
@@ -204,7 +217,6 @@
             position: relative;
         }
 
-        /* Classe base per l'animazione al passaggio dello scroll */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -581,6 +593,10 @@
             <div class="hero-badge">
                 <i data-lucide="map-pin" size="16"></i> Bergamo, Italia
             </div>
+            
+            <!-- FOTO PROFILO: Sostituisci "tuafoto.jpg" con il nome del file della foto caricata nel repository GitHub -->
+            <img src="fotoheader.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic">
+
             <h1 class="hero-title">Saadiya Belkhadri</h1>
             <p class="hero-subtitle">Insegnante di Yoga & Pilates</p>
 
@@ -686,7 +702,7 @@
                     </div>
                     <h3>Centri & Palestre</h3>
                     <ul class="info-list">
-                        <a href="https://share.google/da0tX7Kuhcl5TA6bW"><li><strong>Yoga Space Bergamo</strong> — Insegnante di Yoga, Pilates Matwork e Pilates Reformer</li></a>
+                        <li><a href="https://share.google/da0tX7Kuhcl5TA6bW" target="_blank" style="color:inherit; text-decoration:none;"><strong>Yoga Space Bergamo</strong> — Insegnante di Yoga, Pilates Matwork e Pilates Reformer</a></li>
                         <li><strong>Fitness CrossFit Begin Pedrengo</strong> — Insegnante di Yoga, Pilates Matwork</li>
                     </ul>
                 </div>
@@ -806,7 +822,7 @@
                         <li>Centri Yoga e Pilates</li>
                         <li>Associazioni Sportive</li>
                         <li>Enti del Benessere e Spa</li>
-                        <li>Progetti di coporate wellness</li>
+                        <li>Progetti di corporate wellness</li>
                     </ul>
                 </div>
             </div>
@@ -844,8 +860,6 @@
         }
 
         window.addEventListener('scroll', scrollReveal);
-        
-        // Esegui subito al caricamento per controllare gli elementi visibili all'inizio
         scrollReveal();
     </script>
 </body>
