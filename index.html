@@ -10,8 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
+    <!-- Lucide Icons & FontAwesome (per l'icona social nel footer) -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
@@ -73,7 +74,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 76px;
+            height: 86px;
         }
 
         .logo-wrapper {
@@ -83,31 +84,26 @@
             text-decoration: none;
         }
 
+        /* LOGO NAVBAR INGRANDITO */
         .nav-logo-pic {
-            width: 50px;
-            height: 50px;
+            width: 62px;
+            height: 62px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid var(--primary);
-        }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(59, 90, 78, 0.2);
             transition: transform 0.3s ease;
         }
 
-        .logo-wrapper:hover .logo {
-            transform: scale(1.02);
+        .logo-wrapper:hover .nav-logo-pic {
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
             gap: 28px;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -156,7 +152,7 @@
 
         /* Hero Section */
         header.hero {
-            padding: 140px 0 90px;
+            padding: 150px 0 90px;
             position: relative;
             background: radial-gradient(circle at 50% 20%, #F3F7F4 0%, var(--bg-main) 70%);
             text-align: center;
@@ -555,7 +551,7 @@
         }
 
         footer p {
-            opacity: 0.8;
+            opacity: 0.85;
             font-size: 0.95rem;
         }
 
@@ -564,6 +560,19 @@
             background: rgba(255, 255, 255, 0.15);
             margin: 30px auto;
             max-width: 600px;
+        }
+
+        /* Footer Credits Styling */
+        .footer-credits a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-credits a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
         }
 
         /* Keyframe Animations */
@@ -595,18 +604,14 @@
                 display: block;
             }
 
-            .logo {
-                font-size: 1.1rem;
-            }
-
             .nav-logo-pic {
-                width: 32px;
-                height: 32px;
+                width: 50px;
+                height: 50px;
             }
 
             .nav-links {
                 position: absolute;
-                top: 76px;
+                top: 86px;
                 left: 0;
                 right: 0;
                 background: var(--bg-main);
@@ -657,7 +662,7 @@
     <nav>
         <div class="container nav-container">
             <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo" class="nav-logo-pic">
+                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://via.placeholder.com/62/3B5A4E/FFFFFF?text=S'">
             </a>
             
             <!-- Bottone Hamburger per Mobile -->
@@ -684,7 +689,7 @@
             </div>
             
             <!-- Foto Profilo -->
-            <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic">
+            <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic" onerror="this.src='https://via.placeholder.com/140/3B5A4E/FFFFFF?text=Saadiya'">
 
             <h1 class="hero-title">Saadiya Belkhadri</h1>
             <p class="hero-subtitle">Insegnante di Yoga & Pilates</p>
@@ -693,8 +698,8 @@
                 <a href="mailto:info@saadiya.it" class="contact-chip">
                     <i data-lucide="mail" size="18"></i> info@saadiya.it
                 </a>
-                <a href="https://www.instagram.com/sady__yoga?utm_source=ig_web_button_share_sheet&psln=ZDNlZDc0MzIxNw==" target="_blank" class="contact-chip">
-                    <i data-lucide="instagram" size="18"></i> @sady_yoga
+                <a href="https://www.instagram.com/sady__yoga" target="_blank" rel="noopener noreferrer" class="contact-chip">
+                    <i data-lucide="instagram" size="18"></i> @sady__yoga
                 </a>
             </div>
         </div>
@@ -791,8 +796,8 @@
                     </div>
                     <h3>Centri & Palestre</h3>
                     <ul class="info-list">
-                        <li><a href="https://share.google/da0tX7Kuhcl5TA6bW" target="_blank" style="color:inherit; text-decoration:none;"><strong>Yoga Space Bergamo</strong> — Insegnante di Yoga, Pilates Matwork e Pilates Reformer</a></li>
-                        <li><a href="https://share.google/FBVAztK3xzsH8yql3" target="_blank" style="color:inherit; text-decoration:none;"><strong>Fitness CrossFit Begin Pedrengo</strong> — Insegnante di Yoga, Pilates Matwork</a></li>
+                        <li><a href="https://share.google/da0tX7Kuhcl5TA6bW" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;"><strong>Yoga Space Bergamo</strong> — Insegnante di Yoga, Pilates Matwork e Pilates Reformer</a></li>
+                        <li><a href="https://share.google/FBVAztK3xzsH8yql3" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;"><strong>Fitness CrossFit Begin Pedrengo</strong> — Insegnante di Yoga, Pilates Matwork</a></li>
                     </ul>
                 </div>
 
@@ -824,42 +829,15 @@
             </div>
 
             <div class="discipline-grid">
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Light Yoga</h4>
-                </div>
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Hatha Yoga</h4>
-                </div>
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Vinyasa Yoga</h4>
-                </div>
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Aerial Yin</h4>
-                </div>
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Odaka & Pranayama Flow</h4>
-                </div>
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Yogalates</h4>
-                </div>
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Pilates Posturale</h4>
-                </div>
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Pilates Matwork</h4>
-                </div>
-                <div class="discipline-card">
-                    <div class="discipline-dot"></div>
-                    <h4>Pilates Reformer</h4>
-                </div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Light Yoga</h4></div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Hatha Yoga</h4></div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Vinyasa Yoga</h4></div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Aerial Yin</h4></div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Odaka & Pranayama Flow</h4></div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Yogalates</h4></div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Pilates Posturale</h4></div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Pilates Matwork</h4></div>
+                <div class="discipline-card"><div class="discipline-dot"></div><h4>Pilates Reformer</h4></div>
             </div>
         </div>
     </section>
@@ -924,7 +902,12 @@
             <h3>Saadiya Belkhadri</h3>
             <p>Insegnante di Yoga & Pilates • Bergamo</p>
             <div class="footer-divider"></div>
-            <p style="font-size: 0.85rem; opacity: 0.7;">&copy; 2026 Created by Luca Sessa. Tutti i diritti riservati.</p>
+            <p class="footer-credits">
+                &copy; 2026 • Created by 
+                <a href="https://www.instagram.com/lukse__" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram" style="margin-left: 4px; margin-right: 2px;"></i>Luca Sessa
+                </a>
+            </p>
         </div>
     </footer>
 
