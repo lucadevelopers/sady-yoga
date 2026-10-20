@@ -76,17 +76,31 @@
             height: 76px;
         }
 
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-pic {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary);
-            text-decoration: none;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             transition: transform 0.3s ease;
         }
 
-        .logo:hover {
+        .logo-wrapper:hover .logo {
             transform: scale(1.02);
         }
 
@@ -140,7 +154,7 @@
             background-color: var(--primary-light);
         }
 
-        /* Hero Section Animation */
+        /* Hero Section */
         header.hero {
             padding: 140px 0 90px;
             position: relative;
@@ -581,6 +595,15 @@
                 display: block;
             }
 
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-logo-pic {
+                width: 32px;
+                height: 32px;
+            }
+
             .nav-links {
                 position: absolute;
                 top: 76px;
@@ -633,7 +656,10 @@
     <!-- Navigazione -->
     <nav>
         <div class="container nav-container">
-            <a href="#" class="logo">Saadiya Belkhadri</a>
+            <a href="#" class="logo-wrapper">
+                <img src="fotoprofilo.jpg" alt="Logo" class="nav-logo-pic">
+                <span class="logo">Saadiya Belkhadri</span>
+            </a>
             
             <!-- Bottone Hamburger per Mobile -->
             <button class="menu-toggle" id="menuToggle" aria-label="Apri Menu">
@@ -728,7 +754,7 @@
                 <!-- Certificazioni Pilates -->
                 <div class="card">
                     <div class="card-header-icon accent">
-                        <i data-lucide="award" size="26"></i>
+                        <i data-lucide="activity" size="26"></i>
                     </div>
                     <h3>Diplomi Pilates</h3>
                     <ul class="info-list">
@@ -913,14 +939,16 @@
         const navLinks = document.getElementById('navLinks');
         const menuIcon = document.getElementById('menuIcon');
 
-        menuToggle.addEventListener('click', () => {
+        function toggleMenu() {
             navLinks.classList.toggle('open');
-            
-            // Cambia l'icona tra menu (hamburger) e x (chiusura)
             const isOpen = navLinks.classList.contains('open');
+            
+            // Sostituisce l'icona e ricrea l'elemento SVG di Lucide
             menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
             lucide.createIcons();
-        });
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
 
         // Chiudi il menu quando si clicca su un link da mobile
         document.querySelectorAll('.nav-links a').forEach(link => {
