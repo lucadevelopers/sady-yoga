@@ -84,8 +84,8 @@
         }
 
         .nav-logo-pic {
-            width: 38px;
-            height: 38px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary);
@@ -657,7 +657,8 @@
     <nav>
         <div class="container nav-container">
             <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo" class="nav-logo-pic">
+                <img src="fotoprofilo.jpg" alt="Logo" class="nav-logo-pic">
+                <span class="logo">Saadiya Belkhadri</span>
             </a>
             
             <!-- Bottone Hamburger per Mobile -->
@@ -694,7 +695,7 @@
                     <i data-lucide="mail" size="18"></i> sbelkhadri@yahoo.it
                 </a>
                 <a href="https://www.instagram.com/sady__yoga?utm_source=ig_web_button_share_sheet&psln=ZDNlZDc0MzIxNw==" target="_blank" class="contact-chip">
-                    <i data-lucide="ig" size="18"></i> @sady_yoga
+                    <i data-lucide="instagram" size="18"></i> @sady_yoga
                 </a>
             </div>
         </div>
@@ -923,7 +924,6 @@
         <div class="container">
             <h3>Saadiya Belkhadri</h3>
             <p>Insegnante di Yoga & Pilates • Bergamo</p>
-            <p style="margin-top: 8px;"><a href="mailto:sbelkhadri@yahoo.it" style="color:#FFF; text-decoration:underline;">sbelkhadri@yahoo.it</a></p>
             <div class="footer-divider"></div>
             <p style="font-size: 0.85rem; opacity: 0.7;">&copy; 2026 Created by Luca Sessa. Tutti i diritti riservati.</p>
         </div>
@@ -942,7 +942,7 @@
             navLinks.classList.toggle('open');
             const isOpen = navLinks.classList.contains('open');
             
-            // Sostituisce l'icona e ricrea l'elemento SVG di Lucide
+            // Sostituisce l'icona tra menu e x
             menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
             lucide.createIcons();
         }
