@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons & FontAwesome (per l'icona social nel footer) -->
+    <!-- FontAwesome (per l'icona ufficiale Instagram) & Lucide Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
@@ -84,10 +84,10 @@
             text-decoration: none;
         }
 
-        /* LOGO NAVBAR INGRANDITO */
+        /* LOGO NAVBAR INGRANDITO (65px) */
         .nav-logo-pic {
-            width: 62px;
-            height: 62px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary);
@@ -229,11 +229,21 @@
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        .contact-chip i.fa-instagram {
+            font-size: 1.25rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
         .contact-chip:hover {
             border-color: var(--primary);
             color: var(--primary);
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 10px 25px rgba(59, 90, 78, 0.15);
+        }
+
+        .contact-chip:hover i.fa-instagram {
+            transform: scale(1.15) rotate(-5deg);
         }
 
         /* Section Styling & Scroll Animations */
@@ -300,7 +310,6 @@
             width: 6px;
             height: 100%;
             background: var(--accent);
-            transition: height 0.4s ease;
         }
 
         .profile-quote {
@@ -430,7 +439,7 @@
             font-weight: bold;
         }
 
-        /* Specialized Discipline Cards Grid */
+        /* Discipline Grid */
         .discipline-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -474,7 +483,7 @@
             font-weight: 600;
         }
 
-        /* Callout Banner */
+        /* Banner */
         .specialization-banner {
             background: linear-gradient(135deg, var(--primary-light) 0%, #E2ECE6 100%);
             border: 1px solid rgba(59, 90, 78, 0.2);
@@ -514,7 +523,7 @@
             font-size: 0.98rem;
         }
 
-        /* Languages & Collaboration Section */
+        /* Language Badges */
         .lang-badge {
             display: inline-flex;
             align-items: center;
@@ -562,20 +571,22 @@
             max-width: 600px;
         }
 
-        /* Footer Credits Styling */
         .footer-credits a {
             color: var(--accent-light);
             text-decoration: none;
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             transition: opacity 0.3s ease;
         }
 
         .footer-credits a:hover {
-            opacity: 0.8;
+            opacity: 0.85;
             text-decoration: underline;
         }
 
-        /* Keyframe Animations */
+        /* Keyframes */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -598,7 +609,7 @@
             }
         }
 
-        /* Responsive Mobile Layout & Navigation */
+        /* Responsive Mobile Layout */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -662,10 +673,9 @@
     <nav>
         <div class="container nav-container">
             <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://via.placeholder.com/62/3B5A4E/FFFFFF?text=S'">
+                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/65x65/3B5A4E/FFFFFF?text=S'">
             </a>
             
-            <!-- Bottone Hamburger per Mobile -->
             <button class="menu-toggle" id="menuToggle" aria-label="Apri Menu">
                 <i data-lucide="menu" id="menuIcon" size="28"></i>
             </button>
@@ -688,8 +698,7 @@
                 <i data-lucide="map-pin" size="16"></i> Bergamo, Italia
             </div>
             
-            <!-- Foto Profilo -->
-            <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic" onerror="this.src='https://via.placeholder.com/140/3B5A4E/FFFFFF?text=Saadiya'">
+            <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic" onerror="this.src='https://placehold.co/140x140/3B5A4E/FFFFFF?text=Saadiya'">
 
             <h1 class="hero-title">Saadiya Belkhadri</h1>
             <p class="hero-subtitle">Insegnante di Yoga & Pilates</p>
@@ -699,7 +708,7 @@
                     <i data-lucide="mail" size="18"></i> info@saadiya.it
                 </a>
                 <a href="https://www.instagram.com/sady__yoga" target="_blank" rel="noopener noreferrer" class="contact-chip">
-                    <i data-lucide="instagram" size="18"></i> @sady__yoga
+                    <i class="fa-brands fa-instagram"></i> @sady__yoga
                 </a>
             </div>
         </div>
@@ -741,7 +750,6 @@
             </div>
 
             <div class="grid-2">
-                <!-- Certificazioni Yoga -->
                 <div class="card">
                     <div class="card-header-icon">
                         <i data-lucide="award" size="26"></i>
@@ -755,7 +763,6 @@
                     </ul>
                 </div>
 
-                <!-- Certificazioni Pilates -->
                 <div class="card">
                     <div class="card-header-icon accent">
                         <i data-lucide="award" size="26"></i>
@@ -768,7 +775,6 @@
                 </div>
             </div>
 
-            <!-- Formazione Continua -->
             <div class="specialization-banner">
                 <div class="specialization-icon">
                     <i data-lucide="book-open" size="22"></i>
@@ -905,13 +911,13 @@
             <p class="footer-credits">
                 &copy; 2026 • Created by 
                 <a href="https://www.instagram.com/lukse__" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-instagram" style="margin-left: 4px; margin-right: 2px;"></i>Luca Sessa
+                    <i class="fa-brands fa-instagram"></i> Luca Sessa
                 </a>
             </p>
         </div>
     </footer>
 
-    <!-- Script per Animazioni Scroll & Icone & Hamburger Menu -->
+    <!-- Script per Animazioni & Menu -->
     <script>
         lucide.createIcons();
 
@@ -924,14 +930,12 @@
             navLinks.classList.toggle('open');
             const isOpen = navLinks.classList.contains('open');
             
-            // Sostituisce l'icona tra menu e x
             menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
             lucide.createIcons();
         }
 
         menuToggle.addEventListener('click', toggleMenu);
 
-        // Chiudi il menu quando si clicca su un link da mobile
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('open')) {
