@@ -516,15 +516,16 @@
             overflow: hidden;
             padding: 0 18px;
             background: var(--accent-light);
-            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
             font-size: 0.92rem;
             color: var(--text-muted);
             border-top: 0px solid var(--border);
+            line-height: 1.6;
         }
 
         .discipline-card.active .discipline-content {
-            max-height: 250px; /* Spazio a sufficienza per il testo */
-            padding: 16px 18px 20px 18px;
+            max-height: 350px; /* Spazio sufficiente per le descrizioni più lunghe */
+            padding: 18px 18px 22px 18px;
             border-top: 1px solid var(--border);
         }
 
@@ -841,7 +842,7 @@
         </div>
     </section>
 
-    <!-- DISCIPLINE CON MENU A TENDINA (ACCORDION SPIEGAZIONI) -->
+    <!-- DISCIPLINE CON MENU A TENDINA E TUE DESCRIZIONI -->
     <section id="discipline" style="background-color: #F4F7F5;">
         <div class="container reveal">
             <div class="section-header">
@@ -862,7 +863,7 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Pratica dolce e accessibile, ideale per risvegliare il corpo in modo armonioso, sciogliere le tensioni e ritrovare calma interiore.
+                        Una pratica dolce e accessibile, dedicata al movimento consapevole, alla respirazione e all’ascolto del corpo. Attraverso sequenze fluide e movimenti gentili, aiuta a sciogliere le tensioni, ritrovare leggerezza e creare uno spazio di benessere nella quotidianità.
                     </div>
                 </div>
 
@@ -876,7 +877,7 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Lo stile classico dello yoga basato sul mantenimento consapevole delle posizioni (asana) combinato con il controllo profondo del respiro.
+                        Una pratica che unisce posture, respirazione e momenti di concentrazione per sviluppare forza, stabilità e flessibilità. Attraverso il tempo dedicato a ogni posizione, impariamo a conoscere meglio il corpo, calmare la mente e ritrovare un equilibrio tra energia e quiete.
                     </div>
                 </div>
 
@@ -890,7 +891,7 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Flusso dinamico ed energico in cui il movimento si sincronizza perfettamente con il respiro, creando una sequenza fluida e continua.
+                        Una pratica dinamica in cui respiro e movimento si intrecciano in sequenze fluide e armoniose. Il corpo si scalda, la forza si sviluppa e la mente viene guidata nel momento presente. Ogni sequenza diventa un’occasione per esplorare le proprie possibilità con energia, rispetto e consapevolezza.
                     </div>
                 </div>
 
@@ -904,25 +905,39 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Pratica rilassante eseguita con l'ausilio dell'amaca, che permette di decomprimere la colonna vertebrale e abbandonarsi a profonde posture di allungamento.
+                        Una pratica rigenerante che combina i principi dello Yin Yoga con il sostegno dell’amaca. Attraverso posizioni mantenute con gradualità, favorisce il rilassamento, la mobilità e l’ascolto profondo delle sensazioni corporee. Un invito a lasciare andare le tensioni e ritrovare spazio, leggerezza e quiete.
                     </div>
                 </div>
 
-                <!-- 5. ODAKA & PRANAYAMA FLOW -->
+                <!-- 5. ODAKA YOGA -->
                 <div class="discipline-card">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
-                            <h4>Odaka & Pranayama Flow</h4>
+                            <h4>Odaka Yoga</h4>
                         </div>
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Ispirato al movimento delle onde del mare, unisce transizioni fluide a tecniche avanzate di controllo del respiro (Pranayama) per centrare la mente.
+                        Un approccio allo yoga contemporaneo ispirato ai principi delle arti marziali, al Bushido e alla fluidità del movimento. Attraverso transizioni morbide, adattabilità e attenzione al centro del corpo, la pratica invita a superare la rigidità, sviluppare presenza e ritrovare equilibrio tra forza e flessibilità. Un percorso per imparare a fluire con ciò che accade, dentro e fuori dal tappetino.
                     </div>
                 </div>
 
-                <!-- 6. YOGALATES -->
+                <!-- 6. ODAKA YOGA PRANAYAMA FLOW -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Odaka Yoga Pranayama Flow</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Un approfondimento del metodo Odaka dedicato all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
+                    </div>
+                </div>
+
+                <!-- 7. YOGALATES -->
                 <div class="discipline-card">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
@@ -932,11 +947,11 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        La perfetta sinergia tra la tonificazione del Pilates e la flessibilità e centratura dello Yoga, per un corpo forte e allo stesso tempo elastico.
+                        L’incontro tra Yoga e Pilates in una pratica che unisce fluidità, controllo e consapevolezza. Attraverso esercizi mirati, respirazione e sequenze armoniose, si lavora sulla forza del centro, sulla postura e sulla flessibilità, favorendo un movimento più stabile, equilibrato e naturale.
                     </div>
                 </div>
 
-                <!-- 7. PILATES POSTURALE -->
+                <!-- 8. PILATES POSTURALE -->
                 <div class="discipline-card">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
@@ -946,11 +961,11 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Mirato a correggere gli squilibri posturali, rinforzare i muscoli stabilizzatori profondi e alleviare dolori legati a tensioni croniche.
+                        Una pratica orientata alla consapevolezza posturale, al controllo del movimento e al rinforzo della muscolatura profonda. Attraverso esercizi specifici e attenzione all’allineamento, si lavora per migliorare stabilità, mobilità e qualità dei gesti quotidiani, rispettando le caratteristiche e le esigenze di ogni corpo.
                     </div>
                 </div>
 
-                <!-- 8. PILATES MATWORK -->
+                <!-- 9. PILATES MATWORK -->
                 <div class="discipline-card">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
@@ -960,11 +975,11 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Lavoro a corpo libero sul materassino focalizzato sul rinforzo del 'Core' (addome, lombari e bacino) per migliorare stabilità e controllo.
+                        Una disciplina che utilizza esercizi a corpo libero sul tappetino, basati sui principi del controllo, della precisione e della respirazione. Il lavoro coinvolge in particolare la muscolatura profonda, contribuendo a migliorare forza, stabilità, coordinazione e postura. Una pratica per sviluppare un corpo più consapevole, efficiente e armonioso.
                     </div>
                 </div>
 
-                <!-- 9. PILATES REFORMER -->
+                <!-- 10. PILATES REFORMER -->
                 <div class="discipline-card">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
@@ -974,7 +989,7 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Allenamento avanzato eseguito sull'omonimo macchinario con sistema di molle, che offre resistenza e supporto per scolpire e riallineare il corpo.
+                        Una pratica che utilizza il Reformer, un macchinario dotato di carrello mobile, molle e cinghie che permettono di modulare la resistenza e accompagnare il movimento. Attraverso esercizi controllati e precisi, si lavora sulla forza, sulla stabilità del centro, sulla mobilità e sull’allineamento posturale. Il Reformer permette di adattare il lavoro a diverse esigenze e livelli di esperienza, favorendo un movimento consapevole, equilibrato e funzionale.
                     </div>
                 </div>
 
@@ -1145,7 +1160,6 @@
         disciplineCards.forEach(card => {
             const header = card.querySelector('.discipline-header');
             header.addEventListener('click', () => {
-                // Chiude le altre schede aperte (opzionale, stile pulito)
                 disciplineCards.forEach(other => {
                     if (other !== card) other.classList.remove('active');
                 });
