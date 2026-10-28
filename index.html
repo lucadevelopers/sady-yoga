@@ -75,7 +75,7 @@
             transition: transform 0.05s linear;
         }
 
-        /* NAVBAR "FLOATING PILL" CON BEIGE DEL LOGO */
+        /* NAVBAR A CAPSULA */
         nav.floating-nav {
             position: fixed;
             top: 16px;
@@ -183,7 +183,7 @@
             display: none !important;
         }
 
-        /* HERO SECTION CON CERCHIO DEL RESPIRO GUIDATO */
+        /* HERO SECTION CON CERCHIO DEL RESPIRO */
         header.hero {
             padding: 175px 0 80px;
             position: relative;
@@ -221,7 +221,6 @@
             border: 1px solid rgba(59, 90, 78, 0.15);
         }
 
-        /* CONTENITORE FOTO PROFILO CON CERCHIO RESPIRO GUIDATO */
         .breathing-wrapper {
             position: relative;
             width: 180px;
@@ -251,12 +250,8 @@
             font-weight: 600;
             letter-spacing: 0.5px;
             white-space: nowrap;
-            transition: opacity 0.5s ease;
         }
 
-        /* SINCRONIZZAZIONE PERFETTA: 
-           0s-4s: Cerchio si espande (Inspira)
-           4s-8s: Cerchio si contrae (Espira) */
         @keyframes breathCycle {
             0% { transform: scale(0.9); opacity: 0.6; }
             50% { transform: scale(1.18); opacity: 1; }
@@ -361,7 +356,6 @@
             background: #EFECE6;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             transform-style: preserve-3d;
-            perspective: 1000px;
         }
 
         .carousel-card img {
@@ -438,7 +432,7 @@
             line-height: 1.2;
         }
 
-        /* QUIZ INTERATTIVO "TROVA LA TUA PRATICA" */
+        /* QUIZ INTERATTIVO */
         .quiz-container {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -592,7 +586,7 @@
             color: var(--primary);
         }
 
-        /* GRID LAYOUTS & 3D TILT CARDS */
+        /* GRID LAYOUTS & CARDS */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -615,7 +609,6 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
             height: 100%;
             transform-style: preserve-3d;
-            perspective: 1000px;
         }
 
         .card:hover {
@@ -749,7 +742,6 @@
             border-top: 1px solid var(--border);
         }
 
-        /* BANNER */
         .specialization-banner {
             background: linear-gradient(135deg, var(--primary-light) 0%, #E2ECE6 100%);
             border: 1px solid rgba(59, 90, 78, 0.2);
@@ -779,7 +771,7 @@
             margin-bottom: 4px;
         }
 
-        /* ONDE ODAKA (CANVAS FOOTER WAVE) */
+        /* ONDE ODAKA (FOOTER WAVE) */
         .wave-section {
             position: relative;
             height: 120px;
@@ -796,7 +788,7 @@
             pointer-events: none;
         }
 
-        /* PULSANTE FLUTTUANTE WHATSAPP / PRENOTA (FLOATING CTA) */
+        /* PULSANTE FLUTTUANTE E MODALE CONTATTI */
         .floating-cta {
             position: fixed;
             bottom: 24px;
@@ -813,8 +805,10 @@
             font-weight: 600;
             font-size: 0.92rem;
             z-index: 998;
+            cursor: pointer;
             transition: transform 0.3s ease, background 0.3s;
             animation: floatCta 3s ease-in-out infinite;
+            border: none;
         }
 
         @keyframes floatCta {
@@ -825,6 +819,95 @@
         .floating-cta:hover {
             background: var(--accent);
             transform: scale(1.05);
+        }
+
+        /* MODALE CONTATTI (POPUP) */
+        .contact-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(35, 43, 40, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .contact-modal {
+            background: var(--bg-main);
+            width: 90%;
+            max-width: 420px;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .contact-modal-overlay.open .contact-modal {
+            transform: translateY(0);
+        }
+
+        .contact-modal h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .contact-modal p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 24px;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, opacity 0.2s;
+        }
+
+        .modal-btn.whatsapp { background: #25D366; color: #FFF; }
+        .modal-btn.email { background: var(--primary); color: #FFF; }
+        .modal-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #FFF; }
+
+        .modal-btn:hover {
+            transform: scale(1.02);
+            opacity: 0.95;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            cursor: pointer;
         }
 
         .lang-badge {
@@ -968,10 +1051,30 @@
     <!-- CURSORE LUMINESCENTE -->
     <div id="cursor-glow"></div>
 
-    <!-- FLOATING CTA WHATSAPP / PRENOTA -->
-    <a href="mailto:info@saadiya.it" class="floating-cta">
-        <i data-lucide="calendar" size="18"></i> Prenota Lezione
-    </a>
+    <!-- PULSANTE FLUTTUANTE CHE APRE LA FINSTRA MODALE -->
+    <button class="floating-cta" id="openContactModal">
+        <i data-lucide="calendar" size="18"></i> Contatta Saadiya
+    </button>
+
+    <!-- FINSTRA MODALE (POPUP) CON LE 3 OPZIONI -->
+    <div class="contact-modal-overlay" id="contactModal">
+        <div class="contact-modal">
+            <button class="modal-close" id="closeContactModal"><i data-lucide="x" size="20"></i></button>
+            <h3>Info</h3>
+            <p>Scegli il canale che preferisci per prenotare o chiedere informazioni:</p>
+            <div class="modal-options">
+                <a href="https://wa.me/393330000000" target="_blank" rel="noopener noreferrer" class="modal-btn whatsapp">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> WhatsApp
+                </a>
+                <a href="mailto:info@saadiya.it" class="modal-btn email">
+                    <i data-lucide="mail" size="20"></i> Email (info@saadiya.it)
+                </a>
+                <a href="https://www.instagram.com/sady__yoga" target="_blank" rel="noopener noreferrer" class="modal-btn instagram">
+                    <i class="fa-brands fa-instagram" style="font-size: 1.3rem;"></i> Instagram (@sady_yoga)
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- NAVBAR A CAPSULA -->
     <nav class="floating-nav">
@@ -1082,21 +1185,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- QUIZ INTERATTIVO "TROVA LA PRATICA" -->
-    <div class="container reveal">
-        <div class="quiz-container">
-            <h3 class="quiz-title">Cosa cerca il tuo corpo oggi?</h3>
-            <p class="quiz-subtitle">Seleziona il tuo obiettivo per trovare subito il corso ideale:</p>
-            <div class="quiz-options">
-                <button class="quiz-btn" data-target="Light Yoga">🌸 Relax & Sciogliere Tensioni</button>
-                <button class="quiz-btn" data-target="Pilates Reformer">🔥 Forza del Core</button>
-                <button class="quiz-btn" data-target="Odaka Yoga">🌊 Fluidità & Movimento d'Onda</button>
-                <button class="quiz-btn" data-target="Pilates Posturale">🌱 Postura & Schiena</button>
-            </div>
-            <div class="quiz-result" id="quizResult">Clicca un'opzione per scoprire il tuo percorso</div>
         </div>
     </div>
 
@@ -1211,6 +1299,21 @@
             </div>
         </div>
     </section>
+    
+    <!-- QUIZ INTERATTIVO -->
+    <div class="container reveal">
+        <div class="quiz-container">
+            <h3 class="quiz-title">Cosa cerca il tuo corpo oggi?</h3>
+            <p class="quiz-subtitle">Seleziona il tuo obiettivo per trovare subito il corso ideale:</p>
+            <div class="quiz-options">
+                <button class="quiz-btn" data-target="Light Yoga">🌸 Relax & Sciogliere Tensioni</button>
+                <button class="quiz-btn" data-target="Pilates Reformer">🔥 Forza del Core</button>
+                <button class="quiz-btn" data-target="Odaka Yoga">🌊 Fluidità & Movimento d'Onda</button>
+                <button class="quiz-btn" data-target="Pilates Posturale">🌱 Postura & Schiena</button>
+            </div>
+            <div class="quiz-result" id="quizResult">Clicca un'opzione per scoprire il tuo percorso</div>
+        </div>
+    </div>
 
     <!-- DISCIPLINE ACCORDION -->
     <section id="discipline" style="background-color: #F4F7F5;">
@@ -1231,7 +1334,7 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Una pratica dolce e accessibile, dedicata al movimento consapevole, alla respirazione e all’ascolto del corpo. Attraverso sequenze fluide e movimenti gentili, aiuta a sciogliere le tensioni, ritrovare leggerezza e creare uno spazio di benessere nella quotidianità.
+                        Una pratica dolce e accessibile, dedicata al movimento consapevole, alla respirazione e al’ascolto del corpo. Attraverso sequenze fluide e movimenti gentili, aiuta a sciogliere le tensioni, ritrovare leggerezza e creare uno spazio di benessere nella quotidianità.
                     </div>
                 </div>
 
@@ -1406,7 +1509,7 @@
         </div>
     </section>
 
-    <!-- ONDE ODAKA (CANVAS FOOTER WAVE) -->
+    <!-- ONDE ODAKA (FOOTER WAVE) -->
     <div class="wave-section">
         <canvas id="waveCanvas"></canvas>
     </div>
@@ -1426,7 +1529,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT JAVASCRIPT INTEGRATO -->
+    <!-- SCRIPT JAVASCRIPT -->
     <script>
         lucide.createIcons();
 
@@ -1441,7 +1544,26 @@
             if (e.touches.length > 0) updateGlowPosition(e.touches[0].clientX, e.touches[0].clientY);
         });
 
-        // 2. CERCHIO RESPIRO GUIDATO SINCRONIZZATO (Inspira / Espira)
+        // 2. GESTIONE MODALE CONTATTI (POPUP)
+        const openModalBtn = document.getElementById('openContactModal');
+        const closeModalBtn = document.getElementById('closeContactModal');
+        const contactModal = document.getElementById('contactModal');
+
+        openModalBtn.addEventListener('click', () => {
+            contactModal.classList.add('open');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            contactModal.classList.remove('open');
+        });
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('open');
+            }
+        });
+
+        // 3. CERCHIO RESPIRO GUIDATO SINCRONIZZATO (Inspira / Espira)
         const breathLabel = document.getElementById('breathLabel');
         let isInspiring = true;
         setInterval(() => {
@@ -1449,7 +1571,7 @@
             breathLabel.innerText = isInspiring ? "Inspira..." : "Espira...";
         }, 4000);
 
-        // 3. CANVAS PARTICELLE SFONDO HERO
+        // 4. CANVAS PARTICELLE SFONDO HERO
         const canvas = document.getElementById('heroCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -1492,7 +1614,7 @@
         }
         animateCanvas();
 
-        // 4. CANVAS ONDE ODAKA FLUIDE (FOOTER)
+        // 5. CANVAS ONDE ODAKA FLUIDE (FOOTER)
         const waveCanvas = document.getElementById('waveCanvas');
         const waveCtx = waveCanvas.getContext('2d');
         function resizeWaveCanvas() {
@@ -1519,7 +1641,7 @@
         }
         drawWaves();
 
-        // 5. CAROSELLO TOUCH ULTRA-FLUIDO
+        // 6. CAROSELLO TOUCH ULTRA-FLUIDO
         const viewport = document.getElementById('carouselViewport');
         const track = document.getElementById('carouselTrack');
         const cards = Array.from(track.children);
@@ -1559,7 +1681,7 @@
         window.addEventListener('touchend', () => { isDown = false; prevTranslate = currentTranslate; });
         autoLoop();
 
-        // 6. QUIZ INTERATTIVO "TROVA LA TUA PRATICA"
+        // 7. QUIZ INTERATTIVO
         const quizBtns = document.querySelectorAll('.quiz-btn');
         const quizResult = document.getElementById('quizResult');
         quizBtns.forEach(btn => {
@@ -1569,7 +1691,6 @@
                 const targetName = btn.getAttribute('data-target');
                 quizResult.innerHTML = `✨ Ti consigliamo: <strong>${targetName}</strong>! Scorri giù per scoprirla.`;
                 
-                // Trova e illumina la card corrispondente
                 const disciplineCards = document.querySelectorAll('.discipline-card');
                 disciplineCards.forEach(c => {
                     c.classList.remove('highlight-pulse');
@@ -1583,7 +1704,7 @@
             });
         });
 
-        // 7. 3D TILT EFFECT SULLE CARD
+        // 8. 3D TILT EFFECT
         const tiltItems = document.querySelectorAll('.tilt-item');
         tiltItems.forEach(item => {
             item.addEventListener('mousemove', (e) => {
@@ -1601,7 +1722,7 @@
             });
         });
 
-        // 8. CITAZIONE SCROLL READER
+        // 9. CITAZIONE SCROLL READER
         const quoteElem = document.getElementById('scrollReaderQuote');
         const dotElem = document.getElementById('scrollReaderDot');
         const wordsArray = quoteElem.innerText.trim().split(/\s+/);
@@ -1635,7 +1756,7 @@
             }
         }, { passive: true });
 
-        // 9. MENU MOBILE & ACCORDION
+        // 10. MENU MOBILE & ACCORDION
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuIcon = document.getElementById('menuIcon');
