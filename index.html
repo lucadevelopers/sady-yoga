@@ -24,7 +24,7 @@
             --primary-soft: #7A9A8B;
             --accent: #C47A53;         /* Terracotta Warm */
             --accent-light: #F8EFEA;
-            --sand: #EFECE6;           /* Beige della Navbar */
+            --sand: #EFECE6;
             --sand-dark: #DFD9CE;
             --text-dark: #232B28;
             --text-muted: #586360;
@@ -75,18 +75,17 @@
             transition: transform 0.05s linear;
         }
 
-        /* NAVBAR BEIGE CON LOGO AL CENTRO */
+        /* NAVBAR CON STESSO SFONDO E LOGO AL NATURALE AL CENTRO */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: var(--sand);
+            background: rgba(250, 248, 245, 0.9);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid var(--sand-dark);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border-bottom: 1px solid rgba(229, 224, 216, 0.6);
             transition: all 0.3s ease;
         }
 
@@ -94,7 +93,7 @@
             display: grid;
             grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            height: 85px;
+            height: 90px;
             position: relative;
         }
 
@@ -106,18 +105,16 @@
             text-decoration: none;
         }
 
+        /* LOGO AL NATURALE (SENZA CERCHIO) */
         .nav-logo-pic {
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
-            box-shadow: 0 4px 12px rgba(59, 90, 78, 0.15);
+            height: 52px;
+            width: auto;
+            object-fit: contain;
             transition: transform 0.3s ease;
         }
 
         .logo-wrapper:hover .nav-logo-pic {
-            transform: scale(1.06);
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -442,7 +439,7 @@
             line-height: 1.65;
             margin-bottom: 30px;
             position: relative;
-            color: rgba(59, 90, 78, 0.22); /* Colore iniziale semi-trasparente */
+            color: rgba(59, 90, 78, 0.22);
         }
 
         .scroll-reader-quote .word {
@@ -452,7 +449,6 @@
             margin-right: 0.22em;
         }
 
-        /* Parola illuminata al passaggio dello scroll */
         .scroll-reader-quote .word.active {
             color: var(--primary);
             font-weight: 600;
@@ -460,7 +456,6 @@
             transform: translateY(-1px);
         }
 
-        /* Pallino luminoso che scorre parola per parola */
         .scroll-reader-dot {
             position: absolute;
             width: 8px;
@@ -786,21 +781,20 @@
             }
 
             .nav-logo-pic {
-                width: 48px;
-                height: 48px;
+                height: 42px;
             }
 
             .mobile-menu-links {
                 position: absolute;
-                top: 85px;
+                top: 90px;
                 left: 0;
                 right: 0;
-                background: var(--sand);
+                background: rgba(250, 248, 245, 0.98);
                 backdrop-filter: blur(15px);
                 flex-direction: column;
                 gap: 0;
                 padding: 10px 0;
-                border-bottom: 1px solid var(--sand-dark);
+                border-bottom: 1px solid rgba(229, 224, 216, 0.8);
                 box-shadow: 0 10px 20px rgba(0,0,0,0.08);
                 max-height: 0;
                 overflow: hidden;
@@ -846,7 +840,7 @@
     <!-- CURSORE LUMINESCENTE (MOUSE & TOUCH) -->
     <div id="cursor-glow"></div>
 
-    <!-- Navigazione Beige con Logo al Centro -->
+    <!-- Navigazione con stesso sfondo e logo al naturale al centro -->
     <nav>
         <div class="container nav-container">
             <!-- Link di Sinistra -->
@@ -856,9 +850,9 @@
                 <li><a href="#esperienze">Esperienze</a></li>
             </ul>
 
-            <!-- Logo al Centro -->
+            <!-- Logo al Naturale al Centro -->
             <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/58x58/EFECE6/3B5A4E?text=S'">
+                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/140x52/FAF8F5/3B5A4E?text=Logo'">
             </a>
 
             <!-- Link di Destra -->
@@ -1448,11 +1442,9 @@
         const quoteElem = document.getElementById('scrollReaderQuote');
         const dotElem = document.getElementById('scrollReaderDot');
         
-        // Estraiamo il testo originario e creiamo gli span per ciascuna parola
         const originalText = quoteElem.innerText.trim();
         const wordsArray = originalText.split(/\s+/);
         
-        // Svuotiamo il contenitore inserendo il dot e le parole
         quoteElem.innerHTML = '';
         quoteElem.appendChild(dotElem);
         
@@ -1461,7 +1453,6 @@
             span.className = 'word';
             span.innerText = wordText;
             quoteElem.appendChild(span);
-            // Manteniamo lo spazio tra le parole
             if (index < wordsArray.length - 1) {
                 quoteElem.appendChild(document.createTextNode(' '));
             }
@@ -1473,7 +1464,6 @@
             const rect = quoteElem.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             
-            // Calcoliamo la percentuale di scorrimento rispetto all'elemento nella schermata
             const totalDistance = windowHeight * 0.6;
             const elementProgress = (windowHeight * 0.7 - rect.top) / totalDistance;
             const clampedProgress = Math.min(Math.max(elementProgress, 0), 1);
@@ -1494,20 +1484,18 @@
                 }
             });
 
-            // Posizioniamo il puntino luminoso sopra la parola attiva
             if (wordSpans[activeIndex] && clampedProgress > 0 && clampedProgress < 1) {
                 const targetSpan = wordSpans[activeIndex];
                 const spanRect = targetSpan.getBoundingClientRect();
                 const quoteRect = quoteElem.getBoundingClientRect();
 
                 const x = spanRect.left - quoteRect.left + spanRect.width / 2;
-                const y = spanRect.top - quoteRect.top - 8; // Posizioniamo il puntino appena sopra la parola
+                const y = spanRect.top - quoteRect.top - 8;
 
                 dotElem.style.left = `${x}px`;
                 dotElem.style.top = `${y}px`;
                 dotElem.style.opacity = '1';
             } else if (clampedProgress >= 1 && wordSpans.length > 0) {
-                // Posiziona il puntino alla fine del testo
                 const lastSpan = wordSpans[wordSpans.length - 1];
                 const spanRect = lastSpan.getBoundingClientRect();
                 const quoteRect = quoteElem.getBoundingClientRect();
