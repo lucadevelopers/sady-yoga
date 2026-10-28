@@ -380,6 +380,18 @@
             position: relative;
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .section-header {
             text-align: center;
             max-width: 700px;
@@ -387,9 +399,9 @@
             position: relative;
         }
 
-        /* EFFETTO SCRITTURA ILLUMINATA SU CHI SONO E PROFILO & FILOSOFIA */
+        /* COMPARISA PROGRESSIVA ALLO SCROLL (INVISIBILE -> VISIBILE) */
         .section-tag-scroll {
-            color: rgba(196, 122, 83, 0.25);
+            color: var(--accent);
             font-size: 0.82rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -400,29 +412,24 @@
 
         .section-title-scroll {
             font-size: clamp(2rem, 5vw, 2.8rem);
-            color: rgba(59, 90, 78, 0.22);
+            color: var(--primary);
             line-height: 1.2;
         }
 
         .char-scroll, .word-scroll {
             display: inline-block;
-            transition: color 0.2s ease, transform 0.2s ease;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
             position: relative;
         }
 
         .char-scroll.active, .word-scroll.active {
-            color: var(--accent);
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(196, 122, 83, 0.3);
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .section-title-scroll .word-scroll.active {
-            color: var(--primary);
-            font-weight: 700;
-            text-shadow: 0 0 12px rgba(59, 90, 78, 0.25);
-        }
-
-        /* PUNTINO FLUTTUANTE SUL TITOLO */
+        /* PUNTINO LUMINOSO DI TRACCIAMENTO SCROLL */
         .section-reader-dot {
             position: absolute;
             width: 8px;
@@ -466,21 +473,21 @@
             line-height: 1.65;
             margin-bottom: 30px;
             position: relative;
-            color: rgba(59, 90, 78, 0.22);
+            color: var(--primary);
         }
 
         .scroll-reader-quote .word {
             display: inline-block;
-            transition: color 0.25s ease, transform 0.25s ease;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
             position: relative;
             margin-right: 0.22em;
         }
 
         .scroll-reader-quote .word.active {
-            color: var(--primary);
-            font-weight: 600;
-            text-shadow: 0 0 12px rgba(59, 90, 78, 0.25);
-            transform: translateY(-1px);
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .scroll-reader-dot {
@@ -990,7 +997,7 @@
         </div>
     </div>
 
-    <!-- Profilo Personale con Effetto Scrittura Illuminata PARTENDO DA CHI SONO -->
+    <!-- Profilo Personale con Effetto Scrittura a Comparsa PARTENDO DA CHI SONO -->
     <section id="profilo">
         <div class="container">
             <div class="section-header" id="sectionHeaderBlock">
@@ -1000,7 +1007,7 @@
             </div>
 
             <div class="profile-container">
-                <!-- CITAZIONE CON SCRITTURA ILLUMINATA E PUNTINO CHE SCORRE -->
+                <!-- CITAZIONE CON SCRITTURA A COMPARSA E PUNTINO CHE SCORRE -->
                 <div class="scroll-reader-quote" id="scrollReaderQuote">
                     <div class="scroll-reader-dot" id="scrollReaderDot"></div>
                     "Credo profondamente che lo yoga unito al pilates sia un percorso di trasformazione e di consapevolezza, capace di armonizzare corpo, mente e spirito."
@@ -1325,7 +1332,7 @@
         </div>
     </footer>
 
-    <!-- Script per Animazioni, Menu, Canvas, Accordion e Scrittura Illuminata -->
+    <!-- Script per Animazioni, Menu, Canvas, Accordion e Scrittura a Comparsa -->
     <script>
         lucide.createIcons();
 
@@ -1470,7 +1477,7 @@
 
         autoLoop();
 
-        // 4. ANIMAZIONE COMPLETA SCROLL READER: DA "CHI SONO" -> "PROFILO & FILOSOFIA" -> CITAZIONE
+        // 4. ANIMAZIONE COMPARISA PROGRESSIVA ALLO SCROLL: DA "CHI SONO" -> "PROFILO & FILOSOFIA" -> CITAZIONE
         const tagElem = document.getElementById('sectionTagScroll');
         const titleElem = document.getElementById('sectionTitleScroll');
         const headerDotElem = document.getElementById('sectionReaderDot');
