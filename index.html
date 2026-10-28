@@ -17,7 +17,7 @@
     <style>
         :root {
             --bg-main: #FAF8F5;
-            --bg-card: rgba(255, 255, 255, 0.88);
+            --bg-card: rgba(255, 255, 255, 0.85);
             --bg-card-hover: rgba(255, 255, 255, 0.98);
             --primary: #3B5A4E;        /* Verde Salvia Profondo */
             --primary-light: #EBF1ED;
@@ -29,7 +29,7 @@
             --text-dark: #232B28;
             --text-muted: #586360;
             --border: #E5E0D8;
-            --shadow: 0 14px 35px rgba(59, 90, 78, 0.08);
+            --shadow: 0 12px 32px rgba(59, 90, 78, 0.08);
             --radius-lg: 24px;
             --radius-md: 16px;
         }
@@ -65,17 +65,17 @@
         /* CURSORE / TOUCH GLOW LUMINOSO */
         #cursor-glow {
             position: fixed;
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, rgba(196, 122, 83, 0.14) 0%, rgba(59, 90, 78, 0.07) 50%, transparent 70%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(196, 122, 83, 0.12) 0%, rgba(59, 90, 78, 0.06) 50%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 9999;
-            transition: transform 0.04s linear;
+            transition: transform 0.05s linear;
         }
 
-        /* NAVBAR FLOATING PILL BEIGE HARMONY */
+        /* NAVBAR "FLOATING PILL" CON BEIGE DEL LOGO */
         nav.floating-nav {
             position: fixed;
             top: 16px;
@@ -115,7 +115,6 @@
             width: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
-            mix-blend-mode: multiply;
         }
 
         .logo-wrapper:hover .nav-logo-pic {
@@ -180,17 +179,13 @@
             justify-self: end;
         }
 
-        .menu-toggle:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
         .mobile-menu-links {
             display: none !important;
         }
 
-        /* HERO SECTION CON BREATHING CIRCLE */
+        /* HERO SECTION CON CERCHIO DEL RESPIRO GUIDATO */
         header.hero {
-            padding: 165px 0 70px;
+            padding: 175px 0 80px;
             position: relative;
             background: radial-gradient(circle at 50% 20%, #F3F7F4 0%, var(--bg-main) 70%);
             text-align: center;
@@ -222,16 +217,16 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
             border: 1px solid rgba(59, 90, 78, 0.15);
         }
 
-        /* 1. HERO BREATHING CIRCLE ANIMATION */
+        /* CONTENITORE FOTO PROFILO CON CERCHIO RESPIRO GUIDATO */
         .breathing-wrapper {
             position: relative;
-            width: 170px;
-            height: 170px;
-            margin: 0 auto 20px auto;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 24px auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -239,43 +234,33 @@
 
         .breathing-ring {
             position: absolute;
-            inset: -12px;
+            inset: -15px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(196,122,83,0.3) 0%, rgba(59,90,78,0.15) 60%, transparent 75%);
-            border: 2px dashed rgba(196, 122, 83, 0.6);
-            animation: breatheAnimation 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+            background: radial-gradient(circle, rgba(196, 122, 83, 0.25) 0%, rgba(59, 90, 78, 0.15) 70%, transparent 100%);
+            animation: breathCycle 8s infinite ease-in-out;
+            pointer-events: none;
         }
 
-        .breathing-label {
+        .breathing-text {
             position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--sand);
-            color: var(--primary);
-            border: 1px solid var(--border);
-            padding: 2px 14px;
-            border-radius: 20px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            bottom: -32px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.5px;
             white-space: nowrap;
+            transition: opacity 0.5s ease;
         }
 
-        @keyframes breatheAnimation {
-            0%, 100% {
-                transform: scale(0.92);
-                opacity: 0.5;
-                border-color: rgba(59, 90, 78, 0.4);
-            }
-            50% {
-                transform: scale(1.18);
-                opacity: 0.95;
-                border-color: rgba(196, 122, 83, 0.9);
-                box-shadow: 0 0 30px rgba(196, 122, 83, 0.35);
-            }
+        /* SINCRONIZZAZIONE PERFETTA: 
+           0s-4s: Cerchio si espande (Inspira)
+           4s-8s: Cerchio si contrae (Espira) */
+        @keyframes breathCycle {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.18); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
         }
 
         .hero-profile-pic {
@@ -284,7 +269,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #FFFFFF;
-            box-shadow: 0 8px 25px rgba(59, 90, 78, 0.18);
+            box-shadow: 0 10px 30px rgba(59, 90, 78, 0.18);
             position: relative;
             z-index: 2;
         }
@@ -301,7 +286,7 @@
             font-size: clamp(1.2rem, 3.5vw, 1.5rem);
             color: var(--accent);
             font-weight: 500;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
         }
@@ -333,10 +318,9 @@
         .contact-chip i.fa-instagram {
             font-size: 1.2rem;
             color: var(--accent);
-            transition: transform 0.3s ease;
         }
 
-        .contact-chip:hover, .contact-chip:active {
+        .contact-chip:hover {
             border-color: var(--primary);
             color: var(--primary);
             transform: translateY(-3px);
@@ -358,10 +342,6 @@
             touch-action: pan-y;
         }
 
-        .carousel-viewport:active {
-            cursor: grabbing;
-        }
-
         .carousel-track {
             display: flex;
             gap: 22px;
@@ -378,16 +358,16 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(59, 90, 78, 0.1);
             border: 1px solid var(--border);
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
-            user-select: none;
             background: #EFECE6;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
         .carousel-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             pointer-events: none;
         }
 
@@ -400,7 +380,6 @@
             justify-content: flex-end;
             padding: 22px;
             color: #FFFFFF;
-            transition: opacity 0.3s ease;
         }
 
         .carousel-card-title {
@@ -419,17 +398,6 @@
             color: #F8EFEA;
         }
 
-        .carousel-card:hover, .carousel-card:active {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(59, 90, 78, 0.22);
-            border-color: var(--accent);
-            z-index: 10;
-        }
-
-        .carousel-card:hover img, .carousel-card:active img {
-            transform: scale(1.15);
-        }
-
         /* SEZIONI E ANIMAZIONI SCROLL */
         section {
             padding: 80px 0;
@@ -440,7 +408,6 @@
             opacity: 0;
             transform: translateY(35px);
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-            will-change: opacity, transform;
         }
 
         .reveal.active {
@@ -471,18 +438,79 @@
             line-height: 1.2;
         }
 
-        /* PROFILO PERSONALE & CITAZIONE ILLUMINATA */
+        /* QUIZ INTERATTIVO "TROVA LA TUA PRATICA" */
+        .quiz-container {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            max-width: 850px;
+            margin: 0 auto 50px auto;
+            text-align: center;
+        }
+
+        .quiz-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .quiz-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .quiz-btn {
+            background: var(--sand);
+            border: 1px solid var(--border);
+            color: var(--text-dark);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-btn:hover, .quiz-btn.active {
+            background: var(--primary);
+            color: #FFF;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .quiz-result {
+            font-size: 1.05rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* PROFILO PERSONALE & CITAZIONE */
         .profile-container {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border-radius: var(--radius-lg);
             padding: 44px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .profile-container::before {
@@ -523,17 +551,12 @@
             height: 8px;
             background-color: var(--accent);
             border-radius: 50%;
-            box-shadow: 0 0 12px var(--accent), 0 0 20px rgba(196, 122, 83, 0.6);
+            box-shadow: 0 0 12px var(--accent);
             pointer-events: none;
-            transition: all 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.15s ease;
             opacity: 0;
             transform: translate(-50%, -50%);
             z-index: 10;
-        }
-
-        .scroll-reader-quote:hover .scroll-reader-dot,
-        .scroll-reader-quote.is-reading .scroll-reader-dot {
-            opacity: 1;
         }
 
         .profile-text p {
@@ -569,7 +592,7 @@
             color: var(--primary);
         }
 
-        /* GRID LAYOUTS */
+        /* GRID LAYOUTS & 3D TILT CARDS */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -582,35 +605,23 @@
             gap: 22px;
         }
 
-        /* 2. MAGICAL PARALLAX 3D TILT CARDS WITH SPOTLIGHT LIGHT REFLECTION */
-        .tilt-card {
+        .card {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             padding: 32px;
             border-radius: var(--radius-md);
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
-            transition: transform 0.15s ease-out, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
+            height: 100%;
             transform-style: preserve-3d;
             perspective: 1000px;
         }
 
-        .tilt-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.4), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        .tilt-card:hover::after {
-            opacity: 1;
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary-soft);
+            box-shadow: 0 16px 30px rgba(59, 90, 78, 0.12);
         }
 
         .card-header-icon {
@@ -623,11 +634,6 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .tilt-card:hover .card-header-icon {
-            transform: scale(1.08) rotate(4deg);
         }
 
         .card-header-icon.accent {
@@ -635,7 +641,7 @@
             color: var(--accent);
         }
 
-        .tilt-card h3 {
+        .card h3 {
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 14px;
@@ -661,62 +667,7 @@
             font-weight: bold;
         }
 
-        /* 3. QUIZ INTERATTIVO TROVA PRATICA */
-        .quiz-container {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            box-shadow: var(--shadow);
-            margin-bottom: 35px;
-            text-align: center;
-        }
-
-        .quiz-title {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-        }
-
-        .quiz-sub {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .quiz-btn {
-            background: var(--sand);
-            border: 1px solid var(--border);
-            color: var(--text-dark);
-            padding: 10px 18px;
-            border-radius: 30px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .quiz-btn:hover, .quiz-btn.active {
-            background: var(--primary);
-            color: #FFFFFF;
-            border-color: var(--primary);
-            box-shadow: 0 6px 18px rgba(59, 90, 78, 0.25);
-            transform: translateY(-2px);
-        }
-
-        /* DISCIPLINE ACCORDION INDIPENDENTI */
+        /* DISCIPLINE ACCORDION */
         .discipline-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -725,18 +676,21 @@
 
         .discipline-card {
             background: var(--bg-card);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border-radius: var(--radius-md);
             border: 1px solid var(--border);
             overflow: hidden;
-            transition: all 0.35s ease;
+            transition: all 0.3s ease;
         }
 
-        .discipline-card.highlighted {
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 25px rgba(196, 122, 83, 0.35);
-            transform: scale(1.02);
+        .discipline-card.highlight-pulse {
+            animation: pulseCard 1.5s ease 2;
+            border-color: var(--accent);
+        }
+
+        @keyframes pulseCard {
+            0% { transform: scale(1); box-shadow: 0 0 0 rgba(196,122,83,0); }
+            50% { transform: scale(1.03); box-shadow: 0 0 25px rgba(196,122,83,0.35); }
+            100% { transform: scale(1); box-shadow: 0 0 0 rgba(196,122,83,0); }
         }
 
         .discipline-header {
@@ -786,7 +740,6 @@
             transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
             font-size: 0.92rem;
             color: var(--text-muted);
-            border-top: 0px solid var(--border);
             line-height: 1.6;
         }
 
@@ -806,11 +759,6 @@
             display: flex;
             align-items: flex-start;
             gap: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .specialization-banner:hover {
-            transform: translateY(-3px);
         }
 
         .specialization-icon {
@@ -831,9 +779,52 @@
             margin-bottom: 4px;
         }
 
-        .specialization-content p {
-            color: var(--text-dark);
-            font-size: 0.95rem;
+        /* ONDE ODAKA (CANVAS FOOTER WAVE) */
+        .wave-section {
+            position: relative;
+            height: 120px;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        #waveCanvas {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* PULSANTE FLUTTUANTE WHATSAPP / PRENOTA (FLOATING CTA) */
+        .floating-cta {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--primary);
+            color: #FFFFFF;
+            padding: 14px 22px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(59, 90, 78, 0.3);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            z-index: 998;
+            transition: transform 0.3s ease, background 0.3s;
+            animation: floatCta 3s ease-in-out infinite;
+        }
+
+        @keyframes floatCta {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .floating-cta:hover {
+            background: var(--accent);
+            transform: scale(1.05);
         }
 
         .lang-badge {
@@ -850,163 +841,11 @@
             color: var(--primary);
         }
 
-        /* 4. CANVAS ONDE FLUIDE ODAKA */
-        .wave-section {
-            position: relative;
-            background: linear-gradient(180deg, var(--bg-main) 0%, #EAF0EC 100%);
-            padding: 60px 0 20px;
-            overflow: hidden;
-        }
-
-        #odakaWaveCanvas {
-            width: 100%;
-            height: 180px;
-            display: block;
-        }
-
-        /* 5. FLOATING STICKY CTA WITH MODAL */
-        .floating-cta {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: var(--primary);
-            color: #FFFFFF;
-            padding: 14px 24px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(59, 90, 78, 0.35);
-            z-index: 999;
-            font-weight: 600;
-            font-size: 0.92rem;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .floating-cta:hover {
-            transform: scale(1.06) translateY(-3px);
-            background: var(--accent);
-            box-shadow: 0 14px 30px rgba(196, 122, 83, 0.4);
-        }
-
-        .cta-pulse-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #4DE9A8;
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(77, 233, 168, 0.7);
-            animation: ctaPulse 2s infinite;
-        }
-
-        @keyframes ctaPulse {
-            0% { box-shadow: 0 0 0 0 rgba(77, 233, 168, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(77, 233, 168, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(77, 233, 168, 0); }
-        }
-
-        /* MODALE CONTATTO RAPIDO */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(35, 43, 40, 0.6);
-            backdrop-filter: blur(6px);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            padding: 20px;
-        }
-
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-box {
-            background: var(--bg-main);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            max-width: 440px;
-            width: 100%;
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            text-align: center;
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.open .modal-box {
-            transform: translateY(0);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: var(--text-dark);
-            cursor: pointer;
-            padding: 6px;
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .modal-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .modal-opt-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .modal-opt-btn.whatsapp {
-            background: #25D366;
-            color: #FFFFFF;
-        }
-
-        .modal-opt-btn.email {
-            background: var(--primary);
-            color: #FFFFFF;
-        }
-
-        .modal-opt-btn.instagram {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: #FFFFFF;
-        }
-
-        .modal-opt-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
-
         /* FOOTER */
         footer {
             background: var(--primary);
             color: #FFFFFF;
-            padding: 50px 0 35px;
+            padding: 40px 0 35px;
             text-align: center;
         }
 
@@ -1037,11 +876,7 @@
             gap: 6px;
         }
 
-        .footer-credits a:hover {
-            text-decoration: underline;
-        }
-
-        /* RESPONSIVE MOBILE LAYOUT */
+        /* RESPONSIVE MOBILE */
         @media (max-width: 850px) {
             nav.floating-nav {
                 top: 12px;
@@ -1072,7 +907,7 @@
             }
 
             .nav-logo-pic {
-                height: 75px;
+                height: 55px;
             }
 
             .mobile-menu-links {
@@ -1083,7 +918,6 @@
                 right: 0;
                 background: rgba(244, 239, 230, 0.98);
                 backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
                 gap: 0;
                 padding: 10px 0;
@@ -1126,13 +960,6 @@
             section { padding: 55px 0; }
             .profile-container { padding: 24px; }
             .specialization-banner { flex-direction: column; }
-            
-            .floating-cta {
-                bottom: 16px;
-                right: 16px;
-                padding: 12px 18px;
-                font-size: 0.85rem;
-            }
         }
     </style>
 </head>
@@ -1141,7 +968,12 @@
     <!-- CURSORE LUMINESCENTE -->
     <div id="cursor-glow"></div>
 
-    <!-- NAVBAR FLOATING PILL -->
+    <!-- FLOATING CTA WHATSAPP / PRENOTA -->
+    <a href="mailto:info@saadiya.it" class="floating-cta">
+        <i data-lucide="calendar" size="18"></i> Prenota Lezione
+    </a>
+
+    <!-- NAVBAR A CAPSULA -->
     <nav class="floating-nav">
         <div class="nav-container">
             <ul class="nav-links left">
@@ -1151,7 +983,7 @@
             </ul>
 
             <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/180x80/F7F3EC/3B5A4E?text=Saadiya'">
+                <img src="logosady.png" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/180x80/F7F3EC/3B5A4E?text=Saadiya'">
             </a>
 
             <ul class="nav-links right">
@@ -1175,7 +1007,7 @@
         </ul>
     </nav>
 
-    <!-- HERO HEADER WITH BREATHING CIRCLE -->
+    <!-- HERO HEADER CON CERCHIO DEL RESPIRO GUIDATO -->
     <header class="hero">
         <canvas id="heroCanvas"></canvas>
         <div class="container hero-content">
@@ -1183,11 +1015,10 @@
                 <i data-lucide="map-pin" size="15"></i> Bergamo, Italia
             </div>
             
-            <!-- 1. BREATHING CIRCLE ANIMATION -->
             <div class="breathing-wrapper">
                 <div class="breathing-ring"></div>
                 <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic" onerror="this.src='https://placehold.co/140x140/3B5A4E/FFFFFF?text=Saadiya'">
-                <div class="breathing-label" id="breathLabel">Inspira...</div>
+                <div class="breathing-text" id="breathLabel">Inspira...</div>
             </div>
 
             <h1 class="hero-title">Saadiya Belkhadri</h1>
@@ -1204,46 +1035,46 @@
         </div>
     </header>
 
-    <!-- CAROSELLO FOTOGRAFICO 3D -->
+    <!-- CAROSELLO FOTOGRAFICO 3D REATTIVO -->
     <div class="showcase-carousel-section">
         <div class="carousel-viewport" id="carouselViewport">
             <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-card tilt-card">
+                <div class="carousel-card tilt-item">
                     <img src="vinyasa.jpg" alt="Vinyasa Flow" onerror="this.src='https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Vinyasa Flow</div>
                         <div class="carousel-card-sub">Respiro & Movimento</div>
                     </div>
                 </div>
-                <div class="carousel-card tilt-card">
+                <div class="carousel-card tilt-item">
                     <img src="hatha.jpg" alt="Hatha & Meditazione" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Hatha Yoga</div>
                         <div class="carousel-card-sub">Equilibrio & Stabilità</div>
                     </div>
                 </div>
-                <div class="carousel-card tilt-card">
+                <div class="carousel-card tilt-item">
                     <img src="reformer.jpg" alt="Pilates Reformer" onerror="this.src='https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Pilates Reformer</div>
                         <div class="carousel-card-sub">La forza nasce dal centro</div>
                     </div>
                 </div>
-                <div class="carousel-card tilt-card">
+                <div class="carousel-card tilt-item">
                     <img src="aerial.jpg" alt="Aerial Yin" onerror="this.src='https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Aerial Yin</div>
                         <div class="carousel-card-sub">Leggerezza in Amaca</div>
                     </div>
                 </div>
-                <div class="carousel-card tilt-card">
+                <div class="carousel-card tilt-item">
                     <img src="odaka.jpg" alt="Odaka Yoga" onerror="this.src='https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Odaka Yoga</div>
                         <div class="carousel-card-sub">Fluidità dell'Onda</div>
                     </div>
                 </div>
-                <div class="carousel-card tilt-card">
+                <div class="carousel-card tilt-item">
                     <img src="light.jpg" alt="Light Yoga" onerror="this.src='https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Light Yoga</div>
@@ -1254,7 +1085,22 @@
         </div>
     </div>
 
-    <!-- Profilo Personale -->
+    <!-- QUIZ INTERATTIVO "TROVA LA PRATICA" -->
+    <div class="container reveal">
+        <div class="quiz-container">
+            <h3 class="quiz-title">Cosa cerca il tuo corpo oggi?</h3>
+            <p class="quiz-subtitle">Seleziona il tuo obiettivo per trovare subito il corso ideale:</p>
+            <div class="quiz-options">
+                <button class="quiz-btn" data-target="Light Yoga">🌸 Relax & Sciogliere Tensioni</button>
+                <button class="quiz-btn" data-target="Pilates Reformer">🔥 Forza del Core</button>
+                <button class="quiz-btn" data-target="Odaka Yoga">🌊 Fluidità & Movimento d'Onda</button>
+                <button class="quiz-btn" data-target="Pilates Posturale">🌱 Postura & Schiena</button>
+            </div>
+            <div class="quiz-result" id="quizResult">Clicca un'opzione per scoprire il tuo percorso</div>
+        </div>
+    </div>
+
+    <!-- PROFILO PERSONALE -->
     <section id="profilo">
         <div class="container reveal">
             <div class="section-header">
@@ -1283,7 +1129,7 @@
         </div>
     </section>
 
-    <!-- Formazione con 3D Tilt Cards -->
+    <!-- FORMAZIONE -->
     <section id="formazione" style="background-color: var(--sand);">
         <div class="container reveal">
             <div class="section-header">
@@ -1292,7 +1138,7 @@
             </div>
 
             <div class="grid-2">
-                <div class="tilt-card">
+                <div class="card tilt-item">
                     <div class="card-header-icon">
                         <i data-lucide="award" size="24"></i>
                     </div>
@@ -1305,7 +1151,7 @@
                     </ul>
                 </div>
 
-                <div class="tilt-card">
+                <div class="card tilt-item">
                     <div class="card-header-icon accent">
                         <i data-lucide="award" size="24"></i>
                     </div>
@@ -1329,7 +1175,7 @@
         </div>
     </section>
 
-    <!-- Esperienze Professionali -->
+    <!-- ESPERIENZE -->
     <section id="esperienze">
         <div class="container reveal">
             <div class="section-header">
@@ -1338,7 +1184,7 @@
             </div>
 
             <div class="grid-2">
-                <div class="tilt-card">
+                <div class="card tilt-item">
                     <div class="card-header-icon">
                         <i data-lucide="building-2" size="24"></i>
                     </div>
@@ -1349,7 +1195,7 @@
                     </ul>
                 </div>
 
-                <div class="tilt-card">
+                <div class="card tilt-item">
                     <div class="card-header-icon accent">
                         <i data-lucide="video" size="24"></i>
                     </div>
@@ -1366,32 +1212,17 @@
         </div>
     </section>
 
-    <!-- DISCIPLINE & INTERACTIVE QUIZ FINDER -->
+    <!-- DISCIPLINE ACCORDION -->
     <section id="discipline" style="background-color: #F4F7F5;">
         <div class="container reveal">
             <div class="section-header">
                 <span class="section-tag">I Miei Corsi</span>
                 <h2 class="section-title">Discipline Insegnate</h2>
-                <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.98rem;">Esplora i corsi o usa il filtro interattivo per scoprire la pratica ideale per te.</p>
+                <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.98rem;">Clicca su ogni pratica per scoprire la descrizione dettagliata.</p>
             </div>
 
-            <!-- 3. INTERACTIVE PRACTICE QUIZ FINDER -->
-            <div class="quiz-container">
-                <div class="quiz-title"><i data-lucide="sparkles" size="18" style="color:var(--accent);"></i> Trova la Tua Pratica Ideale</div>
-                <div class="quiz-sub">Qual è il tuo obiettivo di benessere principale oggi?</div>
-                <div class="quiz-options">
-                    <button class="quiz-btn active" data-filter="all"><i data-lucide="grid" size="14"></i> Mostra Tutte</button>
-                    <button class="quiz-btn" data-filter="relax"><i data-lucide="feather" size="14"></i> Rilassamento & Stress Relief</button>
-                    <button class="quiz-btn" data-filter="core"><i data-lucide="zap" size="14"></i> Forza & Core Strength</button>
-                    <button class="quiz-btn" data-filter="posture"><i data-lucide="shield-check" size="14"></i> Postura & Benessere Schiena</button>
-                    <button class="quiz-btn" data-filter="flow"><i data-lucide="waves" size="14"></i> Fluidità Odaka</button>
-                    <button class="quiz-btn" data-filter="aerial"><i data-lucide="cloud-sun" size="14"></i> In Sospensione</button>
-                </div>
-            </div>
-
-            <div class="discipline-grid" id="disciplineGrid">
-                
-                <div class="discipline-card" data-tags="relax">
+            <div class="discipline-grid">
+                <div class="discipline-card" id="card-light-yoga">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1404,7 +1235,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="posture relax">
+                <div class="discipline-card" id="card-hatha-yoga">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1417,7 +1248,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="core flow">
+                <div class="discipline-card" id="card-vinyasa-yoga">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1430,7 +1261,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="aerial relax">
+                <div class="discipline-card" id="card-aerial-yin">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1443,7 +1274,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="flow core">
+                <div class="discipline-card" id="card-odaka-yoga">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1456,7 +1287,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="flow relax">
+                <div class="discipline-card" id="card-odaka-yoga-pranayama-flow">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1469,7 +1300,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="core posture">
+                <div class="discipline-card" id="card-yogalates">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1482,7 +1313,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="posture core">
+                <div class="discipline-card" id="card-pilates-posturale">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1495,7 +1326,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="core posture">
+                <div class="discipline-card" id="card-pilates-matwork">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1508,7 +1339,7 @@
                     </div>
                 </div>
 
-                <div class="discipline-card" data-tags="core posture">
+                <div class="discipline-card" id="card-pilates-reformer">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1520,12 +1351,11 @@
                         Una pratica che utilizza il Reformer, un macchinario dotato di carrello mobile, molle e cinghie che permettono di modulare la resistenza e accompagnare il movimento. Attraverso esercizi controllati e precisi, si lavora sulla forza, sulla stabilità del centro, sulla mobilità e sull’allineamento posturale. Il Reformer permette di adattare il lavoro a diverse esigenze e livelli di esperienza, favorendo un movimento consapevole, equilibrato e funzionale.
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Competenze, Lingue e Collaborazioni -->
+    <!-- COMPETENZE & LINGUE -->
     <section id="competenze">
         <div class="container reveal">
             <div class="section-header">
@@ -1534,7 +1364,7 @@
             </div>
 
             <div class="grid-3">
-                <div class="tilt-card">
+                <div class="card tilt-item">
                     <div class="card-header-icon">
                         <i data-lucide="sparkles" size="24"></i>
                     </div>
@@ -1547,7 +1377,7 @@
                     </ul>
                 </div>
 
-                <div class="tilt-card">
+                <div class="card tilt-item">
                     <div class="card-header-icon accent">
                         <i data-lucide="globe-2" size="24"></i>
                     </div>
@@ -1560,7 +1390,7 @@
                     </div>
                 </div>
 
-                <div class="tilt-card">
+                <div class="card tilt-item">
                     <div class="card-header-icon">
                         <i data-lucide="users" size="24"></i>
                     </div>
@@ -1576,9 +1406,9 @@
         </div>
     </section>
 
-    <!-- 4. CANVAS ONDE FLUIDE ODAKA -->
+    <!-- ONDE ODAKA (CANVAS FOOTER WAVE) -->
     <div class="wave-section">
-        <canvas id="odakaWaveCanvas"></canvas>
+        <canvas id="waveCanvas"></canvas>
     </div>
 
     <!-- FOOTER -->
@@ -1596,38 +1426,11 @@
         </div>
     </footer>
 
-    <!-- 5. FLOATING STICKY CTA BUTTON -->
-    <div class="floating-cta" id="openCtaModal">
-        <div class="cta-pulse-dot"></div>
-        <i data-lucide="calendar" size="18"></i>
-        <span>Prenota una Prova</span>
-    </div>
-
-    <!-- MODALE CONTATTI RAPIDI -->
-    <div class="modal-overlay" id="contactModal">
-        <div class="modal-box">
-            <button class="modal-close" id="closeCtaModal"><i data-lucide="x" size="22"></i></button>
-            <h3 class="modal-title font-serif">Contatta Saadiya</h3>
-            <p style="color: var(--text-muted); font-size: 0.92rem;">Scegli la modalità che preferisci per richiedere informazioni o prenotare una lezione.</p>
-            <div class="modal-options">
-                <a href="https://wa.me/393000000000?text=Ciao%20Saadiya,%20vorrei%20informazioni%20sulle%20tue%20lezioni" target="_blank" class="modal-opt-btn whatsapp">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> WhatsApp Diretto
-                </a>
-                <a href="mailto:info@saadiya.it" class="modal-opt-btn email">
-                    <i data-lucide="mail" size="18"></i> Invia un'Email
-                </a>
-                <a href="https://www.instagram.com/sady__yoga" target="_blank" class="modal-opt-btn instagram">
-                    <i class="fa-brands fa-instagram" style="font-size: 1.2rem;"></i> Messaggio Instagram
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCRIPTS INTEGRATI -->
+    <!-- SCRIPT JAVASCRIPT INTEGRATO -->
     <script>
         lucide.createIcons();
 
-        // CURSORE LUMINESCENTE
+        // 1. CURSORE / TOUCH GLOW
         const cursorGlow = document.getElementById('cursor-glow');
         function updateGlowPosition(x, y) {
             cursorGlow.style.left = `${x}px`;
@@ -1635,28 +1438,21 @@
         }
         window.addEventListener('mousemove', (e) => updateGlowPosition(e.clientX, e.clientY));
         window.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 0) {
-                updateGlowPosition(e.touches[0].clientX, e.touches[0].clientY);
-            }
+            if (e.touches.length > 0) updateGlowPosition(e.touches[0].clientX, e.touches[0].clientY);
         });
 
-        // 1. BREATHING CIRCLE LABEL TEXT TIMER (4s inspira, 4s espira)
+        // 2. CERCHIO RESPIRO GUIDATO SINCRONIZZATO (Inspira / Espira)
         const breathLabel = document.getElementById('breathLabel');
-        if (breathLabel) {
-            setInterval(() => {
-                if (breathLabel.innerText === 'Inspira...') {
-                    breathLabel.innerText = 'Espira...';
-                } else {
-                    breathLabel.innerText = 'Inspira...';
-                }
-            }, 4000);
-        }
+        let isInspiring = true;
+        setInterval(() => {
+            isInspiring = !isInspiring;
+            breathLabel.innerText = isInspiring ? "Inspira..." : "Espira...";
+        }, 4000);
 
-        // PARTICELLE SFONDO HERO
+        // 3. CANVAS PARTICELLE SFONDO HERO
         const canvas = document.getElementById('heroCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -1696,44 +1492,42 @@
         }
         animateCanvas();
 
-        // 2. MAGICAL PARALLAX 3D CARD TILT WITH SPOTLIGHT LIGHT REFLECTION
-        const tiltCards = document.querySelectorAll('.tilt-card');
-        tiltCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = ((y - centerY) / centerY) * -8;
-                const rotateY = ((x - centerX) / centerX) * 8;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-                card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
-                card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
-            });
+        // 4. CANVAS ONDE ODAKA FLUIDE (FOOTER)
+        const waveCanvas = document.getElementById('waveCanvas');
+        const waveCtx = waveCanvas.getContext('2d');
+        function resizeWaveCanvas() {
+            waveCanvas.width = window.innerWidth;
+            waveCanvas.height = 120;
+        }
+        window.addEventListener('resize', resizeWaveCanvas);
+        resizeWaveCanvas();
 
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
-        });
+        let waveStep = 0;
+        function drawWaves() {
+            waveCtx.clearRect(0, 0, waveCanvas.width, waveCanvas.height);
+            waveCtx.fillStyle = 'rgba(59, 90, 78, 0.12)';
+            waveCtx.beginPath();
+            waveCtx.moveTo(0, waveCanvas.height);
+            for (let x = 0; x < waveCanvas.width; x++) {
+                let y = Math.sin(x * 0.01 + waveStep) * 20 + Math.cos(x * 0.005 + waveStep * 0.5) * 15 + 40;
+                waveCtx.lineTo(x, y);
+            }
+            waveCtx.lineTo(waveCanvas.width, waveCanvas.height);
+            waveCtx.fill();
+            waveStep += 0.025;
+            requestAnimationFrame(drawWaves);
+        }
+        drawWaves();
 
-        // CAROSELLO TOUCH REATTIVO
+        // 5. CAROSELLO TOUCH ULTRA-FLUIDO
         const viewport = document.getElementById('carouselViewport');
         const track = document.getElementById('carouselTrack');
         const cards = Array.from(track.children);
-        cards.forEach(card => {
-            const clone = card.cloneNode(true);
-            track.appendChild(clone);
-        });
+        cards.forEach(card => { track.appendChild(card.cloneNode(true)); });
 
         let isDown = false, startX = 0, currentTranslate = 0, prevTranslate = 0, autoScrollSpeed = 0.8, singleLoopWidth = 0;
-
         function calculateLoopWidth() {
-            const firstCard = track.children[0];
-            singleLoopWidth = (firstCard.offsetWidth + 22) * cards.length;
+            singleLoopWidth = (track.children[0].offsetWidth + 22) * cards.length;
         }
         window.addEventListener('resize', calculateLoopWidth);
         calculateLoopWidth();
@@ -1750,200 +1544,121 @@
             track.style.transform = `translateX(${currentTranslate}px)`;
             requestAnimationFrame(autoLoop);
         }
-
-        function getPositionX(e) { return e.type.includes('touch') ? e.touches[0].clientX : e.clientX; }
-        function touchStart(e) { isDown = true; startX = getPositionX(e); viewport.style.cursor = 'grabbing'; }
-        function touchMove(e) {
+        
+        viewport.addEventListener('mousedown', (e) => { isDown = true; startX = e.clientX; });
+        window.addEventListener('mousemove', (e) => {
             if (!isDown) return;
-            const currentX = getPositionX(e);
-            currentTranslate = prevTranslate + (currentX - startX) * 1.35;
-        }
-        function touchEnd() {
+            currentTranslate = prevTranslate + (e.clientX - startX) * 1.35;
+        });
+        window.addEventListener('mouseup', () => { isDown = false; prevTranslate = currentTranslate; });
+        viewport.addEventListener('touchstart', (e) => { isDown = true; startX = e.touches[0].clientX; }, {passive:true});
+        window.addEventListener('touchmove', (e) => {
             if (!isDown) return;
-            isDown = false;
-            prevTranslate = currentTranslate;
-            viewport.style.cursor = 'grab';
-        }
-
-        viewport.addEventListener('mousedown', touchStart);
-        viewport.addEventListener('mousemove', touchMove);
-        viewport.addEventListener('mouseup', touchEnd);
-        viewport.addEventListener('mouseleave', touchEnd);
-        viewport.addEventListener('touchstart', touchStart, { passive: true });
-        viewport.addEventListener('touchmove', touchMove, { passive: true });
-        viewport.addEventListener('touchend', touchEnd);
+            currentTranslate = prevTranslate + (e.touches[0].clientX - startX) * 1.35;
+        }, {passive:true});
+        window.addEventListener('touchend', () => { isDown = false; prevTranslate = currentTranslate; });
         autoLoop();
 
-        // EFFETTO CITAZIONE ILLUMINATA
-        const quoteElem = document.getElementById('scrollReaderQuote');
-        const dotElem = document.getElementById('scrollReaderDot');
-        const originalText = quoteElem.innerText.trim();
-        const wordsArray = originalText.split(/\s+/);
-        quoteElem.innerHTML = '';
-        quoteElem.appendChild(dotElem);
-        
-        wordsArray.forEach((wordText, index) => {
-            const span = document.createElement('span');
-            span.className = 'word';
-            span.innerText = wordText;
-            quoteElem.appendChild(span);
-            if (index < wordsArray.length - 1) quoteElem.appendChild(document.createTextNode(' '));
-        });
-
-        const wordSpans = quoteElem.querySelectorAll('.word');
-
-        function updateScrollReader() {
-            const rect = quoteElem.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            const totalDistance = windowHeight * 0.6;
-            const elementProgress = (windowHeight * 0.7 - rect.top) / totalDistance;
-            const clampedProgress = Math.min(Math.max(elementProgress, 0), 1);
-
-            const activeIndex = Math.floor(clampedProgress * wordSpans.length);
-            wordSpans.forEach((span, i) => {
-                if (i <= activeIndex && clampedProgress > 0) span.classList.add('active');
-                else span.classList.remove('active');
-            });
-
-            if (wordSpans[activeIndex] && clampedProgress > 0 && clampedProgress < 1) {
-                const targetSpan = wordSpans[activeIndex];
-                const spanRect = targetSpan.getBoundingClientRect();
-                const quoteRect = quoteElem.getBoundingClientRect();
-                dotElem.style.left = `${spanRect.left - quoteRect.left + spanRect.width / 2}px`;
-                dotElem.style.top = `${spanRect.top - quoteRect.top - 8}px`;
-                dotElem.style.opacity = '1';
-            } else {
-                dotElem.style.opacity = '0';
-            }
-        }
-        window.addEventListener('scroll', updateScrollReader, { passive: true });
-        updateScrollReader();
-
-        // MENU MOBILE
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-
-        function toggleMenu() {
-            mobileMenu.classList.toggle('open');
-            const isOpen = mobileMenu.classList.contains('open');
-            menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
-            lucide.createIcons();
-        }
-        menuToggle.addEventListener('click', toggleMenu);
-        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('open')) {
-                    mobileMenu.classList.remove('open');
-                    menuIcon.setAttribute('data-lucide', 'menu');
-                    lucide.createIcons();
-                }
-            });
-        });
-
-        // 3. QUIZ INTERATTIVO TROVA LA TUA PRATICA IDEALE
+        // 6. QUIZ INTERATTIVO "TROVA LA TUA PRATICA"
         const quizBtns = document.querySelectorAll('.quiz-btn');
-        const disciplineCardsAll = document.querySelectorAll('.discipline-card');
-
+        const quizResult = document.getElementById('quizResult');
         quizBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 quizBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                disciplineCardsAll.forEach(card => {
-                    const tags = card.getAttribute('data-tags') || '';
-                    if (filter === 'all' || tags.includes(filter)) {
-                        card.style.display = 'block';
-                        if (filter !== 'all') {
-                            card.classList.add('highlighted');
-                            card.classList.add('active');
-                        } else {
-                            card.classList.remove('highlighted');
-                        }
-                    } else {
-                        card.style.display = 'none';
-                        card.classList.remove('highlighted');
-                        card.classList.remove('active');
+                const targetName = btn.getAttribute('data-target');
+                quizResult.innerHTML = `✨ Ti consigliamo: <strong>${targetName}</strong>! Scorri giù per scoprirla.`;
+                
+                // Trova e illumina la card corrispondente
+                const disciplineCards = document.querySelectorAll('.discipline-card');
+                disciplineCards.forEach(c => {
+                    c.classList.remove('highlight-pulse');
+                    const title = c.querySelector('h4').innerText;
+                    if (title.toLowerCase().includes(targetName.toLowerCase())) {
+                        c.classList.add('active');
+                        c.classList.add('highlight-pulse');
+                        c.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                 });
             });
         });
 
-        // ACCORDION DISCIPLINE
-        disciplineCardsAll.forEach(card => {
-            const header = card.querySelector('.discipline-header');
-            header.addEventListener('click', () => {
+        // 7. 3D TILT EFFECT SULLE CARD
+        const tiltItems = document.querySelectorAll('.tilt-item');
+        tiltItems.forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const dx = (x - xc) / xc;
+                const dy = (y - yc) / yc;
+                item.style.transform = `perspective(1000px) rotateY(${dx * 5}deg) rotateX(${-dy * 5}deg) translateY(-6px)`;
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)';
+            });
+        });
+
+        // 8. CITAZIONE SCROLL READER
+        const quoteElem = document.getElementById('scrollReaderQuote');
+        const dotElem = document.getElementById('scrollReaderDot');
+        const wordsArray = quoteElem.innerText.trim().split(/\s+/);
+        quoteElem.innerHTML = '';
+        quoteElem.appendChild(dotElem);
+        wordsArray.forEach((w, i) => {
+            const span = document.createElement('span');
+            span.className = 'word';
+            span.innerText = w;
+            quoteElem.appendChild(span);
+            if (i < wordsArray.length - 1) quoteElem.appendChild(document.createTextNode(' '));
+        });
+        const wordSpans = quoteElem.querySelectorAll('.word');
+
+        window.addEventListener('scroll', () => {
+            const rect = quoteElem.getBoundingClientRect();
+            const progress = Math.min(Math.max((window.innerHeight * 0.7 - rect.top) / (window.innerHeight * 0.6), 0), 1);
+            const activeIndex = Math.floor(progress * wordSpans.length);
+            wordSpans.forEach((span, i) => {
+                if (i <= activeIndex && progress > 0) span.classList.add('active');
+                else span.classList.remove('active');
+            });
+            if (wordSpans[activeIndex] && progress > 0 && progress < 1) {
+                const sRect = wordSpans[activeIndex].getBoundingClientRect();
+                const qRect = quoteElem.getBoundingClientRect();
+                dotElem.style.left = `${sRect.left - qRect.left + sRect.width / 2}px`;
+                dotElem.style.top = `${sRect.top - qRect.top - 8}px`;
+                dotElem.style.opacity = '1';
+            } else {
+                dotElem.style.opacity = '0';
+            }
+        }, { passive: true });
+
+        // 9. MENU MOBILE & ACCORDION
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
+            menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+        document.querySelectorAll('.mobile-menu-links a').forEach(l => {
+            l.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuIcon.setAttribute('data-lucide', 'menu'); lucide.createIcons(); });
+        });
+
+        document.querySelectorAll('.discipline-card').forEach(card => {
+            card.querySelector('.discipline-header').addEventListener('click', () => {
                 card.classList.toggle('active');
             });
         });
 
-        // 4. CANVAS ONDE FLUIDE ODAKA
-        const waveCanvas = document.getElementById('odakaWaveCanvas');
-        if (waveCanvas) {
-            const wCtx = waveCanvas.getContext('2d');
-            let waveStep = 0;
-
-            function resizeWaveCanvas() {
-                waveCanvas.width = waveCanvas.parentElement.offsetWidth;
-                waveCanvas.height = 180;
-            }
-            window.addEventListener('resize', resizeWaveCanvas);
-            resizeWaveCanvas();
-
-            function drawOdakaWaves() {
-                wCtx.clearRect(0, 0, waveCanvas.width, waveCanvas.height);
-                waveStep += 0.015;
-
-                // Onda 1 (Salvia)
-                wCtx.beginPath();
-                wCtx.moveTo(0, waveCanvas.height / 2);
-                for (let x = 0; x <= waveCanvas.width; x += 10) {
-                    const y = Math.sin(x * 0.008 + waveStep) * 22 + Math.cos(x * 0.004 + waveStep * 0.5) * 12 + 90;
-                    wCtx.lineTo(x, y);
-                }
-                wCtx.strokeStyle = 'rgba(59, 90, 78, 0.4)';
-                wCtx.lineWidth = 3;
-                wCtx.stroke();
-
-                // Onda 2 (Terracotta Soft)
-                wCtx.beginPath();
-                wCtx.moveTo(0, waveCanvas.height / 2);
-                for (let x = 0; x <= waveCanvas.width; x += 10) {
-                    const y = Math.cos(x * 0.006 - waveStep * 0.8) * 26 + Math.sin(x * 0.003 + waveStep) * 10 + 95;
-                    wCtx.lineTo(x, y);
-                }
-                wCtx.strokeStyle = 'rgba(196, 122, 83, 0.35)';
-                wCtx.lineWidth = 2;
-                wCtx.stroke();
-
-                requestAnimationFrame(drawOdakaWaves);
-            }
-            drawOdakaWaves();
-        }
-
-        // 5. MODALE FLOATING CTA
-        const openCtaBtn = document.getElementById('openCtaModal');
-        const closeCtaBtn = document.getElementById('closeCtaModal');
-        const contactModal = document.getElementById('contactModal');
-
-        if (openCtaBtn && contactModal) {
-            openCtaBtn.addEventListener('click', () => contactModal.classList.add('open'));
-            closeCtaBtn.addEventListener('click', () => contactModal.classList.remove('open'));
-            contactModal.addEventListener('click', (e) => {
-                if (e.target === contactModal) contactModal.classList.remove('open');
-            });
-        }
-
-        // INTERSECTION OBSERVER REVEAL
-        const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
-        reveals.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
