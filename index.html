@@ -17,7 +17,7 @@
     <style>
         :root {
             --bg-main: #FAF8F5;
-            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card: rgba(255, 255, 255, 0.88);
             --bg-card-hover: rgba(255, 255, 255, 0.98);
             --primary: #3B5A4E;        /* Verde Salvia Profondo */
             --primary-light: #EBF1ED;
@@ -29,7 +29,7 @@
             --text-dark: #232B28;
             --text-muted: #586360;
             --border: #E5E0D8;
-            --shadow: 0 12px 32px rgba(59, 90, 78, 0.08);
+            --shadow: 0 14px 35px rgba(59, 90, 78, 0.08);
             --radius-lg: 24px;
             --radius-md: 16px;
         }
@@ -65,17 +65,17 @@
         /* CURSORE / TOUCH GLOW LUMINOSO */
         #cursor-glow {
             position: fixed;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(196, 122, 83, 0.12) 0%, rgba(59, 90, 78, 0.06) 50%, transparent 70%);
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(196, 122, 83, 0.14) 0%, rgba(59, 90, 78, 0.07) 50%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 9999;
-            transition: transform 0.05s linear;
+            transition: transform 0.04s linear;
         }
 
-        /* NAVBAR "FLOATING PILL" FLUTTUANTE A CAPSULA CON BEIGE DEL LOGO */
+        /* NAVBAR FLOATING PILL BEIGE HARMONY */
         nav.floating-nav {
             position: fixed;
             top: 16px;
@@ -111,7 +111,7 @@
         }
 
         .nav-logo-pic {
-            height: 85px;
+            height: 75px;
             width: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
@@ -184,12 +184,11 @@
             background-color: rgba(0, 0, 0, 0.05);
         }
 
-        /* MENU MOBILE - COMPLETAMENTE NASCOSTO SU DESKTOP */
         .mobile-menu-links {
             display: none !important;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION CON BREATHING CIRCLE */
         header.hero {
             padding: 165px 0 70px;
             position: relative;
@@ -223,19 +222,71 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             border: 1px solid rgba(59, 90, 78, 0.15);
         }
 
+        /* 1. HERO BREATHING CIRCLE ANIMATION */
+        .breathing-wrapper {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .breathing-ring {
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196,122,83,0.3) 0%, rgba(59,90,78,0.15) 60%, transparent 75%);
+            border: 2px dashed rgba(196, 122, 83, 0.6);
+            animation: breatheAnimation 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+
+        .breathing-label {
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--sand);
+            color: var(--primary);
+            border: 1px solid var(--border);
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            white-space: nowrap;
+        }
+
+        @keyframes breatheAnimation {
+            0%, 100% {
+                transform: scale(0.92);
+                opacity: 0.5;
+                border-color: rgba(59, 90, 78, 0.4);
+            }
+            50% {
+                transform: scale(1.18);
+                opacity: 0.95;
+                border-color: rgba(196, 122, 83, 0.9);
+                box-shadow: 0 0 30px rgba(196, 122, 83, 0.35);
+            }
+        }
+
         .hero-profile-pic {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #FFFFFF;
-            box-shadow: 0 8px 25px rgba(59, 90, 78, 0.15);
-            margin: 0 auto 18px auto;
-            display: block;
+            box-shadow: 0 8px 25px rgba(59, 90, 78, 0.18);
+            position: relative;
+            z-index: 2;
         }
 
         .hero-title {
@@ -292,7 +343,7 @@
             box-shadow: 0 10px 20px rgba(59, 90, 78, 0.12);
         }
 
-        /* CAROSELLO 3D REATTIVO ED ELEGANTE */
+        /* CAROSELLO 3D REATTIVO */
         .showcase-carousel-section {
             padding: 20px 0 60px;
             overflow: hidden;
@@ -420,7 +471,7 @@
             line-height: 1.2;
         }
 
-        /* PROFILO PERSONALE CARD & SCRITTURA ILLUMINATA SULLA CITAZIONE */
+        /* PROFILO PERSONALE & CITAZIONE ILLUMINATA */
         .profile-container {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
@@ -531,8 +582,8 @@
             gap: 22px;
         }
 
-        /* CARDS */
-        .card {
+        /* 2. MAGICAL PARALLAX 3D TILT CARDS WITH SPOTLIGHT LIGHT REFLECTION */
+        .tilt-card {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -540,15 +591,26 @@
             border-radius: var(--radius-md);
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
-            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
-            height: 100%;
+            transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
-        .card:hover, .card:active {
-            transform: translateY(-6px);
-            background: var(--bg-card-hover);
-            border-color: var(--primary-soft);
-            box-shadow: 0 16px 30px rgba(59, 90, 78, 0.12);
+        .tilt-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.4), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .tilt-card:hover::after {
+            opacity: 1;
         }
 
         .card-header-icon {
@@ -564,7 +626,7 @@
             transition: transform 0.3s ease;
         }
 
-        .card:hover .card-header-icon {
+        .tilt-card:hover .card-header-icon {
             transform: scale(1.08) rotate(4deg);
         }
 
@@ -573,13 +635,12 @@
             color: var(--accent);
         }
 
-        .card h3 {
+        .tilt-card h3 {
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 14px;
         }
 
-        /* LIST ITEMS */
         .info-list {
             list-style: none;
         }
@@ -600,6 +661,61 @@
             font-weight: bold;
         }
 
+        /* 3. QUIZ INTERATTIVO TROVA PRATICA */
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .quiz-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+        }
+
+        .quiz-sub {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .quiz-btn {
+            background: var(--sand);
+            border: 1px solid var(--border);
+            color: var(--text-dark);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quiz-btn:hover, .quiz-btn.active {
+            background: var(--primary);
+            color: #FFFFFF;
+            border-color: var(--primary);
+            box-shadow: 0 6px 18px rgba(59, 90, 78, 0.25);
+            transform: translateY(-2px);
+        }
+
         /* DISCIPLINE ACCORDION INDIPENDENTI */
         .discipline-grid {
             display: grid;
@@ -614,7 +730,13 @@
             border-radius: var(--radius-md);
             border: 1px solid var(--border);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
+        }
+
+        .discipline-card.highlighted {
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 25px rgba(196, 122, 83, 0.35);
+            transform: scale(1.02);
         }
 
         .discipline-header {
@@ -714,7 +836,6 @@
             font-size: 0.95rem;
         }
 
-        /* LANGUAGE BADGES */
         .lang-badge {
             display: inline-flex;
             align-items: center;
@@ -727,6 +848,158 @@
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--primary);
+        }
+
+        /* 4. CANVAS ONDE FLUIDE ODAKA */
+        .wave-section {
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-main) 0%, #EAF0EC 100%);
+            padding: 60px 0 20px;
+            overflow: hidden;
+        }
+
+        #odakaWaveCanvas {
+            width: 100%;
+            height: 180px;
+            display: block;
+        }
+
+        /* 5. FLOATING STICKY CTA WITH MODAL */
+        .floating-cta {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--primary);
+            color: #FFFFFF;
+            padding: 14px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(59, 90, 78, 0.35);
+            z-index: 999;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .floating-cta:hover {
+            transform: scale(1.06) translateY(-3px);
+            background: var(--accent);
+            box-shadow: 0 14px 30px rgba(196, 122, 83, 0.4);
+        }
+
+        .cta-pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #4DE9A8;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(77, 233, 168, 0.7);
+            animation: ctaPulse 2s infinite;
+        }
+
+        @keyframes ctaPulse {
+            0% { box-shadow: 0 0 0 0 rgba(77, 233, 168, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(77, 233, 168, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(77, 233, 168, 0); }
+        }
+
+        /* MODALE CONTATTO RAPIDO */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(35, 43, 40, 0.6);
+            backdrop-filter: blur(6px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--bg-main);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            max-width: 440px;
+            width: 100%;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.open .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .modal-opt-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .modal-opt-btn.whatsapp {
+            background: #25D366;
+            color: #FFFFFF;
+        }
+
+        .modal-opt-btn.email {
+            background: var(--primary);
+            color: #FFFFFF;
+        }
+
+        .modal-opt-btn.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: #FFFFFF;
+        }
+
+        .modal-opt-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
         }
 
         /* FOOTER */
@@ -799,7 +1072,7 @@
             }
 
             .nav-logo-pic {
-                height: 85px;
+                height: 75px;
             }
 
             .mobile-menu-links {
@@ -853,43 +1126,45 @@
             section { padding: 55px 0; }
             .profile-container { padding: 24px; }
             .specialization-banner { flex-direction: column; }
+            
+            .floating-cta {
+                bottom: 16px;
+                right: 16px;
+                padding: 12px 18px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- CURSORE LUMINESCENTE (MOUSE & TOUCH) -->
+    <!-- CURSORE LUMINESCENTE -->
     <div id="cursor-glow"></div>
 
-    <!-- Navigazione Floating Pill Fluttuante a Capsula -->
+    <!-- NAVBAR FLOATING PILL -->
     <nav class="floating-nav">
         <div class="nav-container">
-            <!-- Link di Sinistra (Visibili solo su Desktop) -->
             <ul class="nav-links left">
                 <li><a href="#profilo">Profilo</a></li>
                 <li><a href="#formazione">Formazione</a></li>
                 <li><a href="#esperienze">Esperienze</a></li>
             </ul>
 
-            <!-- Logo al Centro -->
             <a href="#" class="logo-wrapper">
-                <img src="logosady.png" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/180x80/F7F3EC/3B5A4E?text=Saadiya'">
+                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/180x80/F7F3EC/3B5A4E?text=Saadiya'">
             </a>
 
-            <!-- Link di Destra (Visibili solo su Desktop) -->
             <ul class="nav-links right">
                 <li><a href="#discipline">Discipline</a></li>
                 <li><a href="#competenze">Competenze</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
 
-            <!-- Tasto Mobile Hamburger -->
             <button class="menu-toggle" id="menuToggle" aria-label="Apri Menu">
                 <i data-lucide="menu" id="menuIcon" size="26"></i>
             </button>
         </div>
 
-        <!-- Menu Mobile Integrato (Nascosto su Desktop, attivo solo su mobile) -->
         <ul class="mobile-menu-links" id="mobileMenu">
             <li><a href="#profilo">Profilo</a></li>
             <li><a href="#formazione">Formazione</a></li>
@@ -900,7 +1175,7 @@
         </ul>
     </nav>
 
-    <!-- Hero Header -->
+    <!-- HERO HEADER WITH BREATHING CIRCLE -->
     <header class="hero">
         <canvas id="heroCanvas"></canvas>
         <div class="container hero-content">
@@ -908,7 +1183,12 @@
                 <i data-lucide="map-pin" size="15"></i> Bergamo, Italia
             </div>
             
-            <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic" onerror="this.src='https://placehold.co/130x130/3B5A4E/FFFFFF?text=Saadiya'">
+            <!-- 1. BREATHING CIRCLE ANIMATION -->
+            <div class="breathing-wrapper">
+                <div class="breathing-ring"></div>
+                <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic" onerror="this.src='https://placehold.co/140x140/3B5A4E/FFFFFF?text=Saadiya'">
+                <div class="breathing-label" id="breathLabel">Inspira...</div>
+            </div>
 
             <h1 class="hero-title">Saadiya Belkhadri</h1>
             <p class="hero-subtitle">Insegnante di Yoga & Pilates</p>
@@ -924,52 +1204,46 @@
         </div>
     </header>
 
-    <!-- CAROSELLO FOTOGRAFICO 3D REATTIVO -->
+    <!-- CAROSELLO FOTOGRAFICO 3D -->
     <div class="showcase-carousel-section">
         <div class="carousel-viewport" id="carouselViewport">
             <div class="carousel-track" id="carouselTrack">
-                <!-- Card 1 -->
-                <div class="carousel-card">
+                <div class="carousel-card tilt-card">
                     <img src="vinyasa.jpg" alt="Vinyasa Flow" onerror="this.src='https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Vinyasa Flow</div>
                         <div class="carousel-card-sub">Respiro & Movimento</div>
                     </div>
                 </div>
-                <!-- Card 2 -->
-                <div class="carousel-card">
+                <div class="carousel-card tilt-card">
                     <img src="hatha.jpg" alt="Hatha & Meditazione" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Hatha Yoga</div>
                         <div class="carousel-card-sub">Equilibrio & Stabilità</div>
                     </div>
                 </div>
-                <!-- Card 3 -->
-                <div class="carousel-card">
+                <div class="carousel-card tilt-card">
                     <img src="reformer.jpg" alt="Pilates Reformer" onerror="this.src='https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Pilates Reformer</div>
                         <div class="carousel-card-sub">La forza nasce dal centro</div>
                     </div>
                 </div>
-                <!-- Card 4 -->
-                <div class="carousel-card">
+                <div class="carousel-card tilt-card">
                     <img src="aerial.jpg" alt="Aerial Yin" onerror="this.src='https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Aerial Yin</div>
                         <div class="carousel-card-sub">Leggerezza in Amaca</div>
                     </div>
                 </div>
-                <!-- Card 5 -->
-                <div class="carousel-card">
+                <div class="carousel-card tilt-card">
                     <img src="odaka.jpg" alt="Odaka Yoga" onerror="this.src='https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Odaka Yoga</div>
                         <div class="carousel-card-sub">Fluidità dell'Onda</div>
                     </div>
                 </div>
-                <!-- Card 6 -->
-                <div class="carousel-card">
+                <div class="carousel-card tilt-card">
                     <img src="light.jpg" alt="Light Yoga" onerror="this.src='https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Light Yoga</div>
@@ -989,7 +1263,6 @@
             </div>
 
             <div class="profile-container">
-                <!-- CITAZIONE CON ILLUMINAZIONE PAROLA PER PAROLA E PUNTINO LUMINOSO -->
                 <div class="scroll-reader-quote" id="scrollReaderQuote">
                     <div class="scroll-reader-dot" id="scrollReaderDot"></div>
                     "Credo profondamente che lo yoga unito al pilates sia un percorso di trasformazione e di consapevolezza, capace di armonizzare corpo, mente e spirito."
@@ -1010,7 +1283,7 @@
         </div>
     </section>
 
-    <!-- Formazione -->
+    <!-- Formazione con 3D Tilt Cards -->
     <section id="formazione" style="background-color: var(--sand);">
         <div class="container reveal">
             <div class="section-header">
@@ -1019,7 +1292,7 @@
             </div>
 
             <div class="grid-2">
-                <div class="card">
+                <div class="tilt-card">
                     <div class="card-header-icon">
                         <i data-lucide="award" size="24"></i>
                     </div>
@@ -1032,7 +1305,7 @@
                     </ul>
                 </div>
 
-                <div class="card">
+                <div class="tilt-card">
                     <div class="card-header-icon accent">
                         <i data-lucide="award" size="24"></i>
                     </div>
@@ -1065,7 +1338,7 @@
             </div>
 
             <div class="grid-2">
-                <div class="card">
+                <div class="tilt-card">
                     <div class="card-header-icon">
                         <i data-lucide="building-2" size="24"></i>
                     </div>
@@ -1076,7 +1349,7 @@
                     </ul>
                 </div>
 
-                <div class="card">
+                <div class="tilt-card">
                     <div class="card-header-icon accent">
                         <i data-lucide="video" size="24"></i>
                     </div>
@@ -1093,19 +1366,32 @@
         </div>
     </section>
 
-    <!-- DISCIPLINE CON MENU A TENDINA E TUE DESCRIZIONI -->
+    <!-- DISCIPLINE & INTERACTIVE QUIZ FINDER -->
     <section id="discipline" style="background-color: #F4F7F5;">
         <div class="container reveal">
             <div class="section-header">
                 <span class="section-tag">I Miei Corsi</span>
                 <h2 class="section-title">Discipline Insegnate</h2>
-                <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.98rem;">Clicca su ogni pratica per scoprire la descrizione dettagliata.</p>
+                <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.98rem;">Esplora i corsi o usa il filtro interattivo per scoprire la pratica ideale per te.</p>
             </div>
 
-            <div class="discipline-grid">
+            <!-- 3. INTERACTIVE PRACTICE QUIZ FINDER -->
+            <div class="quiz-container">
+                <div class="quiz-title"><i data-lucide="sparkles" size="18" style="color:var(--accent);"></i> Trova la Tua Pratica Ideale</div>
+                <div class="quiz-sub">Qual è il tuo obiettivo di benessere principale oggi?</div>
+                <div class="quiz-options">
+                    <button class="quiz-btn active" data-filter="all"><i data-lucide="grid" size="14"></i> Mostra Tutte</button>
+                    <button class="quiz-btn" data-filter="relax"><i data-lucide="feather" size="14"></i> Rilassamento & Stress Relief</button>
+                    <button class="quiz-btn" data-filter="core"><i data-lucide="zap" size="14"></i> Forza & Core Strength</button>
+                    <button class="quiz-btn" data-filter="posture"><i data-lucide="shield-check" size="14"></i> Postura & Benessere Schiena</button>
+                    <button class="quiz-btn" data-filter="flow"><i data-lucide="waves" size="14"></i> Fluidità Odaka</button>
+                    <button class="quiz-btn" data-filter="aerial"><i data-lucide="cloud-sun" size="14"></i> In Sospensione</button>
+                </div>
+            </div>
+
+            <div class="discipline-grid" id="disciplineGrid">
                 
-                <!-- 1. LIGHT YOGA -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="relax">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1118,8 +1404,7 @@
                     </div>
                 </div>
 
-                <!-- 2. HATHA YOGA -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="posture relax">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1132,8 +1417,7 @@
                     </div>
                 </div>
 
-                <!-- 3. VINYASA YOGA -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="core flow">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1146,8 +1430,7 @@
                     </div>
                 </div>
 
-                <!-- 4. AERIAL YIN -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="aerial relax">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1160,8 +1443,7 @@
                     </div>
                 </div>
 
-                <!-- 5. ODAKA YOGA -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="flow core">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1174,8 +1456,7 @@
                     </div>
                 </div>
 
-                <!-- 6. ODAKA YOGA PRANAYAMA FLOW -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="flow relax">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1184,12 +1465,11 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Un approfondimento del metodo Odaka dedicato’all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
+                        Un approfondimento del metodo Odaka dedicato all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
                     </div>
                 </div>
 
-                <!-- 7. YOGALATES -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="core posture">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1202,8 +1482,7 @@
                     </div>
                 </div>
 
-                <!-- 8. PILATES POSTURALE -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="posture core">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1216,8 +1495,7 @@
                     </div>
                 </div>
 
-                <!-- 9. PILATES MATWORK -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="core posture">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1230,8 +1508,7 @@
                     </div>
                 </div>
 
-                <!-- 10. PILATES REFORMER -->
-                <div class="discipline-card">
+                <div class="discipline-card" data-tags="core posture">
                     <div class="discipline-header">
                         <div class="discipline-title-wrap">
                             <div class="discipline-dot"></div>
@@ -1257,7 +1534,7 @@
             </div>
 
             <div class="grid-3">
-                <div class="card">
+                <div class="tilt-card">
                     <div class="card-header-icon">
                         <i data-lucide="sparkles" size="24"></i>
                     </div>
@@ -1270,7 +1547,7 @@
                     </ul>
                 </div>
 
-                <div class="card">
+                <div class="tilt-card">
                     <div class="card-header-icon accent">
                         <i data-lucide="globe-2" size="24"></i>
                     </div>
@@ -1283,7 +1560,7 @@
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="tilt-card">
                     <div class="card-header-icon">
                         <i data-lucide="users" size="24"></i>
                     </div>
@@ -1299,7 +1576,12 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- 4. CANVAS ONDE FLUIDE ODAKA -->
+    <div class="wave-section">
+        <canvas id="odakaWaveCanvas"></canvas>
+    </div>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <h3>Saadiya Belkhadri</h3>
@@ -1314,11 +1596,38 @@
         </div>
     </footer>
 
-    <!-- Script per Animazioni, Menu, Canvas, Accordion Indipendenti e Scrittura Illuminata -->
+    <!-- 5. FLOATING STICKY CTA BUTTON -->
+    <div class="floating-cta" id="openCtaModal">
+        <div class="cta-pulse-dot"></div>
+        <i data-lucide="calendar" size="18"></i>
+        <span>Prenota una Prova</span>
+    </div>
+
+    <!-- MODALE CONTATTI RAPIDI -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeCtaModal"><i data-lucide="x" size="22"></i></button>
+            <h3 class="modal-title font-serif">Contatta Saadiya</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">Scegli la modalità che preferisci per richiedere informazioni o prenotare una lezione.</p>
+            <div class="modal-options">
+                <a href="https://wa.me/393000000000?text=Ciao%20Saadiya,%20vorrei%20informazioni%20sulle%20tue%20lezioni" target="_blank" class="modal-opt-btn whatsapp">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> WhatsApp Diretto
+                </a>
+                <a href="mailto:info@saadiya.it" class="modal-opt-btn email">
+                    <i data-lucide="mail" size="18"></i> Invia un'Email
+                </a>
+                <a href="https://www.instagram.com/sady__yoga" target="_blank" class="modal-opt-btn instagram">
+                    <i class="fa-brands fa-instagram" style="font-size: 1.2rem;"></i> Messaggio Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS INTEGRATI -->
     <script>
         lucide.createIcons();
 
-        // 1. CURSORE / TOUCH GLOW ATTIVO OVUNQUE
+        // CURSORE LUMINESCENTE
         const cursorGlow = document.getElementById('cursor-glow');
         function updateGlowPosition(x, y) {
             cursorGlow.style.left = `${x}px`;
@@ -1331,7 +1640,19 @@
             }
         });
 
-        // 2. CANVAS PARTICELLE SFONDO HERO
+        // 1. BREATHING CIRCLE LABEL TEXT TIMER (4s inspira, 4s espira)
+        const breathLabel = document.getElementById('breathLabel');
+        if (breathLabel) {
+            setInterval(() => {
+                if (breathLabel.innerText === 'Inspira...') {
+                    breathLabel.innerText = 'Espira...';
+                } else {
+                    breathLabel.innerText = 'Inspira...';
+                }
+            }, 4000);
+        }
+
+        // PARTICELLE SFONDO HERO
         const canvas = document.getElementById('heroCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -1367,51 +1688,58 @@
                 ctx.fill();
             }
         }
-
-        for (let i = 0; i < 35; i++) {
-            particles.push(new Particle());
-        }
-
+        for (let i = 0; i < 35; i++) particles.push(new Particle());
         function animateCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animateCanvas);
         }
         animateCanvas();
 
-        // 3. CAROSELLO TOUCH ULTRA-FLUIDO E REATTIVO
+        // 2. MAGICAL PARALLAX 3D CARD TILT WITH SPOTLIGHT LIGHT REFLECTION
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+                card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        // CAROSELLO TOUCH REATTIVO
         const viewport = document.getElementById('carouselViewport');
         const track = document.getElementById('carouselTrack');
-
         const cards = Array.from(track.children);
         cards.forEach(card => {
             const clone = card.cloneNode(true);
             track.appendChild(clone);
         });
 
-        let isDown = false;
-        let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let autoScrollSpeed = 0.8;
-        let singleLoopWidth = 0;
+        let isDown = false, startX = 0, currentTranslate = 0, prevTranslate = 0, autoScrollSpeed = 0.8, singleLoopWidth = 0;
 
         function calculateLoopWidth() {
             const firstCard = track.children[0];
-            const gap = 22;
-            singleLoopWidth = (firstCard.offsetWidth + gap) * cards.length;
+            singleLoopWidth = (firstCard.offsetWidth + 22) * cards.length;
         }
         window.addEventListener('resize', calculateLoopWidth);
         calculateLoopWidth();
 
         function autoLoop() {
-            if (!isDown) {
-                currentTranslate -= autoScrollSpeed;
-            }
-
+            if (!isDown) currentTranslate -= autoScrollSpeed;
             if (Math.abs(currentTranslate) >= singleLoopWidth) {
                 currentTranslate += singleLoopWidth;
                 prevTranslate += singleLoopWidth;
@@ -1419,28 +1747,17 @@
                 currentTranslate -= singleLoopWidth;
                 prevTranslate -= singleLoopWidth;
             }
-
             track.style.transform = `translateX(${currentTranslate}px)`;
             requestAnimationFrame(autoLoop);
         }
 
-        function getPositionX(e) {
-            return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-        }
-
-        function touchStart(e) {
-            isDown = true;
-            startX = getPositionX(e);
-            viewport.style.cursor = 'grabbing';
-        }
-
+        function getPositionX(e) { return e.type.includes('touch') ? e.touches[0].clientX : e.clientX; }
+        function touchStart(e) { isDown = true; startX = getPositionX(e); viewport.style.cursor = 'grabbing'; }
         function touchMove(e) {
             if (!isDown) return;
             const currentX = getPositionX(e);
-            const diffX = (currentX - startX) * 1.35;
-            currentTranslate = prevTranslate + diffX;
+            currentTranslate = prevTranslate + (currentX - startX) * 1.35;
         }
-
         function touchEnd() {
             if (!isDown) return;
             isDown = false;
@@ -1452,20 +1769,16 @@
         viewport.addEventListener('mousemove', touchMove);
         viewport.addEventListener('mouseup', touchEnd);
         viewport.addEventListener('mouseleave', touchEnd);
-
         viewport.addEventListener('touchstart', touchStart, { passive: true });
         viewport.addEventListener('touchmove', touchMove, { passive: true });
         viewport.addEventListener('touchend', touchEnd);
-
         autoLoop();
 
-        // 4. EFFETTO ILLUMINAZIONE E PUNTINO LUMINOSO PAROLA PER PAROLA SULLA CITAZIONE
+        // EFFETTO CITAZIONE ILLUMINATA
         const quoteElem = document.getElementById('scrollReaderQuote');
         const dotElem = document.getElementById('scrollReaderDot');
-        
         const originalText = quoteElem.innerText.trim();
         const wordsArray = originalText.split(/\s+/);
-        
         quoteElem.innerHTML = '';
         quoteElem.appendChild(dotElem);
         
@@ -1474,9 +1787,7 @@
             span.className = 'word';
             span.innerText = wordText;
             quoteElem.appendChild(span);
-            if (index < wordsArray.length - 1) {
-                quoteElem.appendChild(document.createTextNode(' '));
-            }
+            if (index < wordsArray.length - 1) quoteElem.appendChild(document.createTextNode(' '));
         });
 
         const wordSpans = quoteElem.querySelectorAll('.word');
@@ -1484,54 +1795,31 @@
         function updateScrollReader() {
             const rect = quoteElem.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            
             const totalDistance = windowHeight * 0.6;
             const elementProgress = (windowHeight * 0.7 - rect.top) / totalDistance;
             const clampedProgress = Math.min(Math.max(elementProgress, 0), 1);
 
-            if (clampedProgress > 0 && clampedProgress < 1) {
-                quoteElem.classList.add('is-reading');
-            } else {
-                quoteElem.classList.remove('is-reading');
-            }
-
             const activeIndex = Math.floor(clampedProgress * wordSpans.length);
-
             wordSpans.forEach((span, i) => {
-                if (i <= activeIndex && clampedProgress > 0) {
-                    span.classList.add('active');
-                } else {
-                    span.classList.remove('active');
-                }
+                if (i <= activeIndex && clampedProgress > 0) span.classList.add('active');
+                else span.classList.remove('active');
             });
 
             if (wordSpans[activeIndex] && clampedProgress > 0 && clampedProgress < 1) {
                 const targetSpan = wordSpans[activeIndex];
                 const spanRect = targetSpan.getBoundingClientRect();
                 const quoteRect = quoteElem.getBoundingClientRect();
-
-                const x = spanRect.left - quoteRect.left + spanRect.width / 2;
-                const y = spanRect.top - quoteRect.top - 8;
-
-                dotElem.style.left = `${x}px`;
-                dotElem.style.top = `${y}px`;
+                dotElem.style.left = `${spanRect.left - quoteRect.left + spanRect.width / 2}px`;
+                dotElem.style.top = `${spanRect.top - quoteRect.top - 8}px`;
                 dotElem.style.opacity = '1';
-            } else if (clampedProgress >= 1 && wordSpans.length > 0) {
-                const lastSpan = wordSpans[wordSpans.length - 1];
-                const spanRect = lastSpan.getBoundingClientRect();
-                const quoteRect = quoteElem.getBoundingClientRect();
-                dotElem.style.left = `${spanRect.right - quoteRect.left + 6}px`;
-                dotElem.style.top = `${spanRect.top - quoteRect.top + spanRect.height / 2}px`;
-                dotElem.style.opacity = '0.5';
             } else {
                 dotElem.style.opacity = '0';
             }
         }
-
         window.addEventListener('scroll', updateScrollReader, { passive: true });
         updateScrollReader();
 
-        // 5. GESTIONE MENU MOBILE
+        // MENU MOBILE
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuIcon = document.getElementById('menuIcon');
@@ -1542,9 +1830,7 @@
             menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
             lucide.createIcons();
         }
-
         menuToggle.addEventListener('click', toggleMenu);
-
         document.querySelectorAll('.mobile-menu-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (mobileMenu.classList.contains('open')) {
@@ -1555,25 +1841,108 @@
             });
         });
 
-        // 6. ACCORDION DISCIPLINE COMPLETAMENTE INDIPENDENTI
-        const disciplineCards = document.querySelectorAll('.discipline-card');
-        disciplineCards.forEach(card => {
+        // 3. QUIZ INTERATTIVO TROVA LA TUA PRATICA IDEALE
+        const quizBtns = document.querySelectorAll('.quiz-btn');
+        const disciplineCardsAll = document.querySelectorAll('.discipline-card');
+
+        quizBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                quizBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                disciplineCardsAll.forEach(card => {
+                    const tags = card.getAttribute('data-tags') || '';
+                    if (filter === 'all' || tags.includes(filter)) {
+                        card.style.display = 'block';
+                        if (filter !== 'all') {
+                            card.classList.add('highlighted');
+                            card.classList.add('active');
+                        } else {
+                            card.classList.remove('highlighted');
+                        }
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('highlighted');
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // ACCORDION DISCIPLINE
+        disciplineCardsAll.forEach(card => {
             const header = card.querySelector('.discipline-header');
             header.addEventListener('click', () => {
                 card.classList.toggle('active');
             });
         });
 
-        // 7. INTERSECTION OBSERVER PER SCROLL REVEAL
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+        // 4. CANVAS ONDE FLUIDE ODAKA
+        const waveCanvas = document.getElementById('odakaWaveCanvas');
+        if (waveCanvas) {
+            const wCtx = waveCanvas.getContext('2d');
+            let waveStep = 0;
+
+            function resizeWaveCanvas() {
+                waveCanvas.width = waveCanvas.parentElement.offsetWidth;
+                waveCanvas.height = 180;
+            }
+            window.addEventListener('resize', resizeWaveCanvas);
+            resizeWaveCanvas();
+
+            function drawOdakaWaves() {
+                wCtx.clearRect(0, 0, waveCanvas.width, waveCanvas.height);
+                waveStep += 0.015;
+
+                // Onda 1 (Salvia)
+                wCtx.beginPath();
+                wCtx.moveTo(0, waveCanvas.height / 2);
+                for (let x = 0; x <= waveCanvas.width; x += 10) {
+                    const y = Math.sin(x * 0.008 + waveStep) * 22 + Math.cos(x * 0.004 + waveStep * 0.5) * 12 + 90;
+                    wCtx.lineTo(x, y);
                 }
+                wCtx.strokeStyle = 'rgba(59, 90, 78, 0.4)';
+                wCtx.lineWidth = 3;
+                wCtx.stroke();
+
+                // Onda 2 (Terracotta Soft)
+                wCtx.beginPath();
+                wCtx.moveTo(0, waveCanvas.height / 2);
+                for (let x = 0; x <= waveCanvas.width; x += 10) {
+                    const y = Math.cos(x * 0.006 - waveStep * 0.8) * 26 + Math.sin(x * 0.003 + waveStep) * 10 + 95;
+                    wCtx.lineTo(x, y);
+                }
+                wCtx.strokeStyle = 'rgba(196, 122, 83, 0.35)';
+                wCtx.lineWidth = 2;
+                wCtx.stroke();
+
+                requestAnimationFrame(drawOdakaWaves);
+            }
+            drawOdakaWaves();
+        }
+
+        // 5. MODALE FLOATING CTA
+        const openCtaBtn = document.getElementById('openCtaModal');
+        const closeCtaBtn = document.getElementById('closeCtaModal');
+        const contactModal = document.getElementById('contactModal');
+
+        if (openCtaBtn && contactModal) {
+            openCtaBtn.addEventListener('click', () => contactModal.classList.add('open'));
+            closeCtaBtn.addEventListener('click', () => contactModal.classList.remove('open'));
+            contactModal.addEventListener('click', (e) => {
+                if (e.target === contactModal) contactModal.classList.remove('open');
+            });
+        }
+
+        // INTERSECTION OBSERVER REVEAL
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-
         reveals.forEach(el => observer.observe(el));
     </script>
 </body>
