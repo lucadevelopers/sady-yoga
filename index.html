@@ -19,12 +19,13 @@
             --bg-main: #FAF8F5;
             --bg-card: rgba(255, 255, 255, 0.85);
             --bg-card-hover: rgba(255, 255, 255, 0.98);
-            --primary: #3B5A4E;        /* Verde Salvia Profondo (Colore Navbar & Logo) */
+            --primary: #3B5A4E;        /* Verde Salvia Profondo (Testi e Accenti) */
             --primary-light: #EBF1ED;
             --primary-soft: #7A9A8B;
             --accent: #C47A53;         /* Terracotta Warm */
             --accent-light: #F8EFEA;
-            --sand: #EFECE6;
+            --sand: #EFECE6;           /* BEIGE DELLA NAVBAR */
+            --sand-dark: #DFD9CE;      /* Bordo Beige Scuro */
             --text-dark: #232B28;
             --text-muted: #586360;
             --border: #E5E0D8;
@@ -74,18 +75,18 @@
             transition: transform 0.05s linear;
         }
 
-        /* HEADER NAVIGATION (COLORE LOGO & CENTRATA) */
+        /* HEADER NAVIGATION (COLORE BEIGE E CENTRATA) */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: var(--primary);
+            background: var(--sand);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--sand-dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             transition: all 0.3s ease;
         }
 
@@ -111,8 +112,8 @@
             height: 58px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(59, 90, 78, 0.15);
             transition: transform 0.3s ease;
         }
 
@@ -120,7 +121,7 @@
             transform: scale(1.06);
         }
 
-        /* LINK DELLA NAVBAR (SINISTRA E DESTRA RISPETTO AL LOGO) */
+        /* LINK DELLA NAVBAR (SINISTRA E DESTRA) */
         .nav-links {
             display: flex;
             gap: 28px;
@@ -140,12 +141,11 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #FFFFFF;
+            color: var(--text-dark);
             font-size: 0.92rem;
             font-weight: 500;
             transition: color 0.3s, transform 0.3s;
             position: relative;
-            opacity: 0.9;
         }
 
         .nav-links a::after {
@@ -155,13 +155,12 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: var(--accent-light);
+            background-color: var(--accent);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            opacity: 1;
-            color: var(--accent-light);
+            color: var(--accent);
         }
 
         .nav-links a:hover::after {
@@ -172,7 +171,7 @@
             display: none;
             background: none;
             border: none;
-            color: #FFFFFF;
+            color: var(--text-dark);
             cursor: pointer;
             padding: 8px;
             border-radius: 8px;
@@ -182,7 +181,7 @@
         }
 
         .menu-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         /* HERO SECTION */
@@ -673,19 +672,19 @@
                 height: 48px;
             }
 
-            /* MENU A TENDINA MOBILE */
+            /* MENU A TENDINA MOBILE COORDINATO (BEIGE) */
             .mobile-menu-links {
                 position: absolute;
                 top: 85px;
                 left: 0;
                 right: 0;
-                background: var(--primary);
+                background: var(--sand);
                 backdrop-filter: blur(15px);
                 flex-direction: column;
                 gap: 0;
                 padding: 10px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+                border-bottom: 1px solid var(--sand-dark);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.4s ease, opacity 0.3s ease;
@@ -709,9 +708,9 @@
                 display: block;
                 padding: 14px 20px;
                 font-size: 1rem;
-                color: #FFFFFF;
+                color: var(--text-dark);
                 text-decoration: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid var(--border);
             }
 
             section { padding: 55px 0; }
@@ -725,7 +724,7 @@
     <!-- CURSORE LUMINESCENTE (MOUSE & TOUCH) -->
     <div id="cursor-glow"></div>
 
-    <!-- Navigazione con Logo al Centro -->
+    <!-- Navigazione (Beige, Logo al Centro) -->
     <nav>
         <div class="container nav-container">
             <!-- Link di Sinistra -->
@@ -737,7 +736,7 @@
 
             <!-- Logo al Centro -->
             <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/58x58/3B5A4E/FFFFFF?text=S'">
+                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/58x58/EFECE6/3B5A4E?text=S'">
             </a>
 
             <!-- Link di Destra -->
@@ -753,7 +752,7 @@
             </button>
         </div>
 
-        <!-- Menu a Tendina Mobile (Visibile solo su schermi piccoli) -->
+        <!-- Menu a Tendina Mobile (Beige) -->
         <ul class="mobile-menu-links" id="mobileMenu">
             <li><a href="#profilo">Profilo</a></li>
             <li><a href="#formazione">Formazione</a></li>
@@ -989,7 +988,7 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Un approfondimento del metodo Odaka dedicato’all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
+                        Un approfondimento del metodo Odaka dedicato all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
                     </div>
                 </div>
 
