@@ -24,7 +24,7 @@
             --primary-soft: #7A9A8B;
             --accent: #C47A53;         /* Terracotta Warm */
             --accent-light: #F8EFEA;
-            --sand: #EFECE6;
+            --sand: #F7F3EC;           /* Beige coordinato al logo */
             --sand-dark: #DFD9CE;
             --text-dark: #232B28;
             --text-muted: #586360;
@@ -75,25 +75,30 @@
             transition: transform 0.05s linear;
         }
 
-        /* NAVBAR CON STESSO SFONDO E LOGO AL NATURALE AL CENTRO */
-        nav {
+        /* NAVBAR "FLOATING PILL" FLUTTUANTE A CAPSULA */
+        nav.floating-nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(250, 248, 245, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1100px;
+            background: rgba(247, 243, 236, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(229, 224, 216, 0.6);
-            transition: all 0.3s ease;
+            border-radius: 60px;
+            border: 1px solid rgba(229, 224, 216, 0.8);
+            box-shadow: 0 12px 35px rgba(35, 43, 40, 0.08), 0 2px 6px rgba(0,0,0,0.02);
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+            padding: 0 28px;
         }
 
         .nav-container {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            height: 90px;
+            height: 75px;
             position: relative;
         }
 
@@ -105,21 +110,22 @@
             text-decoration: none;
         }
 
-        /* LOGO AL NATURALE (SENZA CERCHIO) */
+        /* LOGO NATURALE ED INGRANDITO */
         .nav-logo-pic {
-            height: 52px;
+            height: 62px;
             width: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
+            mix-blend-mode: multiply;
         }
 
         .logo-wrapper:hover .nav-logo-pic {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 24px;
             list-style: none;
             align-items: center;
         }
@@ -137,7 +143,7 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-dark);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.3s, transform 0.3s;
             position: relative;
@@ -181,7 +187,7 @@
 
         /* HERO SECTION */
         header.hero {
-            padding: 160px 0 70px;
+            padding: 165px 0 70px;
             position: relative;
             background: radial-gradient(circle at 50% 20%, #F3F7F4 0%, var(--bg-main) 70%);
             text-align: center;
@@ -758,8 +764,15 @@
             text-decoration: underline;
         }
 
-        /* RESPONSIVE MOBILE LAYOUT */
+        /* RESPONSIVE MOBILE LAYOUT PER FLOATING PILL */
         @media (max-width: 850px) {
+            nav.floating-nav {
+                top: 12px;
+                width: calc(100% - 24px);
+                padding: 0 18px;
+                border-radius: 35px;
+            }
+
             .menu-toggle {
                 display: block;
             }
@@ -768,6 +781,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                height: 65px;
             }
 
             .nav-links.left, .nav-links.right {
@@ -781,21 +795,22 @@
             }
 
             .nav-logo-pic {
-                height: 42px;
+                height: 52px;
             }
 
             .mobile-menu-links {
                 position: absolute;
-                top: 90px;
+                top: 75px;
                 left: 0;
                 right: 0;
-                background: rgba(250, 248, 245, 0.98);
-                backdrop-filter: blur(15px);
+                background: rgba(247, 243, 236, 0.98);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
                 gap: 0;
                 padding: 10px 0;
-                border-bottom: 1px solid rgba(229, 224, 216, 0.8);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+                border-radius: 20px;
+                border: 1px solid rgba(229, 224, 216, 0.9);
+                box-shadow: 0 16px 30px rgba(0,0,0,0.1);
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.4s ease, opacity 0.3s ease;
@@ -840,9 +855,9 @@
     <!-- CURSORE LUMINESCENTE (MOUSE & TOUCH) -->
     <div id="cursor-glow"></div>
 
-    <!-- Navigazione con stesso sfondo e logo al naturale al centro -->
-    <nav>
-        <div class="container nav-container">
+    <!-- Navigazione Floating Pill Fluttuante a Capsula -->
+    <nav class="floating-nav">
+        <div class="nav-container">
             <!-- Link di Sinistra -->
             <ul class="nav-links left">
                 <li><a href="#profilo">Profilo</a></li>
@@ -850,9 +865,9 @@
                 <li><a href="#esperienze">Esperienze</a></li>
             </ul>
 
-            <!-- Logo al Naturale al Centro -->
+            <!-- Logo al Centro -->
             <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/140x52/FAF8F5/3B5A4E?text=Logo'">
+                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/180x80/F7F3EC/3B5A4E?text=Saadiya'">
             </a>
 
             <!-- Link di Destra -->
@@ -868,7 +883,7 @@
             </button>
         </div>
 
-        <!-- Menu Mobile -->
+        <!-- Menu Mobile Integrato -->
         <ul class="mobile-menu-links" id="mobileMenu">
             <li><a href="#profilo">Profilo</a></li>
             <li><a href="#formazione">Formazione</a></li>
