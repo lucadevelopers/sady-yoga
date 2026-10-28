@@ -19,7 +19,7 @@
             --bg-main: #FAF8F5;
             --bg-card: rgba(255, 255, 255, 0.85);
             --bg-card-hover: rgba(255, 255, 255, 0.98);
-            --primary: #3B5A4E;        /* Verde Salvia Profondo */
+            --primary: #3B5A4E;        /* Verde Salvia Profondo (Colore Navbar & Logo) */
             --primary-light: #EBF1ED;
             --primary-soft: #7A9A8B;
             --accent: #C47A53;         /* Terracotta Warm */
@@ -74,62 +74,78 @@
             transition: transform 0.05s linear;
         }
 
-        /* HEADER NAVIGATION */
+        /* HEADER NAVIGATION (COLORE LOGO & CENTRATA) */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(250, 248, 245, 0.92);
+            background: var(--primary);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
         .nav-container {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            height: 80px;
+            height: 85px;
+            position: relative;
         }
 
+        /* LOGO AL CENTRO */
         .logo-wrapper {
+            grid-column: 2;
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
             text-decoration: none;
         }
 
         .nav-logo-pic {
-            width: 55px;
-            height: 55px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--primary);
-            box-shadow: 0 4px 12px rgba(59, 90, 78, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
         }
 
         .logo-wrapper:hover .nav-logo-pic {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
+        /* LINK DELLA NAVBAR (SINISTRA E DESTRA RISPETTO AL LOGO) */
         .nav-links {
             display: flex;
-            gap: 26px;
+            gap: 28px;
             list-style: none;
             align-items: center;
         }
 
+        .nav-links.left {
+            grid-column: 1;
+            justify-content: flex-start;
+        }
+
+        .nav-links.right {
+            grid-column: 3;
+            justify-content: flex-end;
+        }
+
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: #FFFFFF;
             font-size: 0.92rem;
             font-weight: 500;
             transition: color 0.3s, transform 0.3s;
             position: relative;
+            opacity: 0.9;
         }
 
         .nav-links a::after {
@@ -139,12 +155,13 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: var(--accent);
+            background-color: var(--accent-light);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            opacity: 1;
+            color: var(--accent-light);
         }
 
         .nav-links a:hover::after {
@@ -155,16 +172,22 @@
             display: none;
             background: none;
             border: none;
-            color: var(--primary);
+            color: #FFFFFF;
             cursor: pointer;
             padding: 8px;
             border-radius: 8px;
             transition: background-color 0.3s ease;
+            grid-column: 3;
+            justify-self: end;
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         /* HERO SECTION */
         header.hero {
-            padding: 140px 0 80px;
+            padding: 160px 0 80px;
             position: relative;
             background: radial-gradient(circle at 50% 20%, #F3F7F4 0%, var(--bg-main) 70%);
             text-align: center;
@@ -524,7 +547,7 @@
         }
 
         .discipline-card.active .discipline-content {
-            max-height: 350px; /* Spazio sufficiente per le descrizioni più lunghe */
+            max-height: 350px;
             padding: 18px 18px 22px 18px;
             border-top: 1px solid var(--border);
         }
@@ -624,55 +647,71 @@
         }
 
         /* RESPONSIVE MOBILE LAYOUT */
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .menu-toggle {
                 display: block;
             }
 
-            .nav-logo-pic {
-                width: 45px;
-                height: 45px;
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
 
-            .nav-links {
+            .nav-links.left, .nav-links.right {
+                display: none;
+            }
+
+            .logo-wrapper {
                 position: absolute;
-                top: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .nav-logo-pic {
+                width: 48px;
+                height: 48px;
+            }
+
+            /* MENU A TENDINA MOBILE */
+            .mobile-menu-links {
+                position: absolute;
+                top: 85px;
                 left: 0;
                 right: 0;
-                background: rgba(250, 248, 245, 0.98);
+                background: var(--primary);
                 backdrop-filter: blur(15px);
                 flex-direction: column;
                 gap: 0;
                 padding: 10px 0;
-                border-bottom: 1px solid var(--border);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.4s ease, opacity 0.3s ease;
                 opacity: 0;
                 pointer-events: none;
+                list-style: none;
             }
 
-            .nav-links.open {
+            .mobile-menu-links.open {
                 max-height: 350px;
                 opacity: 1;
                 pointer-events: auto;
             }
 
-            .nav-links li {
+            .mobile-menu-links li {
                 width: 100%;
                 text-align: center;
             }
 
-            .nav-links a {
+            .mobile-menu-links a {
                 display: block;
                 padding: 14px 20px;
                 font-size: 1rem;
-                border-bottom: 1px solid rgba(229, 224, 216, 0.4);
-            }
-
-            .nav-links a::after {
-                display: none;
+                color: #FFFFFF;
+                text-decoration: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             section { padding: 55px 0; }
@@ -686,26 +725,43 @@
     <!-- CURSORE LUMINESCENTE (MOUSE & TOUCH) -->
     <div id="cursor-glow"></div>
 
-    <!-- Navigazione -->
+    <!-- Navigazione con Logo al Centro -->
     <nav>
         <div class="container nav-container">
-            <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/55x55/3B5A4E/FFFFFF?text=S'">
-            </a>
-            
-            <button class="menu-toggle" id="menuToggle" aria-label="Apri Menu">
-                <i data-lucide="menu" id="menuIcon" size="26"></i>
-            </button>
-
-            <ul class="nav-links" id="navLinks">
+            <!-- Link di Sinistra -->
+            <ul class="nav-links left">
                 <li><a href="#profilo">Profilo</a></li>
                 <li><a href="#formazione">Formazione</a></li>
                 <li><a href="#esperienze">Esperienze</a></li>
+            </ul>
+
+            <!-- Logo al Centro -->
+            <a href="#" class="logo-wrapper">
+                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/58x58/3B5A4E/FFFFFF?text=S'">
+            </a>
+
+            <!-- Link di Destra -->
+            <ul class="nav-links right">
                 <li><a href="#discipline">Discipline</a></li>
                 <li><a href="#competenze">Competenze</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
+
+            <!-- Tasto Mobile Hamburger -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Apri Menu">
+                <i data-lucide="menu" id="menuIcon" size="26"></i>
+            </button>
         </div>
+
+        <!-- Menu a Tendina Mobile (Visibile solo su schermi piccoli) -->
+        <ul class="mobile-menu-links" id="mobileMenu">
+            <li><a href="#profilo">Profilo</a></li>
+            <li><a href="#formazione">Formazione</a></li>
+            <li><a href="#esperienze">Esperienze</a></li>
+            <li><a href="#discipline">Discipline</a></li>
+            <li><a href="#competenze">Competenze</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
     </nav>
 
     <!-- Hero Header con Canvas Particelle -->
@@ -933,7 +989,7 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Un approfondimento del metodo Odaka dedicato all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
+                        Un approfondimento del metodo Odaka dedicato’all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
                     </div>
                 </div>
 
@@ -1133,22 +1189,22 @@
 
         // 3. GESTIONE MENU MOBILE HAMBURGER
         const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+        const mobileMenu = document.getElementById('mobileMenu');
         const menuIcon = document.getElementById('menuIcon');
 
         function toggleMenu() {
-            navLinks.classList.toggle('open');
-            const isOpen = navLinks.classList.contains('open');
+            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
             menuIcon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
             lucide.createIcons();
         }
 
         menuToggle.addEventListener('click', toggleMenu);
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
             link.addEventListener('click', () => {
-                if (navLinks.classList.contains('open')) {
-                    navLinks.classList.remove('open');
+                if (mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
                     menuIcon.setAttribute('data-lucide', 'menu');
                     lucide.createIcons();
                 }
