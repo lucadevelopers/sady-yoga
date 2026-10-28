@@ -110,7 +110,6 @@
             text-decoration: none;
         }
 
-        /* LOGO NATURALE ED INGRANDITO */
         .nav-logo-pic {
             height: 62px;
             width: auto;
@@ -381,26 +380,16 @@
             position: relative;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-            will-change: opacity, transform;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .section-header {
             text-align: center;
             max-width: 700px;
             margin: 0 auto 50px;
+            position: relative;
         }
 
-        .section-tag {
-            color: var(--accent);
+        /* EFFETTO SCRITTURA ILLUMINATA SU CHI SONO E PROFILO & FILOSOFIA */
+        .section-tag-scroll {
+            color: rgba(196, 122, 83, 0.25);
             font-size: 0.82rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -409,10 +398,43 @@
             display: block;
         }
 
-        .section-title {
+        .section-title-scroll {
             font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--primary);
+            color: rgba(59, 90, 78, 0.22);
             line-height: 1.2;
+        }
+
+        .char-scroll, .word-scroll {
+            display: inline-block;
+            transition: color 0.2s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        .char-scroll.active, .word-scroll.active {
+            color: var(--accent);
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(196, 122, 83, 0.3);
+        }
+
+        .section-title-scroll .word-scroll.active {
+            color: var(--primary);
+            font-weight: 700;
+            text-shadow: 0 0 12px rgba(59, 90, 78, 0.25);
+        }
+
+        /* PUNTINO FLUTTUANTE SUL TITOLO */
+        .section-reader-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent), 0 0 20px rgba(196, 122, 83, 0.6);
+            pointer-events: none;
+            transition: all 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            z-index: 10;
         }
 
         /* PROFILO PERSONALE CARD & SCROLL READER ILLUMINATO */
@@ -437,7 +459,6 @@
             background: var(--accent);
         }
 
-        /* EFFETTO SCRITTURA ILLUMINATA CON PUNTINO CHE SCORRE */
         .scroll-reader-quote {
             font-size: clamp(1.25rem, 3.8vw, 1.6rem);
             font-family: 'Cormorant Garamond', serif;
@@ -474,11 +495,6 @@
             opacity: 0;
             transform: translate(-50%, -50%);
             z-index: 10;
-        }
-
-        .scroll-reader-quote:hover .scroll-reader-dot,
-        .scroll-reader-quote.is-reading .scroll-reader-dot {
-            opacity: 1;
         }
 
         .profile-text p {
@@ -974,12 +990,13 @@
         </div>
     </div>
 
-    <!-- Profilo Personale con Effetto Scrittura Illuminata -->
+    <!-- Profilo Personale con Effetto Scrittura Illuminata PARTENDO DA CHI SONO -->
     <section id="profilo">
-        <div class="container reveal">
-            <div class="section-header">
-                <span class="section-tag">Chi Sono</span>
-                <h2 class="section-title">Profilo & Filosofia</h2>
+        <div class="container">
+            <div class="section-header" id="sectionHeaderBlock">
+                <div class="section-reader-dot" id="sectionReaderDot"></div>
+                <span class="section-tag-scroll" id="sectionTagScroll">Chi Sono</span>
+                <h2 class="section-title-scroll" id="sectionTitleScroll">Profilo & Filosofia</h2>
             </div>
 
             <div class="profile-container">
@@ -1008,8 +1025,8 @@
     <section id="formazione" style="background-color: var(--sand);">
         <div class="container reveal">
             <div class="section-header">
-                <span class="section-tag">Qualifiche Nazionali & Internazionali</span>
-                <h2 class="section-title">Percorso di Formazione</h2>
+                <span class="section-tag-scroll" style="color:var(--accent);">Qualifiche Nazionali & Internazionali</span>
+                <h2 class="section-title-scroll" style="color:var(--primary);">Percorso di Formazione</h2>
             </div>
 
             <div class="grid-2">
@@ -1054,8 +1071,8 @@
     <section id="esperienze">
         <div class="container reveal">
             <div class="section-header">
-                <span class="section-tag">Attività e Centri</span>
-                <h2 class="section-title">Esperienza Professionale</h2>
+                <span class="section-tag-scroll" style="color:var(--accent);">Attività e Centri</span>
+                <h2 class="section-title-scroll" style="color:var(--primary);">Esperienza Professionale</h2>
             </div>
 
             <div class="grid-2">
@@ -1091,8 +1108,8 @@
     <section id="discipline" style="background-color: #F4F7F5;">
         <div class="container reveal">
             <div class="section-header">
-                <span class="section-tag">I Miei Corsi</span>
-                <h2 class="section-title">Discipline Insegnate</h2>
+                <span class="section-tag-scroll" style="color:var(--accent);">I Miei Corsi</span>
+                <h2 class="section-title-scroll" style="color:var(--primary);">Discipline Insegnate</h2>
                 <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.98rem;">Clicca su ogni pratica per scoprire la descrizione dettagliata.</p>
             </div>
 
@@ -1246,8 +1263,8 @@
     <section id="competenze">
         <div class="container reveal">
             <div class="section-header">
-                <span class="section-tag">Punti di Forza</span>
-                <h2 class="section-title">Competenze & Collaborazioni</h2>
+                <span class="section-tag-scroll" style="color:var(--accent);">Punti di Forza</span>
+                <h2 class="section-title-scroll" style="color:var(--primary);">Competenze & Collaborazioni</h2>
             </div>
 
             <div class="grid-3">
@@ -1453,77 +1470,148 @@
 
         autoLoop();
 
-        // 4. EFFETTO SCRITTURA ILLUMINATA CON PUNTINO CHE SCORRE
+        // 4. ANIMAZIONE COMPLETA SCROLL READER: DA "CHI SONO" -> "PROFILO & FILOSOFIA" -> CITAZIONE
+        const tagElem = document.getElementById('sectionTagScroll');
+        const titleElem = document.getElementById('sectionTitleScroll');
+        const headerDotElem = document.getElementById('sectionReaderDot');
+
         const quoteElem = document.getElementById('scrollReaderQuote');
-        const dotElem = document.getElementById('scrollReaderDot');
-        
-        const originalText = quoteElem.innerText.trim();
-        const wordsArray = originalText.split(/\s+/);
-        
+        const quoteDotElem = document.getElementById('scrollReaderDot');
+
+        // Trasformiamo CHI SONO in singoli caratteri
+        const tagText = tagElem.innerText.trim();
+        tagElem.innerHTML = '';
+        const tagChars = [];
+        for (let char of tagText) {
+            const span = document.createElement('span');
+            span.className = 'char-scroll';
+            span.innerText = char === ' ' ? '\u00A0' : char;
+            tagElem.appendChild(span);
+            tagChars.push(span);
+        }
+
+        // Trasformiamo PROFILO & FILOSOFIA in parole
+        const titleText = titleElem.innerText.trim();
+        const titleWordsArr = titleText.split(/\s+/);
+        titleElem.innerHTML = '';
+        const titleWords = [];
+        titleWordsArr.forEach((wordText, i) => {
+            const span = document.createElement('span');
+            span.className = 'word-scroll';
+            span.innerText = wordText;
+            titleElem.appendChild(span);
+            titleWords.push(span);
+            if (i < titleWordsArr.length - 1) {
+                titleElem.appendChild(document.createTextNode(' '));
+            }
+        });
+
+        // Trasformiamo la citazione in parole
+        const quoteText = quoteElem.innerText.trim();
+        const quoteWordsArr = quoteText.split(/\s+/);
         quoteElem.innerHTML = '';
-        quoteElem.appendChild(dotElem);
-        
-        wordsArray.forEach((wordText, index) => {
+        quoteElem.appendChild(quoteDotElem);
+        const quoteWords = [];
+        quoteWordsArr.forEach((wordText, i) => {
             const span = document.createElement('span');
             span.className = 'word';
             span.innerText = wordText;
             quoteElem.appendChild(span);
-            if (index < wordsArray.length - 1) {
+            quoteWords.push(span);
+            if (i < quoteWordsArr.length - 1) {
                 quoteElem.appendChild(document.createTextNode(' '));
             }
         });
 
-        const wordSpans = quoteElem.querySelectorAll('.word');
-
-        function updateScrollReader() {
-            const rect = quoteElem.getBoundingClientRect();
+        function updateFullSequenceScroll() {
+            const headerBlock = document.getElementById('sectionHeaderBlock');
+            const headerRect = headerBlock.getBoundingClientRect();
+            const quoteRect = quoteElem.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            
-            const totalDistance = windowHeight * 0.6;
-            const elementProgress = (windowHeight * 0.7 - rect.top) / totalDistance;
-            const clampedProgress = Math.min(Math.max(elementProgress, 0), 1);
 
-            if (clampedProgress > 0 && clampedProgress < 1) {
-                quoteElem.classList.add('is-reading');
-            } else {
-                quoteElem.classList.remove('is-reading');
-            }
+            // FASE 1: "CHI SONO" -> "PROFILO & FILOSOFIA"
+            const headerProgress = (windowHeight * 0.75 - headerRect.top) / (windowHeight * 0.45);
+            const clampedHeaderProgress = Math.min(Math.max(headerProgress, 0), 1);
 
-            const activeIndex = Math.floor(clampedProgress * wordSpans.length);
+            const totalHeaderSteps = tagChars.length + titleWords.length;
+            const currentHeaderStep = Math.floor(clampedHeaderProgress * totalHeaderSteps);
 
-            wordSpans.forEach((span, i) => {
-                if (i <= activeIndex && clampedProgress > 0) {
+            // Caratteri di "CHI SONO"
+            tagChars.forEach((span, i) => {
+                if (i <= currentHeaderStep && clampedHeaderProgress > 0) {
                     span.classList.add('active');
                 } else {
                     span.classList.remove('active');
                 }
             });
 
-            if (wordSpans[activeIndex] && clampedProgress > 0 && clampedProgress < 1) {
-                const targetSpan = wordSpans[activeIndex];
-                const spanRect = targetSpan.getBoundingClientRect();
-                const quoteRect = quoteElem.getBoundingClientRect();
+            // Parole di "PROFILO & FILOSOFIA"
+            titleWords.forEach((span, i) => {
+                const globalIndex = tagChars.length + i;
+                if (globalIndex <= currentHeaderStep && clampedHeaderProgress > 0) {
+                    span.classList.add('active');
+                } else {
+                    span.classList.remove('active');
+                }
+            });
 
-                const x = spanRect.left - quoteRect.left + spanRect.width / 2;
-                const y = spanRect.top - quoteRect.top - 8;
+            // Posizionamento del pallino sul blocco Intestazione
+            if (clampedHeaderProgress > 0 && clampedHeaderProgress < 1) {
+                let targetSpan;
+                if (currentHeaderStep < tagChars.length) {
+                    targetSpan = tagChars[Math.max(0, currentHeaderStep)];
+                } else {
+                    const titleIdx = Math.min(titleWords.length - 1, currentHeaderStep - tagChars.length);
+                    targetSpan = titleWords[titleIdx];
+                }
 
-                dotElem.style.left = `${x}px`;
-                dotElem.style.top = `${y}px`;
-                dotElem.style.opacity = '1';
-            } else if (clampedProgress >= 1 && wordSpans.length > 0) {
-                const lastSpan = wordSpans[wordSpans.length - 1];
-                const spanRect = lastSpan.getBoundingClientRect();
-                const quoteRect = quoteElem.getBoundingClientRect();
-                dotElem.style.left = `${spanRect.right - quoteRect.left + 6}px`;
-                dotElem.style.top = `${spanRect.top - quoteRect.top + spanRect.height / 2}px`;
-                dotElem.style.opacity = '0.5';
+                if (targetSpan) {
+                    const spanRect = targetSpan.getBoundingClientRect();
+                    const blockRect = headerBlock.getBoundingClientRect();
+                    headerDotElem.style.left = `${spanRect.left - blockRect.left + spanRect.width / 2}px`;
+                    headerDotElem.style.top = `${spanRect.top - blockRect.top - 6}px`;
+                    headerDotElem.style.opacity = '1';
+                }
             } else {
-                dotElem.style.opacity = '0';
+                headerDotElem.style.opacity = '0';
+            }
+
+            // FASE 2: CITAZIONE "Credo profondamente..."
+            const quoteProgress = (windowHeight * 0.7 - quoteRect.top) / (windowHeight * 0.55);
+            const clampedQuoteProgress = Math.min(Math.max(quoteProgress, 0), 1);
+            const currentQuoteStep = Math.floor(clampedQuoteProgress * quoteWords.length);
+
+            quoteWords.forEach((span, i) => {
+                if (i <= currentQuoteStep && clampedQuoteProgress > 0) {
+                    span.classList.add('active');
+                } else {
+                    span.classList.remove('active');
+                }
+            });
+
+            if (clampedQuoteProgress > 0 && clampedQuoteProgress < 1) {
+                const targetSpan = quoteWords[Math.min(quoteWords.length - 1, currentQuoteStep)];
+                if (targetSpan) {
+                    const spanRect = targetSpan.getBoundingClientRect();
+                    const qRect = quoteElem.getBoundingClientRect();
+                    quoteDotElem.style.left = `${spanRect.left - qRect.left + spanRect.width / 2}px`;
+                    quoteDotElem.style.top = `${spanRect.top - qRect.top - 8}px`;
+                    quoteDotElem.style.opacity = '1';
+                }
+            } else if (clampedQuoteProgress >= 1) {
+                const lastSpan = quoteWords[quoteWords.length - 1];
+                const spanRect = lastSpan.getBoundingClientRect();
+                const qRect = quoteElem.getBoundingClientRect();
+                quoteDotElem.style.left = `${spanRect.right - qRect.left + 6}px`;
+                quoteDotElem.style.top = `${spanRect.top - qRect.top + spanRect.height / 2}px`;
+                quoteDotElem.style.opacity = '0.5';
+            } else {
+                quoteDotElem.style.opacity = '0';
             }
         }
 
-        window.addEventListener('scroll', updateScrollReader, { passive: true });
-        updateScrollReader();
+        window.addEventListener('scroll', updateFullSequenceScroll, { passive: true });
+        updateFullSequenceScroll();
 
         // 5. GESTIONE MENU MOBILE
         const menuToggle = document.getElementById('menuToggle');
