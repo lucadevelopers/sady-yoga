@@ -162,11 +162,7 @@
             transition: background-color 0.3s ease;
         }
 
-        .menu-toggle:hover {
-            background-color: var(--primary-light);
-        }
-
-        /* HERO SECTION CON CANVAS */
+        /* HERO SECTION */
         header.hero {
             padding: 140px 0 80px;
             position: relative;
@@ -459,10 +455,10 @@
             font-weight: bold;
         }
 
-        /* DISCIPLINE GRID */
+        /* DISCIPLINE ACCORDION (MENU A TENDINA) */
         .discipline-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 16px;
         }
 
@@ -470,20 +466,26 @@
             background: var(--bg-card);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 20px 18px;
             border-radius: var(--radius-md);
             border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .discipline-card:hover, .discipline-card:active {
-            border-color: var(--accent);
-            background: var(--accent-light);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(196, 122, 83, 0.1);
+        .discipline-header {
+            padding: 20px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            gap: 12px;
+            user-select: none;
+        }
+
+        .discipline-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .discipline-dot {
@@ -494,10 +496,36 @@
             flex-shrink: 0;
         }
 
-        .discipline-card h4 {
-            font-size: 1.05rem;
+        .discipline-header h4 {
+            font-size: 1.1rem;
             color: var(--primary);
             font-weight: 600;
+        }
+
+        .discipline-icon-arrow {
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .discipline-card.active .discipline-icon-arrow {
+            transform: rotate(180deg);
+        }
+
+        .discipline-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 18px;
+            background: var(--accent-light);
+            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            border-top: 0px solid var(--border);
+        }
+
+        .discipline-card.active .discipline-content {
+            max-height: 250px; /* Spazio a sufficienza per il testo */
+            padding: 16px 18px 20px 18px;
+            border-top: 1px solid var(--border);
         }
 
         /* BANNER */
@@ -813,25 +841,143 @@
         </div>
     </section>
 
-    <!-- Discipline Insegnate -->
+    <!-- DISCIPLINE CON MENU A TENDINA (ACCORDION SPIEGAZIONI) -->
     <section id="discipline" style="background-color: #F4F7F5;">
         <div class="container reveal">
             <div class="section-header">
                 <span class="section-tag">I Miei Corsi</span>
                 <h2 class="section-title">Discipline Insegnate</h2>
-                <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.98rem;">Ogni lezione è costruita per favorire consapevolezza, equilibrio e fluidità.</p>
+                <p style="color: var(--text-muted); margin-top: 8px; font-size: 0.98rem;">Clicca su ogni pratica per scoprire la descrizione dettagliata.</p>
             </div>
 
             <div class="discipline-grid">
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Light Yoga</h4></div>
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Hatha Yoga</h4></div>
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Vinyasa Yoga</h4></div>
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Aerial Yin</h4></div>
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Odaka & Pranayama Flow</h4></div>
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Yogalates</h4></div>
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Pilates Posturale</h4></div>
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Pilates Matwork</h4></div>
-                <div class="discipline-card"><div class="discipline-dot"></div><h4>Pilates Reformer</h4></div>
+                
+                <!-- 1. LIGHT YOGA -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Light Yoga</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Pratica dolce e accessibile, ideale per risvegliare il corpo in modo armonioso, sciogliere le tensioni e ritrovare calma interiore.
+                    </div>
+                </div>
+
+                <!-- 2. HATHA YOGA -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Hatha Yoga</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Lo stile classico dello yoga basato sul mantenimento consapevole delle posizioni (asana) combinato con il controllo profondo del respiro.
+                    </div>
+                </div>
+
+                <!-- 3. VINYASA YOGA -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Vinyasa Yoga</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Flusso dinamico ed energico in cui il movimento si sincronizza perfettamente con il respiro, creando una sequenza fluida e continua.
+                    </div>
+                </div>
+
+                <!-- 4. AERIAL YIN -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Aerial Yin</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Pratica rilassante eseguita con l'ausilio dell'amaca, che permette di decomprimere la colonna vertebrale e abbandonarsi a profonde posture di allungamento.
+                    </div>
+                </div>
+
+                <!-- 5. ODAKA & PRANAYAMA FLOW -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Odaka & Pranayama Flow</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Ispirato al movimento delle onde del mare, unisce transizioni fluide a tecniche avanzate di controllo del respiro (Pranayama) per centrare la mente.
+                    </div>
+                </div>
+
+                <!-- 6. YOGALATES -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Yogalates</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        La perfetta sinergia tra la tonificazione del Pilates e la flessibilità e centratura dello Yoga, per un corpo forte e allo stesso tempo elastico.
+                    </div>
+                </div>
+
+                <!-- 7. PILATES POSTURALE -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Pilates Posturale</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Mirato a correggere gli squilibri posturali, rinforzare i muscoli stabilizzatori profondi e alleviare dolori legati a tensioni croniche.
+                    </div>
+                </div>
+
+                <!-- 8. PILATES MATWORK -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Pilates Matwork</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Lavoro a corpo libero sul materassino focalizzato sul rinforzo del 'Core' (addome, lombari e bacino) per migliorare stabilità e controllo.
+                    </div>
+                </div>
+
+                <!-- 9. PILATES REFORMER -->
+                <div class="discipline-card">
+                    <div class="discipline-header">
+                        <div class="discipline-title-wrap">
+                            <div class="discipline-dot"></div>
+                            <h4>Pilates Reformer</h4>
+                        </div>
+                        <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
+                    </div>
+                    <div class="discipline-content">
+                        Allenamento avanzato eseguito sull'omonimo macchinario con sistema di molle, che offre resistenza e supporto per scolpire e riallineare il corpo.
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -902,7 +1048,7 @@
         </div>
     </footer>
 
-    <!-- Script per Animazioni, Menu e Canvas -->
+    <!-- Script per Animazioni, Menu, Canvas & Accordion -->
     <script>
         lucide.createIcons();
 
@@ -919,7 +1065,7 @@
             }
         });
 
-        // 2. CANVAS PARTICELLE SFONDO HERO (DELICATE E FLUIDE)
+        // 2. CANVAS PARTICELLE SFONDO HERO
         const canvas = document.getElementById('heroCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -994,7 +1140,20 @@
             });
         });
 
-        // 4. INTERSECTION OBSERVER PER SCROLL REVEAL FLUIDO
+        // 4. ACCORDION (MENU A TENDINA) DELLE DISCIPLINE
+        const disciplineCards = document.querySelectorAll('.discipline-card');
+        disciplineCards.forEach(card => {
+            const header = card.querySelector('.discipline-header');
+            header.addEventListener('click', () => {
+                // Chiude le altre schede aperte (opzionale, stile pulito)
+                disciplineCards.forEach(other => {
+                    if (other !== card) other.classList.remove('active');
+                });
+                card.classList.toggle('active');
+            });
+        });
+
+        // 5. INTERSECTION OBSERVER PER SCROLL REVEAL FLUIDO
         const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
