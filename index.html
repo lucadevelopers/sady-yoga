@@ -75,7 +75,7 @@
             transition: transform 0.05s linear;
         }
 
-        /* HEADER NAVIGATION (BEIGE & LOGO AL CENTRO) */
+        /* NAVBAR BEIGE CON LOGO AL CENTRO */
         nav {
             position: fixed;
             top: 0;
@@ -98,7 +98,6 @@
             position: relative;
         }
 
-        /* LOGO AL CENTRO */
         .logo-wrapper {
             grid-column: 2;
             display: flex;
@@ -121,7 +120,6 @@
             transform: scale(1.06);
         }
 
-        /* LINK NAVBAR DESKTOP */
         .nav-links {
             display: flex;
             gap: 28px;
@@ -178,6 +176,10 @@
             transition: background-color 0.3s ease;
             grid-column: 3;
             justify-self: end;
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         /* HERO SECTION */
@@ -283,133 +285,95 @@
             box-shadow: 0 10px 20px rgba(59, 90, 78, 0.12);
         }
 
-        /* ----------------------------------------------------------------- */
-        /* WOW CAROUSEL SECTION (ISPIRATO A VENIELLO STUDIO)                 */
-        /* ----------------------------------------------------------------- */
-        .showcase-section {
-            padding: 40px 0 60px;
-            position: relative;
+        /* CAROSELLO 3D REATTIVO ED ELEGANTE */
+        .showcase-carousel-section {
+            padding: 30px 0 70px;
             overflow: hidden;
-        }
-
-        .showcase-badge-wrap {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .carousel-container {
-            width: 100%;
             position: relative;
-            cursor: grab;
-            user-select: none;
-            padding: 20px 0 40px;
         }
 
-        .carousel-container:active {
+        .carousel-viewport {
+            width: 100%;
+            cursor: grab;
+            overflow: hidden;
+            padding: 20px 0 40px;
+            touch-action: pan-y;
+        }
+
+        .carousel-viewport:active {
             cursor: grabbing;
         }
 
         .carousel-track {
             display: flex;
-            gap: 24px;
+            gap: 22px;
             width: max-content;
             will-change: transform;
         }
 
         .carousel-card {
-            position: relative;
-            width: clamp(280px, 75vw, 420px);
-            height: clamp(380px, 55vh, 520px);
+            width: 280px;
+            height: 380px;
+            flex-shrink: 0;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 16px 40px rgba(35, 43, 40, 0.12);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, filter 0.4s ease;
-            flex-shrink: 0;
-            background: #D8D2C6;
-            cursor: pointer;
-            will-change: transform;
+            position: relative;
+            box-shadow: 0 12px 30px rgba(59, 90, 78, 0.1);
+            border: 1px solid var(--border);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+            user-select: none;
+            background: #EFECE6;
         }
 
         .carousel-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             pointer-events: none;
-            transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* EFFETTO ZOOM & WOW AL TOCCO / HOVER */
-        .carousel-card:hover, .carousel-card:active, .carousel-card.touch-active {
-            transform: scale(1.05) translateY(-8px);
-            box-shadow: 0 24px 50px rgba(35, 43, 40, 0.28);
-            z-index: 10;
-        }
-
-        .carousel-card:hover img, .carousel-card:active img, .carousel-card.touch-active img {
-            transform: scale(1.15);
-        }
-
-        .carousel-overlay {
+        .carousel-card-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(35, 43, 40, 0.88) 0%, rgba(35, 43, 40, 0.2) 55%, transparent 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(35, 43, 40, 0.8) 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 28px 24px;
+            padding: 22px;
             color: #FFFFFF;
             transition: opacity 0.3s ease;
         }
 
-        .carousel-overlay .tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-light);
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .carousel-overlay h3 {
-            font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+        .carousel-card-title {
+            font-size: 1.4rem;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            line-height: 1.2;
+            margin-bottom: 2px;
         }
 
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            margin-top: 10px;
+        .carousel-card-sub {
+            font-size: 0.82rem;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: #F8EFEA;
         }
 
-        .carousel-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+        /* ZOOM 3D ULTRA FLUIDO AL TOCCO / HOVER */
+        .carousel-card:hover, .carousel-card:active {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(59, 90, 78, 0.22);
+            border-color: var(--accent);
+            z-index: 10;
         }
 
-        .carousel-btn:hover {
-            background: var(--primary);
-            color: #FFF;
-            transform: scale(1.08);
+        .carousel-card:hover img, .carousel-card:active img {
+            transform: scale(1.15);
         }
 
-        /* ----------------------------------------------------------------- */
-        /* SEZIONI E ANIMAZIONI SCROLL                                       */
-        /* ----------------------------------------------------------------- */
+        /* SEZIONI E ANIMAZIONI SCROLL */
         section {
             padding: 80px 0;
             position: relative;
@@ -599,7 +563,7 @@
             font-weight: bold;
         }
 
-        /* DISCIPLINE ACCORDION (MENU A TENDINA) */
+        /* DISCIPLINE ACCORDION */
         .discipline-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -794,7 +758,6 @@
                 height: 48px;
             }
 
-            /* MENU A TENDINA MOBILE BEIGE */
             .mobile-menu-links {
                 position: absolute;
                 top: 85px;
@@ -835,6 +798,11 @@
                 border-bottom: 1px solid var(--border);
             }
 
+            .carousel-card {
+                width: 240px;
+                height: 330px;
+            }
+
             section { padding: 55px 0; }
             .profile-container { padding: 24px; }
             .specialization-banner { flex-direction: column; }
@@ -843,10 +811,10 @@
 </head>
 <body>
 
-    <!-- CURSORE LUMINESCENTE -->
+    <!-- CURSORE LUMINESCENTE (MOUSE & TOUCH) -->
     <div id="cursor-glow"></div>
 
-    <!-- Navigazione (Beige, Logo al Centro) -->
+    <!-- Navigazione Beige con Logo al Centro -->
     <nav>
         <div class="container nav-container">
             <!-- Link di Sinistra -->
@@ -858,7 +826,7 @@
 
             <!-- Logo al Centro -->
             <a href="#" class="logo-wrapper">
-                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=150&q=80'">
+                <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/58x58/EFECE6/3B5A4E?text=S'">
             </a>
 
             <!-- Link di Destra -->
@@ -874,7 +842,7 @@
             </button>
         </div>
 
-        <!-- Menu a Tendina Mobile -->
+        <!-- Menu Mobile -->
         <ul class="mobile-menu-links" id="mobileMenu">
             <li><a href="#profilo">Profilo</a></li>
             <li><a href="#formazione">Formazione</a></li>
@@ -885,7 +853,7 @@
         </ul>
     </nav>
 
-    <!-- Hero Header con Canvas Particelle -->
+    <!-- Hero Header -->
     <header class="hero">
         <canvas id="heroCanvas"></canvas>
         <div class="container hero-content">
@@ -893,7 +861,7 @@
                 <i data-lucide="map-pin" size="15"></i> Bergamo, Italia
             </div>
             
-            <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=300&q=80'">
+            <img src="fotoprofilo.jpg" alt="Saadiya Belkhadri" class="hero-profile-pic" onerror="this.src='https://placehold.co/130x130/3B5A4E/FFFFFF?text=Saadiya'">
 
             <h1 class="hero-title">Saadiya Belkhadri</h1>
             <p class="hero-subtitle">Insegnante di Yoga & Pilates</p>
@@ -909,68 +877,63 @@
         </div>
     </header>
 
-    <!-- ----------------------------------------------------------------- -->
-    <!-- NUOVO CAROSELLO INTERATTIVO (PRIMA DI "CHI SONO")                 -->
-    <!-- ----------------------------------------------------------------- -->
-    <div class="showcase-section reveal">
-        <div class="showcase-badge-wrap">
-            <span class="section-tag">Momenti di Pratica</span>
-            <h2 class="section-title">L'Arte del Movimento</h2>
-        </div>
-
-        <div class="carousel-container" id="carouselContainer">
+    <!-- CAROSELLO FOTOGRAFICO 3D REATTIVO -->
+    <div class="showcase-carousel-section">
+        <div class="carousel-viewport" id="carouselViewport">
             <div class="carousel-track" id="carouselTrack">
-                
+                <!-- Card 1 -->
                 <div class="carousel-card">
-                    <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80" alt="Pratica Vinyasa Yoga">
-                    <div class="carousel-overlay">
-                        <span class="tag">Fluidità & Respiro</span>
-                        <h3>Vinyasa & Flow Practice</h3>
+                    <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80" alt="Vinyasa Flow">
+                    <div class="carousel-card-overlay">
+                        <div class="carousel-card-title">Vinyasa Flow</div>
+                        <div class="carousel-card-sub">Respiro & Movimento</div>
                     </div>
                 </div>
-
+                <!-- Card 2 -->
+                <div class="carousel-card">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Hatha & Meditazione">
+                    <div class="carousel-card-overlay">
+                        <div class="carousel-card-title">Hatha Yoga</div>
+                        <div class="carousel-card-sub">Equilibrio & Stabilità</div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
                 <div class="carousel-card">
                     <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" alt="Pilates Reformer">
-                    <div class="carousel-overlay">
-                        <span class="tag">Forza & Precisione</span>
-                        <h3>Pilates Reformer Training</h3>
+                    <div class="carousel-card-overlay">
+                        <div class="carousel-card-title">Pilates Reformer</div>
+                        <div class="carousel-card-sub">Forza del Core</div>
                     </div>
                 </div>
-
+                <!-- Card 4 -->
                 <div class="carousel-card">
-                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Aerial Yin Yoga">
-                    <div class="carousel-overlay">
-                        <span class="tag">Leggerezza</span>
-                        <h3>Aerial Yin & Suspension</h3>
+                    <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80" alt="Aerial Yin">
+                    <div class="carousel-card-overlay">
+                        <div class="carousel-card-title">Aerial Yin</div>
+                        <div class="carousel-card-sub">Leggerezza in Amaca</div>
                     </div>
                 </div>
-
+                <!-- Card 5 -->
                 <div class="carousel-card">
-                    <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80" alt="Odaka Yoga">
-                    <div class="carousel-overlay">
-                        <span class="tag">Armonia Marina</span>
-                        <h3>Odaka Movement</h3>
+                    <img src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=800&q=80" alt="Odaka Yoga">
+                    <div class="carousel-card-overlay">
+                        <div class="carousel-card-title">Odaka Yoga</div>
+                        <div class="carousel-card-sub">Fluidità dell'Onda</div>
                     </div>
                 </div>
-
+                <!-- Card 6 -->
                 <div class="carousel-card">
-                    <img src="https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=800&q=80" alt="Pilates Posturale">
-                    <div class="carousel-overlay">
-                        <span class="tag">Consapevolezza</span>
-                        <h3>Pilates & Posture</h3>
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Pilates Posturale">
+                    <div class="carousel-card-overlay">
+                        <div class="carousel-card-title">Pilates Posturale</div>
+                        <div class="carousel-card-sub">Consapevolezza Corporea</div>
                     </div>
                 </div>
-
             </div>
-        </div>
-
-        <div class="carousel-controls">
-            <button class="carousel-btn" id="prevBtn" aria-label="Precedente"><i data-lucide="arrow-left" size="20"></i></button>
-            <button class="carousel-btn" id="nextBtn" aria-label="Successivo"><i data-lucide="arrow-right" size="20"></i></button>
         </div>
     </div>
 
-    <!-- Profilo Personale ("Chi Sono") -->
+    <!-- Profilo Personale -->
     <section id="profilo">
         <div class="container reveal">
             <div class="section-header">
@@ -1080,7 +1043,7 @@
         </div>
     </section>
 
-    <!-- DISCIPLINE CON ACCORDION DELLE 10 SPIEGAZIONI -->
+    <!-- DISCIPLINE CON MENU A TENDINA E TUE DESCRIZIONI -->
     <section id="discipline" style="background-color: #F4F7F5;">
         <div class="container reveal">
             <div class="section-header">
@@ -1301,11 +1264,11 @@
         </div>
     </footer>
 
-    <!-- Scripts: Lucide Icons, Canvas & Carousel Engine -->
+    <!-- Script per Animazioni, Menu, Canvas, Accordion e Carosello -->
     <script>
         lucide.createIcons();
 
-        // 1. CURSORE GLOW
+        // 1. CURSORE / TOUCH GLOW ATTIVO OVUNQUE
         const cursorGlow = document.getElementById('cursor-glow');
         function updateGlowPosition(x, y) {
             cursorGlow.style.left = `${x}px`;
@@ -1369,7 +1332,87 @@
         }
         animateCanvas();
 
-        // 3. GESTIONE MENU MOBILE
+        // 3. CAROSELLO TOUCH ULTRA-FLUIDO E REATTIVO
+        const viewport = document.getElementById('carouselViewport');
+        const track = document.getElementById('carouselTrack');
+
+        // Duplica gli elementi per scorrimento infinito
+        const cards = Array.from(track.children);
+        cards.forEach(card => {
+            const clone = card.cloneNode(true);
+            track.appendChild(clone);
+        });
+
+        let isDown = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationId = 0;
+        let autoScrollSpeed = 0.8;
+        let singleLoopWidth = 0;
+
+        function calculateLoopWidth() {
+            const firstCard = track.children[0];
+            const gap = 22;
+            singleLoopWidth = (firstCard.offsetWidth + gap) * cards.length;
+        }
+        window.addEventListener('resize', calculateLoopWidth);
+        calculateLoopWidth();
+
+        function autoLoop() {
+            if (!isDown) {
+                currentTranslate -= autoScrollSpeed;
+            }
+
+            if (Math.abs(currentTranslate) >= singleLoopWidth) {
+                currentTranslate += singleLoopWidth;
+                prevTranslate += singleLoopWidth;
+            } else if (currentTranslate > 0) {
+                currentTranslate -= singleLoopWidth;
+                prevTranslate -= singleLoopWidth;
+            }
+
+            track.style.transform = `translateX(${currentTranslate}px)`;
+            animationId = requestAnimationFrame(autoLoop);
+        }
+
+        // Mouse & Touch events
+        function getPositionX(e) {
+            return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        }
+
+        function touchStart(e) {
+            isDown = true;
+            startX = getPositionX(e);
+            viewport.style.cursor = 'grabbing';
+        }
+
+        function touchMove(e) {
+            if (!isDown) return;
+            const currentX = getPositionX(e);
+            const diffX = (currentX - startX) * 1.35; // Moltiplicatore per massimo reattività
+            currentTranslate = prevTranslate + diffX;
+        }
+
+        function touchEnd() {
+            if (!isDown) return;
+            isDown = false;
+            prevTranslate = currentTranslate;
+            viewport.style.cursor = 'grab';
+        }
+
+        viewport.addEventListener('mousedown', touchStart);
+        viewport.addEventListener('mousemove', touchMove);
+        viewport.addEventListener('mouseup', touchEnd);
+        viewport.addEventListener('mouseleave', touchEnd);
+
+        viewport.addEventListener('touchstart', touchStart, { passive: true });
+        viewport.addEventListener('touchmove', touchMove, { passive: true });
+        viewport.addEventListener('touchend', touchEnd);
+
+        autoLoop();
+
+        // 4. GESTIONE MENU MOBILE
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuIcon = document.getElementById('menuIcon');
@@ -1386,122 +1429,12 @@
         document.querySelectorAll('.mobile-menu-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (mobileMenu.classList.contains('open')) {
-        // 4. ENGINE CAROSELLO INFINITO, HIGH-RESPONSIVE & WOW ZOOM
-        const track = document.getElementById('carouselTrack');
-        const container = document.getElementById('carouselContainer');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        // Duplica gli elementi per un ciclo infinito perfetto
-        const originalCards = Array.from(track.children);
-        originalCards.forEach(card => {
-            const clone = card.cloneNode(true);
-            track.appendChild(clone);
+                    mobileMenu.classList.remove('open');
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                }
+            });
         });
-
-        let currentX = 0;
-        let targetX = 0;
-        let isDragging = false;
-        let startX = 0;
-        let startTransform = 0;
-        let autoPlaySpeed = 1.0;
-        let isPaused = false;
-
-        function getTrackWidth() {
-            let total = 0;
-            originalCards.forEach(c => total += c.offsetWidth + 24);
-            return total;
-        }
-
-        // Effetto Zoom al Toccare/Rilasciare le schede (Mobile & Desktop)
-        track.querySelectorAll('.carousel-card').forEach(card => {
-            card.addEventListener('touchstart', () => card.classList.add('touch-active'), { passive: true });
-            card.addEventListener('touchend', () => card.classList.remove('touch-active'));
-            card.addEventListener('touchcancel', () => card.classList.remove('touch-active'));
-        });
-
-        // Swipe & Mouse Drag Handling reattivo (Moltiplicatore 1.35x per fluidità immediata)
-        container.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            isPaused = true;
-            startX = e.clientX;
-            startTransform = targetX;
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const diff = (e.clientX - startX) * 1.35;
-            targetX = startTransform + diff;
-        });
-
-        window.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                setTimeout(() => { isPaused = false; }, 1800);
-            }
-        });
-
-        // Touch handling reattivo per smartphone
-        container.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            isPaused = true;
-            startX = e.touches[0].clientX;
-            startTransform = targetX;
-        }, { passive: true });
-
-        window.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            const diff = (e.touches[0].clientX - startX) * 1.35;
-            targetX = startTransform + diff;
-        }, { passive: true });
-
-        window.addEventListener('touchend', () => {
-            if (isDragging) {
-                isDragging = false;
-                setTimeout(() => { isPaused = false; }, 1800);
-            }
-        });
-
-        // Controlli Freccia
-        prevBtn.addEventListener('click', () => {
-            targetX += 360;
-            isPaused = true;
-            setTimeout(() => { isPaused = false; }, 2200);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            targetX -= 360;
-            isPaused = true;
-            setTimeout(() => { isPaused = false; }, 2200);
-        });
-
-        container.addEventListener('mouseenter', () => { isPaused = true; });
-        container.addEventListener('mouseleave', () => { if (!isDragging) isPaused = false; });
-
-        // Loop di render continuo ultra-fluido (Lerp a 0.18 per massima risposta tattile)
-        function renderCarousel() {
-            if (!isPaused && !isDragging) {
-                targetX -= autoPlaySpeed;
-            }
-
-            const halfWidth = getTrackWidth();
-
-            // Calcolo wrapping infinito dinamico
-            if (targetX < -halfWidth) {
-                targetX += halfWidth;
-                currentX += halfWidth;
-            } else if (targetX > 0) {
-                targetX -= halfWidth;
-                currentX -= halfWidth;
-            }
-
-            // Lerp reattivo e ultra-fluido
-            currentX += (targetX - currentX) * 0.18;
-            track.style.transform = `translateX(${currentX}px)`;
-
-            requestAnimationFrame(renderCarousel);
-        }
-        renderCarousel();
 
         // 5. ACCORDION DISCIPLINE
         const disciplineCards = document.querySelectorAll('.discipline-card');
@@ -1515,15 +1448,15 @@
             });
         });
 
-        // 6. SCROLL REVEAL OBSERVER
+        // 6. INTERSECTION OBSERVER PER SCROLL REVEAL
         const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, { threshold: 0.08 });
+        }, { threshold: 0.1 });
 
         reveals.forEach(el => observer.observe(el));
     </script>
