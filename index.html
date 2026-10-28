@@ -415,7 +415,7 @@
             line-height: 1.2;
         }
 
-        /* PROFILO PERSONALE CARD */
+        /* PROFILO PERSONALE CARD & SCRITTURA ILLUMINATA SULLA CITAZIONE */
         .profile-container {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
@@ -437,13 +437,48 @@
             background: var(--accent);
         }
 
-        .profile-quote {
+        /* EFFETTO ILLUMINAZIONE PAROLA PER PAROLA SULLA CITAZIONE */
+        .scroll-reader-quote {
             font-size: clamp(1.25rem, 3.8vw, 1.6rem);
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
             line-height: 1.65;
             margin-bottom: 30px;
+            position: relative;
+            color: rgba(59, 90, 78, 0.22); /* Colore iniziale semi-trasparente */
+        }
+
+        .scroll-reader-quote .word {
+            display: inline-block;
+            transition: color 0.25s ease, transform 0.25s ease;
+            position: relative;
+            margin-right: 0.22em;
+        }
+
+        .scroll-reader-quote .word.active {
             color: var(--primary);
+            font-weight: 600;
+            text-shadow: 0 0 12px rgba(59, 90, 78, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .scroll-reader-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent), 0 0 20px rgba(196, 122, 83, 0.6);
+            pointer-events: none;
+            transition: all 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .scroll-reader-quote:hover .scroll-reader-dot,
+        .scroll-reader-quote.is-reading .scroll-reader-dot {
+            opacity: 1;
         }
 
         .profile-text p {
@@ -948,7 +983,9 @@
             </div>
 
             <div class="profile-container">
-                <div class="profile-quote">
+                <!-- CITAZIONE CON ILLUMINAZIONE PAROLA PER PAROLA E PUNTINO LUMINOSO -->
+                <div class="scroll-reader-quote" id="scrollReaderQuote">
+                    <div class="scroll-reader-dot" id="scrollReaderDot"></div>
                     "Credo profondamente che lo yoga unito al pilates sia un percorso di trasformazione e di consapevolezza, capace di armonizzare corpo, mente e spirito."
                 </div>
 
@@ -1271,7 +1308,7 @@
         </div>
     </footer>
 
-    <!-- Script per Animazioni, Menu, Canvas e Accordion -->
+    <!-- Script per Animazioni, Menu, Canvas, Accordion e Scrittura Illuminata Citazione -->
     <script>
         lucide.createIcons();
 
@@ -1416,7 +1453,79 @@
 
         autoLoop();
 
-        // 4. GESTIONE MENU MOBILE
+        // 4. EFFETTO ILLUMINAZIONE E PUNTINO LUMINOSO PAROLA PER PAROLA SULLA CITAZIONE
+        const quoteElem = document.getElementById('scrollReaderQuote');
+        const dotElem = document.getElementById('scrollReaderDot');
+        
+        const originalText = quoteElem.innerText.trim();
+        const wordsArray = originalText.split(/\s+/);
+        
+        quoteElem.innerHTML = '';
+        quoteElem.appendChild(dotElem);
+        
+        wordsArray.forEach((wordText, index) => {
+            const span = document.createElement('span');
+            span.className = 'word';
+            span.innerText = wordText;
+            quoteElem.appendChild(span);
+            if (index < wordsArray.length - 1) {
+                quoteElem.appendChild(document.createTextNode(' '));
+            }
+        });
+
+        const wordSpans = quoteElem.querySelectorAll('.word');
+
+        function updateScrollReader() {
+            const rect = quoteElem.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            const totalDistance = windowHeight * 0.6;
+            const elementProgress = (windowHeight * 0.7 - rect.top) / totalDistance;
+            const clampedProgress = Math.min(Math.max(elementProgress, 0), 1);
+
+            if (clampedProgress > 0 && clampedProgress < 1) {
+                quoteElem.classList.add('is-reading');
+            } else {
+                quoteElem.classList.remove('is-reading');
+            }
+
+            const activeIndex = Math.floor(clampedProgress * wordSpans.length);
+
+            wordSpans.forEach((span, i) => {
+                if (i <= activeIndex && clampedProgress > 0) {
+                    span.classList.add('active');
+                } else {
+                    span.classList.remove('active');
+                }
+            });
+
+            if (wordSpans[activeIndex] && clampedProgress > 0 && clampedProgress < 1) {
+                const targetSpan = wordSpans[activeIndex];
+                const spanRect = targetSpan.getBoundingClientRect();
+                const quoteRect = quoteElem.getBoundingClientRect();
+
+                const x = spanRect.left - quoteRect.left + spanRect.width / 2;
+                const y = spanRect.top - quoteRect.top - 8;
+
+                dotElem.style.left = `${x}px`;
+                dotElem.style.top = `${y}px`;
+                dotElem.style.opacity = '1';
+            } else if (clampedProgress >= 1 && wordSpans.length > 0) {
+                const lastSpan = wordSpans[wordSpans.length - 1];
+                const spanRect = lastSpan.getBoundingClientRect();
+                const quoteRect = quoteElem.getBoundingClientRect();
+                dotElem.style.left = `${spanRect.right - quoteRect.left + 6}px`;
+                dotElem.style.top = `${spanRect.top - quoteRect.top + spanRect.height / 2}px`;
+                dotElem.style.opacity = '0.5';
+            } else {
+                dotElem.style.opacity = '0';
+            }
+        }
+
+        window.addEventListener('scroll', updateScrollReader, { passive: true });
+        updateScrollReader();
+
+        // 5. GESTIONE MENU MOBILE
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuIcon = document.getElementById('menuIcon');
@@ -1440,7 +1549,7 @@
             });
         });
 
-        // 5. ACCORDION DISCIPLINE
+        // 6. ACCORDION DISCIPLINE
         const disciplineCards = document.querySelectorAll('.discipline-card');
         disciplineCards.forEach(card => {
             const header = card.querySelector('.discipline-header');
@@ -1452,7 +1561,7 @@
             });
         });
 
-        // 6. INTERSECTION OBSERVER PER SCROLL REVEAL
+        // 7. INTERSECTION OBSERVER PER SCROLL REVEAL
         const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
