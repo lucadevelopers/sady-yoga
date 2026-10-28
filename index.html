@@ -75,7 +75,7 @@
             transition: transform 0.05s linear;
         }
 
-        /* NAVBAR "FLOATING PILL" FLUTTUANTE A CAPSULA */
+        /* NAVBAR "FLOATING PILL" FLUTTUANTE A CAPSULA CON BEIGE DEL LOGO */
         nav.floating-nav {
             position: fixed;
             top: 16px;
@@ -83,12 +83,12 @@
             transform: translateX(-50%);
             width: calc(100% - 48px);
             max-width: 1100px;
-            background: rgba(247, 243, 236, 0.92);
+            background: rgba(244, 239, 230, 0.94);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             z-index: 1000;
             border-radius: 60px;
-            border: 1px solid rgba(229, 224, 216, 0.8);
+            border: 1px solid rgba(229, 224, 216, 0.85);
             box-shadow: 0 12px 35px rgba(35, 43, 40, 0.08), 0 2px 6px rgba(0,0,0,0.02);
             transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
             padding: 0 28px;
@@ -182,6 +182,11 @@
 
         .menu-toggle:hover {
             background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* MENU MOBILE - COMPLETAMENTE NASCOSTO SU DESKTOP */
+        .mobile-menu-links {
+            display: none !important;
         }
 
         /* HERO SECTION */
@@ -437,7 +442,6 @@
             background: var(--accent);
         }
 
-        /* EFFETTO ILLUMINAZIONE PAROLA PER PAROLA SULLA CITAZIONE */
         .scroll-reader-quote {
             font-size: clamp(1.25rem, 3.8vw, 1.6rem);
             font-family: 'Cormorant Garamond', serif;
@@ -445,7 +449,7 @@
             line-height: 1.65;
             margin-bottom: 30px;
             position: relative;
-            color: rgba(59, 90, 78, 0.22); /* Colore iniziale semi-trasparente */
+            color: rgba(59, 90, 78, 0.22);
         }
 
         .scroll-reader-quote .word {
@@ -596,7 +600,7 @@
             font-weight: bold;
         }
 
-        /* DISCIPLINE ACCORDION */
+        /* DISCIPLINE ACCORDION INDIPENDENTI */
         .discipline-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -764,7 +768,7 @@
             text-decoration: underline;
         }
 
-        /* RESPONSIVE MOBILE LAYOUT PER FLOATING PILL */
+        /* RESPONSIVE MOBILE LAYOUT */
         @media (max-width: 850px) {
             nav.floating-nav {
                 top: 12px;
@@ -785,7 +789,7 @@
             }
 
             .nav-links.left, .nav-links.right {
-                display: none;
+                display: none !important;
             }
 
             .logo-wrapper {
@@ -799,12 +803,14 @@
             }
 
             .mobile-menu-links {
+                display: flex !important;
                 position: absolute;
                 top: 75px;
                 left: 0;
                 right: 0;
-                background: rgba(247, 243, 236, 0.98);
+                background: rgba(244, 239, 230, 0.98);
                 backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
                 gap: 0;
                 padding: 10px 0;
@@ -858,7 +864,7 @@
     <!-- Navigazione Floating Pill Fluttuante a Capsula -->
     <nav class="floating-nav">
         <div class="nav-container">
-            <!-- Link di Sinistra -->
+            <!-- Link di Sinistra (Visibili solo su Desktop) -->
             <ul class="nav-links left">
                 <li><a href="#profilo">Profilo</a></li>
                 <li><a href="#formazione">Formazione</a></li>
@@ -870,7 +876,7 @@
                 <img src="fotologo.jpg" alt="Logo Saadiya" class="nav-logo-pic" onerror="this.src='https://placehold.co/180x80/F7F3EC/3B5A4E?text=Saadiya'">
             </a>
 
-            <!-- Link di Destra -->
+            <!-- Link di Destra (Visibili solo su Desktop) -->
             <ul class="nav-links right">
                 <li><a href="#discipline">Discipline</a></li>
                 <li><a href="#competenze">Competenze</a></li>
@@ -883,7 +889,7 @@
             </button>
         </div>
 
-        <!-- Menu Mobile Integrato -->
+        <!-- Menu Mobile Integrato (Nascosto su Desktop, attivo solo su mobile) -->
         <ul class="mobile-menu-links" id="mobileMenu">
             <li><a href="#profilo">Profilo</a></li>
             <li><a href="#formazione">Formazione</a></li>
@@ -924,7 +930,7 @@
             <div class="carousel-track" id="carouselTrack">
                 <!-- Card 1 -->
                 <div class="carousel-card">
-                    <img src="vinyasa.jpg" alt="Vinyasa Flow">
+                    <img src="vinyasa.jpg" alt="Vinyasa Flow" onerror="this.src='https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Vinyasa Flow</div>
                         <div class="carousel-card-sub">Respiro & Movimento</div>
@@ -932,7 +938,7 @@
                 </div>
                 <!-- Card 2 -->
                 <div class="carousel-card">
-                    <img src="hatha.jpg" alt="Hatha & Meditazione">
+                    <img src="hatha.jpg" alt="Hatha & Meditazione" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Hatha Yoga</div>
                         <div class="carousel-card-sub">Equilibrio & Stabilità</div>
@@ -940,7 +946,7 @@
                 </div>
                 <!-- Card 3 -->
                 <div class="carousel-card">
-                    <img src="reformer.jpg" alt="Pilates Reformer">
+                    <img src="reformer.jpg" alt="Pilates Reformer" onerror="this.src='https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Pilates Reformer</div>
                         <div class="carousel-card-sub">La forza nasce dal centro</div>
@@ -948,7 +954,7 @@
                 </div>
                 <!-- Card 4 -->
                 <div class="carousel-card">
-                    <img src="aerial.jpg" alt="Aerial Yin">
+                    <img src="aerial.jpg" alt="Aerial Yin" onerror="this.src='https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Aerial Yin</div>
                         <div class="carousel-card-sub">Leggerezza in Amaca</div>
@@ -956,7 +962,7 @@
                 </div>
                 <!-- Card 5 -->
                 <div class="carousel-card">
-                    <img src="odaka.jpg" alt="Odaka Yoga">
+                    <img src="odaka.jpg" alt="Odaka Yoga" onerror="this.src='https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Odaka Yoga</div>
                         <div class="carousel-card-sub">Fluidità dell'Onda</div>
@@ -964,7 +970,7 @@
                 </div>
                 <!-- Card 6 -->
                 <div class="carousel-card">
-                    <img src="light.jpg" alt="Light Yoga">
+                    <img src="light.jpg" alt="Light Yoga" onerror="this.src='https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80'">
                     <div class="carousel-card-overlay">
                         <div class="carousel-card-title">Light Yoga</div>
                         <div class="carousel-card-sub">Consapevolezza Corporea</div>
@@ -1178,7 +1184,7 @@
                         <i data-lucide="chevron-down" size="18" class="discipline-icon-arrow"></i>
                     </div>
                     <div class="discipline-content">
-                        Un approfondimento del metodo Odaka dedicato all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
+                        Un approfondimento del metodo Odaka dedicato’all’arte del respiro e alla sua relazione con corpo e mente. Attraverso tecniche di respirazione, mudra e sequenze specifiche, la pratica favorisce consapevolezza, equilibrio interiore e una maggiore capacità di ascoltare il proprio respiro e le proprie emozioni.
                     </div>
                 </div>
 
@@ -1308,7 +1314,7 @@
         </div>
     </footer>
 
-    <!-- Script per Animazioni, Menu, Canvas, Accordion e Scrittura Illuminata Citazione -->
+    <!-- Script per Animazioni, Menu, Canvas, Accordion Indipendenti e Scrittura Illuminata -->
     <script>
         lucide.createIcons();
 
@@ -1549,14 +1555,11 @@
             });
         });
 
-        // 6. ACCORDION DISCIPLINE
+        // 6. ACCORDION DISCIPLINE COMPLETAMENTE INDIPENDENTI
         const disciplineCards = document.querySelectorAll('.discipline-card');
         disciplineCards.forEach(card => {
             const header = card.querySelector('.discipline-header');
             header.addEventListener('click', () => {
-                disciplineCards.forEach(other => {
-                    if (other !== card) other.classList.remove('active');
-                });
                 card.classList.toggle('active');
             });
         });
